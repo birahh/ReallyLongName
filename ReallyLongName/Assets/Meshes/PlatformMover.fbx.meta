@@ -1,22 +1,40 @@
 fileFormatVersion: 2
-guid: 664d491133a714e1591e8a70ab2ef355
-timeCreated: 1522094099
+guid: 5afdb43b75f9446b187d5b611e57c9f4
+timeCreated: 1522093524
 licenseType: Free
 ModelImporter:
   serializedVersion: 22
   fileIDToRecycleName:
-    100000: //RootNode
-    400000: //RootNode
-    2100000: lambert2
-    2300000: //RootNode
-    3300000: //RootNode
-    4300000: pCube1
+    100000: DotLeft
+    100002: DotMiddle
+    100004: DotRight
+    100006: Platform
+    100008: //RootNode
+    100010: PlatformMover
+    100012: transform1
+    100014: transform2
+    100016: transform3
+    100018: transform4
+    400000: DotLeft
+    400002: DotMiddle
+    400004: DotRight
+    400006: Platform
+    400008: PlatformMover
+    400010: //RootNode
+    400012: transform1
+    400014: transform2
+    400016: transform3
+    400018: transform4
+    2100000: Platforms
+    2300000: PlatformMover
+    3300000: PlatformMover
+    4300000: PlatformMover
     9500000: //RootNode
   externalObjects:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: lambert2
+      name: Platforms
     second: {fileID: 2100000, guid: d2008acaa94ab4069bc6494a3b6a21c4, type: 2}
   materials:
     importMaterials: 1

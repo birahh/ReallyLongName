@@ -1,22 +1,43 @@
 fileFormatVersion: 2
-guid: 664d491133a714e1591e8a70ab2ef355
-timeCreated: 1522094099
+guid: eebce5e3aea08414eac6749ba2c4aab7
+timeCreated: 1522092790
 licenseType: Free
 ModelImporter:
   serializedVersion: 22
   fileIDToRecycleName:
-    100000: //RootNode
-    400000: //RootNode
-    2100000: lambert2
-    2300000: //RootNode
-    3300000: //RootNode
-    4300000: pCube1
+    100000: joint1
+    100002: joint2
+    100004: joint3
+    100006: //RootNode
+    100008: PlatformStatic
+    100010: Spike01
+    100012: Spike02
+    100014: Spike03
+    400000: joint1
+    400002: joint2
+    400004: joint3
+    400006: //RootNode
+    400008: PlatformStatic
+    400010: Spike01
+    400012: Spike02
+    400014: Spike03
+    2100000: Platforms
+    2300000: PlatformStatic
+    3300000: PlatformStatic
+    4300000: PlatformStatic
+    4300002: Spike02
+    4300004: Spike03
+    4300006: Spike01
+    7400000: Take 001
     9500000: //RootNode
+    13700000: Spike01
+    13700002: Spike02
+    13700004: Spike03
   externalObjects:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: lambert2
+      name: Platforms
     second: {fileID: 2100000, guid: d2008acaa94ab4069bc6494a3b6a21c4, type: 2}
   materials:
     importMaterials: 1
