@@ -4,15 +4,18 @@ using UnityEngine;
 
 public class LPEnemyShooter : LPBaseEnemy
 {
+	
 
     void Start()
     {
+		base.Start();
 
     }
 
 
     void Update()
-    {
+	{
+		base.Start();
 
     }
 }

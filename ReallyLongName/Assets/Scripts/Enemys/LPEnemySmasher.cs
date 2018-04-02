@@ -7,12 +7,12 @@ public class LPEnemySmasher : LPBaseEnemy
 
     void Start()
     {
-
+		base.Start();
     }
 
 
     void Update()
     {
-
+		base.Update();
     }
 }

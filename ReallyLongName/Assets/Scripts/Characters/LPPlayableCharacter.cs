@@ -23,8 +23,9 @@ public class LPPlayableCharacter : LPBaseCharacter
 	float gravity;
 	float maxJumpVelocity;
 	float minJumpVelocity;
-	Vector3 velocity;
 	float velocityXSmoothing;
+	public float groundSlideFactor = 1f;
+	Vector3 velocity;
 
 	Vector2 directionalInput;
 	bool wallSliding;
@@ -70,11 +71,13 @@ public class LPPlayableCharacter : LPBaseCharacter
 		}
 	}
 
-	public void SetDirectionalInput (Vector2 input) {
+	public void SetDirectionalInput (Vector2 input) 
+	{
 		directionalInput = input;
 	}
 
-	public void OnJumpInputDown() {
+	public void OnJumpInputDown() 
+	{
 		if (wallSliding) {
 			if (wallDirX == directionalInput.x) {
 				velocity.x = -wallDirX * wallJumpClimb.x;
@@ -101,16 +104,19 @@ public class LPPlayableCharacter : LPBaseCharacter
 		}
 	}
 
-	public void OnJumpInputUp() {
+	public void OnJumpInputUp() 
+	{
 		if (velocity.y > minJumpVelocity) {
 			velocity.y = minJumpVelocity;
 		}
 	}
 
 
-	void HandleWallSliding() {
+	void HandleWallSliding() 
+	{
 		wallDirX = (collisions.left) ? -1 : 1;
 		wallSliding = false;
+
 		if ((collisions.left || collisions.right) && !collisions.below && velocity.y < 0) {
 			wallSliding = true;
 
@@ -124,12 +130,10 @@ public class LPPlayableCharacter : LPBaseCharacter
 
 				if (directionalInput.x != wallDirX && directionalInput.x != 0) {
 					timeToWallUnstick -= Time.deltaTime;
-				}
-				else {
+				} else {
 					timeToWallUnstick = wallStickTime;
 				}
-			}
-			else {
+			} else {
 				timeToWallUnstick = wallStickTime;
 			}
 
@@ -137,9 +141,12 @@ public class LPPlayableCharacter : LPBaseCharacter
 
 	}
 
-	void CalculateVelocity() {
+	void CalculateVelocity() 
+	{
 		float targetVelocityX = directionalInput.x * moveSpeed;
-		velocity.x = Mathf.SmoothDamp (velocity.x, targetVelocityX, ref velocityXSmoothing, (collisions.below)?accelerationTimeGrounded:accelerationTimeAirborne);
+		velocity.x = Mathf.Lerp( velocity.x, 
+								 Mathf.SmoothDamp (velocity.x, targetVelocityX, ref velocityXSmoothing, (collisions.below)?accelerationTimeGrounded:accelerationTimeAirborne), 
+								 groundSlideFactor );
 		velocity.y += gravity * Time.deltaTime;
 	}
 }

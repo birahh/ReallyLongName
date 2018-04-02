@@ -17,13 +17,11 @@ public class LP2DController : LPRaycastController
 
 	public void Move(Vector2 moveAmount, bool standingOnPlatform) 
 	{
-		print("MOVE 1");
 		Move (moveAmount, Vector2.zero, standingOnPlatform);
 	}
 
 	public void Move(Vector2 moveAmount, Vector2 input, bool standingOnPlatform = false) 
 	{
-		print("MOVE 2");
 		UpdateRaycastOrigins();
 
 		collisions.Reset ();
@@ -39,8 +37,8 @@ public class LP2DController : LPRaycastController
 		}
 
 		HorizontalCollisions (ref moveAmount);
+
 		if (moveAmount.y != 0) {
-			print("GOES TO VERTICAL");
 			VerticalCollisions (ref moveAmount);
 		}
 
@@ -108,9 +106,8 @@ public class LP2DController : LPRaycastController
 	{
 		float directionY = Mathf.Sign (moveAmount.y);
 		float rayLength = Mathf.Abs (moveAmount.y) + skinWidth;
-		print("BEFORE VERTICAL RAY: "+verticalRayCount);
+
 		for (int i = 0; i < verticalRayCount; i ++) {
-			print("vertical collision");
 
 			Vector2 rayOrigin = (directionY == -1)?raycastOrigins.bottomLeft:raycastOrigins.topLeft;
 			rayOrigin += Vector2.right * (verticalRaySpacing * i + moveAmount.x);
@@ -119,7 +116,7 @@ public class LP2DController : LPRaycastController
 			Debug.DrawRay(rayOrigin, Vector2.up * directionY,Color.red);
 
 			if (hit) {
-				print("hit");
+				
 				if (hit.collider.tag == "Through") {
 					if (directionY == 1 || hit.distance == 0) {
 						continue;
@@ -147,6 +144,7 @@ public class LP2DController : LPRaycastController
 		}
 
 		if (collisions.climbingSlope) {
+			
 			float directionX = Mathf.Sign(moveAmount.x);
 			rayLength = Mathf.Abs(moveAmount.x) + skinWidth;
 			Vector2 rayOrigin = ((directionX == -1)?raycastOrigins.bottomLeft:raycastOrigins.bottomRight) + Vector2.up * moveAmount.y;

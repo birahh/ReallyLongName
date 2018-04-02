@@ -7,12 +7,14 @@ public class LPEnemyMelee : LPBaseEnemy
 
     void Start()
     {
+		base.Start();
 
+		Speed = 1.5f;
     }
 
 
     void Update()
     {
-
+		base.Update();
     }
 }

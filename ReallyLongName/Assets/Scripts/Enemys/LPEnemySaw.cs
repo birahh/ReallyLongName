@@ -7,12 +7,12 @@ public class LPEnemySaw : LPBaseEnemy
 
     void Start()
     {
-
+		base.Start();
     }
 
 
     void Update()
-    {
-
+	{
+		base.Update();
     }
 }

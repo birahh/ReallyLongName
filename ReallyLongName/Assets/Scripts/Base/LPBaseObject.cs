@@ -14,7 +14,7 @@ public class LPBaseObject : MonoBehaviour
 
 	private Animator animator;
 
-	void Start () 
+	public void Start () 
 	{
 		animator = GetComponentInChildren<Animator>();
 		collider = GetComponentInChildren<BoxCollider2D>();
