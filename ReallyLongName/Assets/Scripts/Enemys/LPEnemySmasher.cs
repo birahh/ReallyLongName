@@ -10,9 +10,18 @@ public class LPEnemySmasher : LPBaseEnemy
 		base.Start();
     }
 
-
     void Update()
     {
 		base.Update();
+    }
+
+    public void Activate()
+    {
+        Invoke("CallBaseActivate", 1.5f);
+    }
+
+    void CallBaseActivate()
+    {
+        base.Activate(1);
     }
 }

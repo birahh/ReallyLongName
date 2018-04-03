@@ -17,7 +17,9 @@ public class LPBaseEnemy : LPBaseObject
 	public float EaseAmount;
 
 	int fromWaypointIndex;
-	float percentBetweenWaypoints;
+    int cycleIteration;
+    int cycleLimit;
+    float percentBetweenWaypoints;
 	float nextMoveTime;
 	bool shouldPlay;
     
@@ -25,7 +27,10 @@ public class LPBaseEnemy : LPBaseObject
     {
 		base.Start();
 
-		shouldPlay = ShouldPlayFromStart;
+        cycleLimit = int.MaxValue;
+        cycleIteration = 0;
+
+        shouldPlay = ShouldPlayFromStart;
 
 		globalWaypoints = new Vector3[LocalWaypoints.Length];
 
@@ -37,10 +42,17 @@ public class LPBaseEnemy : LPBaseObject
 	public void Update ()
 	{
 		if (shouldPlay) {
-			
-			Vector3 velocity = CalculateMovement();
 
-			transform.Translate (velocity);
+            if (cycleIteration < cycleLimit) {
+
+                Vector3 velocity = CalculateMovement();
+
+                transform.Translate(velocity);
+
+            } else {
+                shouldPlay = false;
+                cycleIteration = -1;
+            }
 		}
 	}
 
@@ -49,7 +61,13 @@ public class LPBaseEnemy : LPBaseObject
 		shouldPlay = true;
 	}
 
-	float Ease(float x) {
+    public void Activate(int RepetitionCount)
+    {
+        cycleLimit = RepetitionCount;
+        shouldPlay = true;
+    }
+
+    float Ease(float x) {
 		float a = EaseAmount + 1;
 		return Mathf.Pow(x,a) / (Mathf.Pow(x,a) + Mathf.Pow(1-x,a));
 	}
@@ -78,6 +96,8 @@ public class LPBaseEnemy : LPBaseObject
 				if (fromWaypointIndex >= globalWaypoints.Length-1) {
 					fromWaypointIndex = 0;
 					System.Array.Reverse(globalWaypoints);
+
+                    cycleIteration++;
 				}
 			}
 
@@ -86,6 +106,13 @@ public class LPBaseEnemy : LPBaseObject
 
 		return newPos - transform.position;
 	}
+    
+    void OnTriggerEnter2D(Collider2D coll)
+    {
+        if (coll.tag.Equals("Player")) {
+            (coll.gameObject.GetComponent<LPPlayableCharacter>()).Hit();
+        }
+    }
 
 	void OnDrawGizmos() 
 	{

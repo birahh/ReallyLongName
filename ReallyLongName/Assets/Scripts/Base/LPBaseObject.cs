@@ -9,7 +9,6 @@ public class LPBaseObject : MonoBehaviour
 
 	public bool CanDie;
 	public bool ShouldRespawn;
-
 	public float Speed;
 
 	private Animator animator;
@@ -20,13 +19,12 @@ public class LPBaseObject : MonoBehaviour
 		collider = GetComponentInChildren<BoxCollider2D>();
 	}
 
-
 	void Update () 
 	{
 		
 	}
 
-	protected void RunAnimator(string animationName)
+	protected void RunAnimationByName(string animationName)
 	{
 		if (animator) {
 			animator.Play(animationName);

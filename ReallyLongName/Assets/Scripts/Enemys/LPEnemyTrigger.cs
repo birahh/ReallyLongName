@@ -8,7 +8,7 @@ public class LPEnemyTrigger : MonoBehaviour
 	
 	void Start () 
 	{
-		
+        
 	}
 
 	void Update () 
@@ -16,10 +16,21 @@ public class LPEnemyTrigger : MonoBehaviour
 		
 	}
 
-	void OnTriggerEnter(Collider coll)
+	void OnTriggerEnter2D(Collider2D coll)
 	{
 		if (coll.tag.Equals("Player")) {
-			enemy.Activate();
-		}	
+
+            if (enemy.GetType() == typeof(LPEnemySmasher))
+                (enemy as LPEnemySmasher).Activate();
+
+            if (enemy.GetType() == typeof(LPEnemyShooter))
+                (enemy as LPEnemyShooter).Activate();
+
+            if (enemy.GetType() == typeof(LPEnemySaw))
+                (enemy as LPEnemySaw).Activate();
+
+            if (enemy.GetType() == typeof(LPEnemyMelee))
+                (enemy as LPEnemyMelee).Activate();
+        }	
 	}
 }

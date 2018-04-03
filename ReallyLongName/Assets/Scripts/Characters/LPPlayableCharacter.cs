@@ -31,7 +31,6 @@ public class LPPlayableCharacter : LPBaseCharacter
 	bool wallSliding;
 	int wallDirX;
 
-
 	void Start() 
 	{
 		base.Start();
@@ -110,7 +109,6 @@ public class LPPlayableCharacter : LPBaseCharacter
 			velocity.y = minJumpVelocity;
 		}
 	}
-
 
 	void HandleWallSliding() 
 	{

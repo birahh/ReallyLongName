@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class LPBaseCharacter : LP2DController
 {
+    public int Life;
 
     void Start()
     {
@@ -13,5 +14,21 @@ public class LPBaseCharacter : LP2DController
     void Update()
     {
 
+    }
+
+    public void Hit()
+    {
+        Life--;
+
+        if (Life <=  0) {
+            Die();
+        }
+
+        print("HIT");
+    }
+
+    void Die()
+    {
+        print("Player Died");
     }
 }
