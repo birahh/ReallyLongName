@@ -2,19 +2,24 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LPAudioController : MonoBehaviour {
+public class LPAudioController : MonoBehaviour
+{
+    public AudioSource[] SFXMenu;
 
+    public AudioSource[] Soundtrack;
+    public AudioSource[] Soundscape;
 
-	public AudioSource[] EnemyShoot;
-	public AudioSource[] EnemySmasher; 
+    public AudioSource[] EnemyJump;
+	public AudioSource[] EnemyMelee;
+    public AudioSource[] EnemySaw;
+    public AudioSource[] EnemySmasher;
+    public AudioSource[] EnemyShoot;
 
-
-	void Start () 
+    void Start () 
 	{
 		
 	}
-
-
+    
 	void Update () 
 	{
 		
