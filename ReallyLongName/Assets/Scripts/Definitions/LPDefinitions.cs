@@ -16,7 +16,7 @@ public static class LPDefinitions
 
 	//	Smasher Settings
 	public static float Smasher_Speed = 1.0f;
-	public static float Smasher_GroundTime = 1.0f;
+	public static float Smasher_GroundTime = 3.0f;
 	public static float Smasher_BackToPositionTime = 1.0f;
 
 	//	World Settings

@@ -9,7 +9,8 @@ public class LPAudioController : MonoBehaviour
     public AudioSource[] Soundtrack;
     public AudioSource[] Soundscape;
 
-    public AudioSource[] EnemyJump;
+	public AudioSource[] EnemyJumpAudioClips;
+	public string[] EnemyJumpAudioNames;
 	public AudioSource[] EnemyMelee;
     public AudioSource[] EnemySaw;
     public AudioSource[] EnemySmasher;
@@ -24,4 +25,16 @@ public class LPAudioController : MonoBehaviour
 	{
 		
 	}
+
+	void PlayEnemyJump(string audioName)
+	{
+		if (audioName.Equals("Jump")) {
+			//EnemyJump[0] as Play
+		}
+
+		if (audioName.Equals("Shoot")) {
+			//EnemyJump[1] as Play
+		}
+	}
+
 }

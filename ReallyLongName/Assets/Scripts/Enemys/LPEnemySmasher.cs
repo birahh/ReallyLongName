@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class LPEnemySmasher : LPBaseEnemy
 {
+    public float WaitTimeBeforeFall;
 
     void Start()
     {
@@ -17,7 +18,7 @@ public class LPEnemySmasher : LPBaseEnemy
 
     public void Activate()
     {
-        Invoke("CallBaseActivate", 1.5f);
+        Invoke("CallBaseActivate", WaitTimeBeforeFall);
     }
 
     void CallBaseActivate()
