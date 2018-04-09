@@ -20,7 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4495810491646278}
   - component: {fileID: 137887655225949544}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Spike03
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -36,7 +36,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4419982707564910}
   - component: {fileID: 137070943948708460}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Spike02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -53,7 +53,7 @@ GameObject:
   - component: {fileID: 4316256108258820}
   - component: {fileID: 95321901435925686}
   - component: {fileID: 61769089925035542}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: PlatformSpike
   m_TagString: Platform
   m_Icon: {fileID: 0}
@@ -69,7 +69,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4230399422861904}
   - component: {fileID: 137899565165813194}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Spike01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -86,7 +86,7 @@ GameObject:
   - component: {fileID: 4335446770178440}
   - component: {fileID: 33870036530982388}
   - component: {fileID: 23191797345042318}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: PlatformStatic
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -101,7 +101,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4021435237480946}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: joint3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -116,7 +116,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4234330781850956}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: joint2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -131,7 +131,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4096248186877936}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: joint1
   m_TagString: Untagged
   m_Icon: {fileID: 0}

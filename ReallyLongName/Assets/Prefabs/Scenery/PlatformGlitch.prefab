@@ -23,7 +23,7 @@ GameObject:
   - component: {fileID: 23872086422990438}
   - component: {fileID: 95033309357508106}
   - component: {fileID: 61729126813689514}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: PlatformGlitch
   m_TagString: Platform
   m_Icon: {fileID: 0}
