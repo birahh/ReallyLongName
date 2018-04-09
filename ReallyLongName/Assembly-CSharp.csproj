@@ -85,6 +85,7 @@
      <Compile Include="Assets\Scripts\Scenery\Platforms\LPPlatformStatic.cs" />
      <Compile Include="Assets\Scripts\Scenery\RollPin\LPRollPin.cs" />
      <Compile Include="Assets\Scripts\Scenery\RollPin\LPRollPinSpike.cs" />
+     <None Include="Assets\Materials\UnlitShadow.shader" />
  <Reference Include="UnityEngine.UI">
  <HintPath>/Applications/Unity/Unity.app/Contents/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>

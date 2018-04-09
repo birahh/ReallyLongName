@@ -163,6 +163,7 @@ MonoBehaviour:
   collider: {fileID: 0}
   maxSlopeAngle: 55
   playerInput: {x: 0, y: 0}
+  Life: 10
   isRunning: 0
   wallJumpClimb: {x: 7.5, y: 16}
   wallJumpOff: {x: 8.5, y: 7}
