@@ -5,6 +5,7 @@ using UnityEngine;
 public class LPCheatCodeController : MonoBehaviour
 {
     public string[] CheatCodes;
+    public string[] CallFunctions;
 
     private string[] TypedKeys;
 
@@ -18,7 +19,6 @@ public class LPCheatCodeController : MonoBehaviour
         if (Input.anyKeyDown && !Input.GetMouseButton(0) && !Input.GetMouseButton(1)) {
 
             AddKey(Input.inputString);
-            PrintKeyArray();
         }	    	
 	}
 
@@ -45,52 +45,70 @@ public class LPCheatCodeController : MonoBehaviour
         TypedKeys = new string[1];
         TypedKeys[0] = "Begin--";
     }
+    
+    void CallFunction(int index)
+    {
+        //  Call funcion with the name of CallFunctions[index]
+        print(CallFunctions[index]);
+    }
 
     void SearchForMatch()
     {
-        int wordLenght = 0;
-
+        //  For each CheatCode
         for (int i = 0; i < CheatCodes.Length; i++) {
 
+            int wordLenght = 0;
+
+            //  Check if a recorded key
             for (int j = 0; j < TypedKeys.Length; j++) {
 
+                //  Matches with a first letter of a word
                 for (int k = 0; k < CheatCodes[i].Length; k++) {
                 
+                    //  If it Does
                     if (CheatCodes[i].Substring(k, 1).Equals(TypedKeys[j])) {
-                        
-                        wordLenght++;
 
-                        j = k + 1;
+                        //  Check if the rest of the word matches with the following characters typed
+                        for(int l = 0; l < CheatCodes[i].Length; l++) {
 
-                        print(wordLenght+"@");
+                            //  Then check if is not out of boundaries
+                            if(k + l > CheatCodes[i].Length - 1 || j + l > TypedKeys.Length - 1) {
+                                break;
+                            }
 
-                        if (k == CheatCodes[i].Length - 1) {
+                            //  If is not out of boundaries do the count of characters that matches the word
+                            if(CheatCodes[i].Substring(k + l, 1).Equals(TypedKeys[j + l])) {
 
-                            //  Found Word
-                            PrintCheatWorld(CheatCodes[i]);
-                            ClearTypedKeys();
-                            wordLenght = 0;
+                                wordLenght++;
+
+                                //  If the size of the word matches it
+                                if(wordLenght == CheatCodes[i].Length) {
+
+                                    //  You've found the word
+                                    PrintCheatWorld(CheatCodes[i]);
+                                    CallFunction(i);
+                                    ClearTypedKeys();
+                                    wordLenght = 0;
+
+                                    return;
+                                }
+                            } else {
+                                wordLenght = 0;
+                                break;
+                            }
                         }
 
                     } else {
                         wordLenght = 0;
-                    }                        
+                        break;
+                    }      
                 }
             }
         }
     }
 
-    void PrintKeyArray()
-    {
-        Debug.ClearDeveloperConsole();
-
-        foreach (string key in TypedKeys) {
-            Debug.LogError(key);
-        }
-    }
-
     void PrintCheatWorld(string word)
     {
-        print(word);
+        //print(word);
     }
 }
