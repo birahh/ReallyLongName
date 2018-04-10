@@ -4,15 +4,11 @@ using UnityEngine;
 
 public class LPCollectableCoin : LPBaseCollectable
 {
+    public int CoinValue;
 
     void Start()
     {
-
-    }
-
-
-    void Update()
-    {
-
+        base.Start();
+        base.value = CoinValue;
     }
 }

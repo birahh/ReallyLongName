@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent (typeof (BoxCollider2D))]
+[RequireComponent (typeof (Collider2D))]
 public class LPBaseObject : MonoBehaviour 
 {
-	public BoxCollider2D collider;
+	public Collider2D collider;
 
 	public bool CanDie;
 	public bool ShouldRespawn;
@@ -16,7 +16,7 @@ public class LPBaseObject : MonoBehaviour
 	public void Start () 
 	{
 		animator = GetComponentInChildren<Animator>();
-		collider = GetComponentInChildren<BoxCollider2D>();
+		collider = GetComponentInChildren<Collider2D>();
 	}
 
 	void Update () 

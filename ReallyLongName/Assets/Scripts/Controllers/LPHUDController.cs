@@ -9,12 +9,15 @@ public class LPHUDController : MonoBehaviour
 	public Text coinCounter;
 	public Text continueCounter;
 
-	public float initialTime = 300.0f;
+    int coinAmount = 0;
+    int continueAmount = 2;
+
+	float initialTime = 300.0f;
 
 	// Use this for initialization
 	void Start () 
 	{
-
+        LPBaseCollectable.OnCollected += AddCoin;
 	}
 
 	// Update is called once per frame
@@ -22,16 +25,23 @@ public class LPHUDController : MonoBehaviour
 	{
 		initialTime = initialTime - Time.deltaTime;
 
-		timer.text = ""+Mathf.FloorToInt(initialTime);
+        UpdateHUDText();
+    }
+
+	public void AddCoin (int newValue)
+	{
+        coinAmount += newValue;
 	}
 
-	public void setCoinCounter (int newValue)
+	public void AddContinue (int newValue)
 	{
-		coinCounter.text = newValue+" Moedas";
+        continueAmount += newValue;
 	}
 
-	public void setContinueCounter (int newValue)
-	{
-		continueCounter.text = "x"+newValue;
-	}
+    void UpdateHUDText()
+    {
+        timer.text = "" + Mathf.FloorToInt(initialTime);
+        coinCounter.text = coinAmount+"";
+        continueCounter.text = "x" + continueAmount;
+    }
 }
