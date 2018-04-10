@@ -11,6 +11,8 @@ public class LPPlayableCharacter : LPBaseCharacter
 	float accelerationTimeGrounded = .1f;
 	float moveSpeed = 6;
 	public bool isRunning;
+    public int maxJumpCount;
+    int jumpCount;
 
 	public Vector2 wallJumpClimb;
 	public Vector2 wallJumpOff;
@@ -35,7 +37,8 @@ public class LPPlayableCharacter : LPBaseCharacter
 	{
 		base.Start();
 
-		gravity = -(2 * maxJumpHeight) / Mathf.Pow (timeToJumpApex, 2);
+        jumpCount = maxJumpCount;
+        gravity = -(2 * maxJumpHeight) / Mathf.Pow (timeToJumpApex, 2);
 
 		maxJumpVelocity = Mathf.Abs(gravity) * timeToJumpApex;
 		minJumpVelocity = Mathf.Sqrt (2 * Mathf.Abs (gravity) * minJumpHeight);
@@ -91,7 +94,15 @@ public class LPPlayableCharacter : LPBaseCharacter
 				velocity.y = wallLeap.y;
 			}
 		}
-		if (collisions.below) {
+
+		if (collisions.below || jumpCount > 1) {
+
+            jumpCount--;
+
+            if (collisions.below) {
+                jumpCount = maxJumpCount;
+            }
+
 			if (collisions.slidingDownMaxSlope) {
 				if (directionalInput.x != -Mathf.Sign (collisions.slopeNormal.x)) { // not jumping against max slope
 					velocity.y = maxJumpVelocity * collisions.slopeNormal.y;
