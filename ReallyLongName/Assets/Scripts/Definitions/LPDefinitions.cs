@@ -5,11 +5,11 @@ using UnityEngine;
 public static class LPDefinitions 
 {
 	//	Character Settings
-	public static float Character_Speed = 6.0f;
-	public static float Character_MaxJumpHeight = 5.0f;
-	public static float Character_MinJumpHeight = 1.0f;
-	public static float Character_WallSlideSpeed = 2.0f;
-	public static float Character_WallStickTime = 3.0f;
+	public static float Character_Speed = 4.0f;
+	public static float Character_MaxJumpHeight = 3.0f;
+	public static float Character_MinJumpHeight = 0.5f;
+	public static float Character_WallSlideSpeed = 4.0f;
+	public static float Character_WallStickTime = 5.0f;
 	//	public static float Character_Deprecated;
 	public static float Character_WeatherHeatFactor;
 	public static float Character_WeatherColdFactor;

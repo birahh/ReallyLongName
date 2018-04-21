@@ -49,7 +49,7 @@ public class LPCameraFollow : MonoBehaviour {
 
 		focusPosition.y = Mathf.SmoothDamp (transform.position.y, focusPosition.y, ref smoothVelocityY, verticalSmoothTime);
 		focusPosition += Vector2.right * currentLookAheadX;
-		transform.position = (Vector3)focusPosition + Vector3.forward * -8;
+		transform.position = (Vector3)focusPosition + Vector3.forward * -6;
 	}
 
 	void OnDrawGizmos() 

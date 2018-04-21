@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class LPPlayableCharacter : LPBaseCharacter
 {
-	float maxJumpHeight = 4;
-	float minJumpHeight = 1;
+	float maxJumpHeight = 3.0f;
+	float minJumpHeight = 0.5f;
 	float timeToJumpApex = .4f;
 	float accelerationTimeAirborne = .2f;
 	float accelerationTimeGrounded = .1f;
@@ -18,7 +18,7 @@ public class LPPlayableCharacter : LPBaseCharacter
 	public Vector2 wallJumpOff;
 	public Vector2 wallLeap;
 
-	public float wallSlideSpeedMax = 3;
+	public float wallSlideSpeedMax = 20;
 	public float wallStickTime = .25f;
 	float timeToWallUnstick;
 
