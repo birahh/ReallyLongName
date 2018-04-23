@@ -42,7 +42,7 @@ public class LPBaseEnemy : LPBaseObject
 	public void Update ()
 	{
 		if (shouldPlay) {
-
+            
             if (cycleIteration < cycleLimit) {
 
                 Vector3 velocity = CalculateMovement();
@@ -110,11 +110,19 @@ public class LPBaseEnemy : LPBaseObject
     void OnTriggerEnter2D(Collider2D coll)
     {
         if (coll.tag.Equals("Player")) {
-            (coll.gameObject.GetComponent<LPPlayableCharacter>()).Hit();
+            print("fdisfkjs");
+            
+            if(coll.GetComponentInParent<LPPlayableCharacter>().IsFalling && CanDie) {
+
+                coll.GetComponentInParent<LPPlayableCharacter>().AddImpulseUp();
+                GameObject.Destroy(gameObject);
+
+            } else 
+                (coll.gameObject.GetComponent<LPPlayableCharacter>()).Hit();            
         }
     }
 
-	void OnDrawGizmos() 
+    void OnDrawGizmos() 
 	{
 		if (LocalWaypoints != null) {
 			Gizmos.color = Color.red;

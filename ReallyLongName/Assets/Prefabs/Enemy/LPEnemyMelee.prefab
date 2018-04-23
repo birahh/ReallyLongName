@@ -23,9 +23,9 @@ GameObject:
   - component: {fileID: 23529486908288750}
   - component: {fileID: 61446769289308348}
   - component: {fileID: 114612914932579392}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: LPEnemyMelee
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -121,7 +121,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   collider: {fileID: 61446769289308348}
-  CanDie: 0
+  CanDie: 1
   ShouldRespawn: 0
   Speed: 5
   VictimMask:

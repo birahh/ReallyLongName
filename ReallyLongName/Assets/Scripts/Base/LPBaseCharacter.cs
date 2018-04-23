@@ -11,9 +11,9 @@ public class LPBaseCharacter : LP2DController
 		base.Start();
     }
 
-    void Update()
+    public void Update()
     {
-
+        base.Update();
     }
 
     public void Hit()

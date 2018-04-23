@@ -129,7 +129,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.7568737, y: 1}
   m_EdgeRadius: 0
 --- !u!114 &114782754908706688
 MonoBehaviour:
@@ -163,6 +163,7 @@ MonoBehaviour:
   collider: {fileID: 0}
   maxSlopeAngle: 55
   playerInput: {x: 0, y: 0}
+  IsEnemyBelow: 0
   Life: 10
   isRunning: 0
   maxJumpCount: 2
