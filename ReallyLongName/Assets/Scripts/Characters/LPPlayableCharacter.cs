@@ -10,7 +10,8 @@ public class LPPlayableCharacter : LPBaseCharacter
 	float accelerationTimeAirborne = .2f;
 	float accelerationTimeGrounded = .1f;
 	float moveSpeed = 6;
-	public bool isRunning;
+    public bool IsRunning;
+    public bool IsFalling;
     public int maxJumpCount;
     int jumpCount;
 
@@ -56,7 +57,7 @@ public class LPPlayableCharacter : LPBaseCharacter
 		wallSlideSpeedMax = Mathf.Clamp(LPDefinitions.Character_WallSlideSpeed, 1, 10);
 		wallStickTime = Mathf.Clamp(LPDefinitions.Character_WallStickTime, 0, 5);
 
-		if (isRunning)
+		if (IsRunning)
 			moveSpeed = Mathf.Clamp(LPDefinitions.Character_Speed, 1, 20) * 2;
 		else 
 			moveSpeed = Mathf.Clamp(LPDefinitions.Character_Speed, 1, 20);
@@ -73,7 +74,10 @@ public class LPPlayableCharacter : LPBaseCharacter
 				velocity.y = 0;
 			}
 		}
-	}
+
+        IsFalling = velocity.y < 0;
+
+    }
 
 	public void SetDirectionalInput (Vector2 input) 
 	{
@@ -158,4 +162,9 @@ public class LPPlayableCharacter : LPBaseCharacter
 								 groundSlideFactor );
 		velocity.y += gravity * Time.deltaTime;
 	}
+    
+    public void AddImpulseUp()
+    {
+        velocity = new Vector3(velocity.x, LPDefinitions.Character_ImpulseUp, velocity.z);
+    }
 }

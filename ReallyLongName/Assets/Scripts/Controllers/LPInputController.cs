@@ -34,11 +34,11 @@ public class LPInputController : MonoBehaviour
 		}
 
 		if (Input.GetKeyDown (KeyCode.LeftShift)) {
-			player.isRunning = true;
+			player.IsRunning = true;
 		}
 
 		if (Input.GetKeyUp (KeyCode.LeftShift)) {
-			player.isRunning = false;
+			player.IsRunning = false;
 		}
 	}
 }
