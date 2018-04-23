@@ -739,6 +739,18 @@ Prefab:
       propertyPath: WaitTimeBeforeFall
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 1068174501169874, guid: 9fa78d20ea1b34da7aa5493243b99f26, type: 2}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1904161102994550, guid: 9fa78d20ea1b34da7aa5493243b99f26, type: 2}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1068174501169874, guid: 9fa78d20ea1b34da7aa5493243b99f26, type: 2}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9fa78d20ea1b34da7aa5493243b99f26, type: 2}
   m_IsPrefabParent: 0
@@ -1322,6 +1334,11 @@ Prefab:
     - target: {fileID: 4693214858190790, guid: fb615ea7462284d64b2225a526891a2c, type: 2}
       propertyPath: m_RootOrder
       value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 114963168152132324, guid: fb615ea7462284d64b2225a526891a2c,
+        type: 2}
+      propertyPath: collisionMask.m_Bits
+      value: 1280
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fb615ea7462284d64b2225a526891a2c, type: 2}
@@ -2184,6 +2201,14 @@ Prefab:
       propertyPath: m_RootOrder
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: 1331482524646406, guid: ba1f2514a22c542c6b3c4de0ea84e15d, type: 2}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1331482524646406, guid: ba1f2514a22c542c6b3c4de0ea84e15d, type: 2}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ba1f2514a22c542c6b3c4de0ea84e15d, type: 2}
   m_IsPrefabParent: 0
@@ -2511,6 +2536,14 @@ Prefab:
     - target: {fileID: 4694117074562342, guid: 4847a3be5b6e0d34e9f1ace55f4fe9be, type: 2}
       propertyPath: m_RootOrder
       value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 1616433378063754, guid: 4847a3be5b6e0d34e9f1ace55f4fe9be, type: 2}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1616433378063754, guid: 4847a3be5b6e0d34e9f1ace55f4fe9be, type: 2}
+      propertyPath: m_TagString
+      value: Enemy
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 4847a3be5b6e0d34e9f1ace55f4fe9be, type: 2}

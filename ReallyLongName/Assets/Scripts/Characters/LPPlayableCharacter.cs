@@ -46,6 +46,8 @@ public class LPPlayableCharacter : LPBaseCharacter
 
 	void Update() 
 	{
+        base.Update();
+
 		gravity = -(2 * maxJumpHeight) / Mathf.Pow (timeToJumpApex, 2) + Mathf.Clamp(LPDefinitions.World_Gravity, 1, 100);	//	WorldGravity Attenuation
 
 		maxJumpHeight = Mathf.Clamp(LPDefinitions.Character_MaxJumpHeight, 4, 10);

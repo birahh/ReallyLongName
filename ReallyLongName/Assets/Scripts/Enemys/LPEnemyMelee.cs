@@ -17,4 +17,15 @@ public class LPEnemyMelee : LPBaseEnemy
     {
 		base.Update();
     }
+
+    public void OnTriggerEnter2D(Collider2D coll)
+    {
+        if (coll.tag.Equals("Player")) {
+            print("isPlayer");
+            if (coll.GetComponentInParent<LPPlayableCharacter>().IsEnemyBelow) {
+                print("isEnemyBelow");
+                GameObject.Destroy(gameObject);
+            }
+        }
+    }
 }

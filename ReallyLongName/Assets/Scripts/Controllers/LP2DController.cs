@@ -9,11 +9,19 @@ public class LP2DController : LPRaycastController
 	[HideInInspector]
 	public Vector2 playerInput;
 
+    public bool IsEnemyBelow;
+
 	public override void Start() 
 	{
 		base.Start ();
 		collisions.faceDir = 1;
 	}
+
+    public void Update()
+    {
+        if (IsEnemyBelow)
+            print("IsEnemyBelow " + IsEnemyBelow);
+    }
 
 	public void Move(Vector2 moveAmount, bool standingOnPlatform) 
 	{
@@ -64,41 +72,44 @@ public class LP2DController : LPRaycastController
 			RaycastHit2D hit = Physics2D.Raycast(rayOrigin, Vector2.right * directionX, rayLength, collisionMask);
 
 			Debug.DrawRay(rayOrigin, Vector2.right * directionX,Color.red);
-
+            
 			if (hit) {
 
-				if (hit.distance == 0) {
+                if (hit.distance == 0) {
 					continue;
 				}
 
 				float slopeAngle = Vector2.Angle(hit.normal, Vector2.up);
 
-				if (i == 0 && slopeAngle <= maxSlopeAngle) {
-					if (collisions.descendingSlope) {
-						collisions.descendingSlope = false;
-						moveAmount = collisions.moveAmountOld;
-					}
-					float distanceToSlopeStart = 0;
-					if (slopeAngle != collisions.slopeAngleOld) {
-						distanceToSlopeStart = hit.distance-skinWidth;
-						moveAmount.x -= distanceToSlopeStart * directionX;
-					}
-					ClimbSlope(ref moveAmount, slopeAngle, hit.normal);
-					moveAmount.x += distanceToSlopeStart * directionX;
-				}
+                if (!hit.collider.tag.Equals("Enemy")) {
 
-				if (!collisions.climbingSlope || slopeAngle > maxSlopeAngle) {
-					moveAmount.x = (hit.distance - skinWidth) * directionX;
-					rayLength = hit.distance;
+				    if (i == 0 && slopeAngle <= maxSlopeAngle) {
+					    if (collisions.descendingSlope) {
+						    collisions.descendingSlope = false;
+						    moveAmount = collisions.moveAmountOld;
+					    }
+					    float distanceToSlopeStart = 0;
+					    if (slopeAngle != collisions.slopeAngleOld) {
+						    distanceToSlopeStart = hit.distance-skinWidth;
+						    moveAmount.x -= distanceToSlopeStart * directionX;
+					    }
+					    ClimbSlope(ref moveAmount, slopeAngle, hit.normal);
+					    moveAmount.x += distanceToSlopeStart * directionX;
+				    }
 
-					if (collisions.climbingSlope) {
-						moveAmount.y = Mathf.Tan(collisions.slopeAngle * Mathf.Deg2Rad) * Mathf.Abs(moveAmount.x);
-					}
+				    if (!collisions.climbingSlope || slopeAngle > maxSlopeAngle) {
+					    moveAmount.x = (hit.distance - skinWidth) * directionX;
+					    rayLength = hit.distance;
 
-					collisions.left = directionX == -1;
-					collisions.right = directionX == 1;
-				}
-			}
+					    if (collisions.climbingSlope) {
+						    moveAmount.y = Mathf.Tan(collisions.slopeAngle * Mathf.Deg2Rad) * Mathf.Abs(moveAmount.x);
+					    }
+
+					    collisions.left = directionX == -1;
+					    collisions.right = directionX == 1;
+                    }
+                }
+            }
 		}
 	}
 
@@ -116,30 +127,35 @@ public class LP2DController : LPRaycastController
 			Debug.DrawRay(rayOrigin, Vector2.up * directionY,Color.red);
 
 			if (hit) {
-				
-				if (hit.collider.tag == "Through") {
-					if (directionY == 1 || hit.distance == 0) {
-						continue;
-					}
-					if (collisions.fallingThroughPlatform) {
-						continue;
-					}
-					if (playerInput.y == -1) {
-						collisions.fallingThroughPlatform = true;
-						Invoke("ResetFallingThroughPlatform",.5f);
-						continue;
-					}
-				}
 
-				moveAmount.y = (hit.distance - skinWidth) * directionY;
-				rayLength = hit.distance;
+                IsEnemyBelow = (hit.collider.tag.Equals("Enemy") && collisions.below);
 
-				if (collisions.climbingSlope) {
-					moveAmount.x = moveAmount.y / Mathf.Tan(collisions.slopeAngle * Mathf.Deg2Rad) * Mathf.Sign(moveAmount.x);
-				}
+                if (!hit.collider.tag.Equals("Enemy")) {
 
-				collisions.below = directionY == -1;
-				collisions.above = directionY == 1;
+                    if (hit.collider.tag == "Through") {
+                        if (directionY == 1 || hit.distance == 0) {
+                            continue;
+                        }
+                        if (collisions.fallingThroughPlatform) {
+                            continue;
+                        }
+                        if (playerInput.y == -1) {
+                            collisions.fallingThroughPlatform = true;
+                            Invoke("ResetFallingThroughPlatform", .5f);
+                            continue;
+                        }
+                    }
+
+                    moveAmount.y = (hit.distance - skinWidth) * directionY;
+                    rayLength = hit.distance;
+
+                    if (collisions.climbingSlope) {
+                        moveAmount.x = moveAmount.y / Mathf.Tan(collisions.slopeAngle * Mathf.Deg2Rad) * Mathf.Sign(moveAmount.x);
+                    }
+
+                    collisions.below = directionY == -1;
+                    collisions.above = directionY == 1;
+                }
 			}
 		}
 
