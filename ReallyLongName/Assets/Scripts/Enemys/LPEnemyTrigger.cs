@@ -5,6 +5,8 @@ using UnityEngine;
 public class LPEnemyTrigger : MonoBehaviour 
 {
 	public LPBaseEnemy enemy;
+
+    private bool isActive = true;
 	
 	void Start () 
 	{
@@ -18,7 +20,9 @@ public class LPEnemyTrigger : MonoBehaviour
 
 	void OnTriggerEnter2D(Collider2D coll)
 	{
-		if (coll.tag.Equals("Player")) {
+		if (coll.tag.Equals("Player") && isActive) {
+            print("fsafaf");
+            isActive = false;
 
             if (enemy.GetType() == typeof(LPEnemySmasher))
                 (enemy as LPEnemySmasher).Activate();
@@ -33,4 +37,10 @@ public class LPEnemyTrigger : MonoBehaviour
                 (enemy as LPEnemyMelee).Activate();
         }	
 	}
+
+    private void OnTriggerExit2D(Collider2D coll)
+    {
+        if(coll.tag.Equals("Player"))
+            isActive = true;
+    }
 }
