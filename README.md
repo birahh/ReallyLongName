@@ -2,6 +2,7 @@
 
 *or:* 
 **My Sister Got Stuck Inside a Videogame! And I have to Play to Save Her**
+
 ---
 ***Authors:** Fernando Donini Ramos, Matheus Fetzner Viana, Melissa Sartor, Vinícius Crestani*
 
