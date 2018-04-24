@@ -110,15 +110,23 @@ public class LPBaseEnemy : LPBaseObject
     void OnTriggerEnter2D(Collider2D coll)
     {
         if (coll.tag.Equals("Player")) {
-            print("fdisfkjs");
-            
-            if(coll.GetComponentInParent<LPPlayableCharacter>().IsFalling && CanDie) {
 
-                coll.GetComponentInParent<LPPlayableCharacter>().AddImpulseUp();
-                GameObject.Destroy(gameObject);
+            LPPlayableCharacter player = coll.GetComponentInParent<LPPlayableCharacter>();
 
-            } else 
-                (coll.gameObject.GetComponent<LPPlayableCharacter>()).Hit();            
+            if(player.CanGetHit) {
+
+                if(player.IsFalling && CanDie) {
+
+                    GameObject.Destroy(gameObject);
+
+                } else {
+                
+                    player.Hit();
+                    player.AddImpulseBack();
+                }
+
+                player.AddImpulseUp();
+            }
         }
     }
 

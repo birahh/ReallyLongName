@@ -5,6 +5,7 @@ using UnityEngine;
 public class LPBaseCharacter : LP2DController
 {
     public int Life;
+    public bool CanGetHit = true;
 
     void Start()
     {
@@ -24,7 +25,13 @@ public class LPBaseCharacter : LP2DController
             Die();
         }
 
-        print("HIT");
+        CanGetHit = false;
+        Invoke("HitCooldownReset", LPDefinitions.Character_HitCooldown);
+    }
+
+    void HitCooldownReset()
+    {
+        CanGetHit = true;
     }
 
     void Die()

@@ -76,7 +76,6 @@ public class LPPlayableCharacter : LPBaseCharacter
 		}
 
         IsFalling = velocity.y < 0;
-
     }
 
 	public void SetDirectionalInput (Vector2 input) 
@@ -166,5 +165,10 @@ public class LPPlayableCharacter : LPBaseCharacter
     public void AddImpulseUp()
     {
         velocity = new Vector3(velocity.x, LPDefinitions.Character_ImpulseUp, velocity.z);
+    }
+
+    public void AddImpulseBack()
+    {
+        velocity = new Vector3((velocity.x > 0? -LPDefinitions.Character_ImpulseBack: LPDefinitions.Character_ImpulseBack), velocity.y, velocity.z);
     }
 }

@@ -9,8 +9,6 @@ public class LP2DController : LPRaycastController
 	[HideInInspector]
 	public Vector2 playerInput;
 
-    public bool IsEnemyBelow;
-
 	public override void Start() 
 	{
 		base.Start ();
@@ -19,8 +17,6 @@ public class LP2DController : LPRaycastController
 
     public void Update()
     {
-        if (IsEnemyBelow)
-            print("IsEnemyBelow " + IsEnemyBelow);
     }
 
 	public void Move(Vector2 moveAmount, bool standingOnPlatform) 
@@ -127,8 +123,6 @@ public class LP2DController : LPRaycastController
 			Debug.DrawRay(rayOrigin, Vector2.up * directionY,Color.red);
 
 			if (hit) {
-
-                IsEnemyBelow = (hit.collider.tag.Equals("Enemy") && collisions.below);
 
                 if (!hit.collider.tag.Equals("Enemy")) {
 

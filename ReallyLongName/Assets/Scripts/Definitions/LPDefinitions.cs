@@ -10,7 +10,9 @@ public static class LPDefinitions
 	public static float Character_MinJumpHeight = 0.5f;
 	public static float Character_WallSlideSpeed = 4.0f;
     public static float Character_WallStickTime = 5.0f;
-    public static float Character_ImpulseUp = 5.0f;
+    public static float Character_ImpulseUp = 8.0f;
+    public static float Character_ImpulseBack = 8.0f;
+    public static float Character_HitCooldown = 0.2f;
     //	public static float Character_Deprecated;
     public static float Character_WeatherHeatFactor;
 	public static float Character_WeatherColdFactor;
