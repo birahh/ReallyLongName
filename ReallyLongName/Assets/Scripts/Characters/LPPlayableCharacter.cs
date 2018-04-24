@@ -4,35 +4,46 @@ using UnityEngine;
 
 public class LPPlayableCharacter : LPBaseCharacter
 {
-	float maxJumpHeight = 3.0f;
-	float minJumpHeight = 0.5f;
-	float timeToJumpApex = .4f;
-	float accelerationTimeAirborne = .2f;
-	float accelerationTimeGrounded = .1f;
-	float moveSpeed = 6;
+    #region GroundMovementation
     public bool IsRunning;
     public bool IsFalling;
-    public int maxJumpCount;
+	float moveSpeed = 6f;
+    float velocityXSmoothing;
+    float groundSlideFactor = LPDefinitions.Character_GroundSlideFactor;
+    Vector3 velocity;
+    #endregion
+
+    #region JumpMovementation
+    int maxJumpCount = LPDefinitions.Character_MaxJumpCount;
     int jumpCount;
 
-	public Vector2 wallJumpClimb;
-	public Vector2 wallJumpOff;
-	public Vector2 wallLeap;
+    float maxJumpHeight = 3.0f;
+    float minJumpHeight = 0.5f;
+    float timeToJumpApex = .4f;
+    float accelerationTimeAirborne = .2f;
+    float accelerationTimeGrounded = .1f;
+    float gravity;
+    float maxJumpVelocity;
+    float minJumpVelocity;
+    #endregion
 
-	public float wallSlideSpeedMax = 20;
-	public float wallStickTime = .25f;
+    #region WallSlide
+    public Vector2 WallJumpClimb;
+    public Vector2 WallJumpOff;
+    public Vector2 WallLeap;
+
+    float wallSlideSpeedMax = LPDefinitions.Character_WallSlideSpeed;
+	float wallStickTime = LPDefinitions.Character_WallStickTime;
 	float timeToWallUnstick;
+    bool wallSliding;
+    int wallDirX;
+    #endregion
 
-	float gravity;
-	float maxJumpVelocity;
-	float minJumpVelocity;
-	float velocityXSmoothing;
-	public float groundSlideFactor = 1f;
-	Vector3 velocity;
+    #region PowerUps
+    public PowerUp CurrentPowerUp;
+    #endregion
 
-	Vector2 directionalInput;
-	bool wallSliding;
-	int wallDirX;
+    Vector2 directionalInput;
 
 	void Start() 
 	{
@@ -87,14 +98,14 @@ public class LPPlayableCharacter : LPBaseCharacter
 	{
 		if (wallSliding) {
 			if (wallDirX == directionalInput.x) {
-				velocity.x = -wallDirX * wallJumpClimb.x;
-				velocity.y = wallJumpClimb.y;
+				velocity.x = -wallDirX * WallJumpClimb.x;
+				velocity.y = WallJumpClimb.y;
 			} else if (directionalInput.x == 0) {
-				velocity.x = -wallDirX * wallJumpOff.x;
-				velocity.y = wallJumpOff.y;
+				velocity.x = -wallDirX * WallJumpOff.x;
+				velocity.y = WallJumpOff.y;
 			} else {
-				velocity.x = -wallDirX * wallLeap.x;
-				velocity.y = wallLeap.y;
+				velocity.x = -wallDirX * WallLeap.x;
+				velocity.y = WallLeap.y;
 			}
 		}
 

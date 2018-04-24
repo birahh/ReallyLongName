@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Platform
   - Coin
+  - Enemy
+  - CoinCatcher
   layers:
   - Default
   - TransparentFX
