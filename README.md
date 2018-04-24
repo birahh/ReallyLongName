@@ -1,8 +1,7 @@
-# ReallyLongName
-*or:*
-
-**My Sister got stuck inside a videogame! And I have to play to save her**
-
+# ReallyLongName 
+*or:* 
+**My Sister Got Stuck Inside a Videogame! And I have to Play to Save Her**
+---
 ***Authors:** Fernando Donini Ramos, Matheus Fetzner Viana, Melissa Sartor, Vinícius Crestani*
 
 This project is an academic assignment developed at [Universidade Feevale](https://www.feevale.br/) in 2018/1.
