@@ -1,7 +1,7 @@
 # ReallyLongName
-*or: *
+*or:*
 
-** My Sister got stuck inside a videogame! And I have to play to save her**
+**My Sister got stuck inside a videogame! And I have to play to save her**
 
 ***Authors:** Fernando Donini Ramos, Matheus Fetzner Viana, Melissa Sartor, Vinícius Crestani*
 
