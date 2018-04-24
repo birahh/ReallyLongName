@@ -37,6 +37,8 @@ public class LPBaseEnemy : LPBaseObject
 		for (int i =0; i < LocalWaypoints.Length; i++) {
 			globalWaypoints[i] = LocalWaypoints[i] + transform.position;
 		}
+
+        Activate(1);
 	}
 
 	public void Update ()
@@ -115,17 +117,19 @@ public class LPBaseEnemy : LPBaseObject
 
             if(player.CanGetHit) {
 
-                if(player.IsFalling && CanDie) {
+                float heightDiff = player.transform.position.y - transform.position.y;
 
+                if(player.IsFalling && CanDie && ( heightDiff > 0.8f)) {
+
+                    player.AddImpulseUp();
                     GameObject.Destroy(gameObject);
-
+                    
                 } else {
-                
+
+                    player.AddImpulseUp();
                     player.Hit();
                     player.AddImpulseBack();
                 }
-
-                player.AddImpulseUp();
             }
         }
     }

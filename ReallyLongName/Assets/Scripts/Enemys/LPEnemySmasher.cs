@@ -13,7 +13,7 @@ public class LPEnemySmasher : LPBaseEnemy
 
     void Update()
     {
-		base.Update();
+		base.Update();        
     }
 
     public void Activate()

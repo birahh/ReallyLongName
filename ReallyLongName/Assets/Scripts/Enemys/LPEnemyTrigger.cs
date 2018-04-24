@@ -21,7 +21,7 @@ public class LPEnemyTrigger : MonoBehaviour
 	void OnTriggerEnter2D(Collider2D coll)
 	{
 		if (coll.tag.Equals("Player") && isActive) {
-            print("fsafaf");
+
             isActive = false;
 
             if (enemy.GetType() == typeof(LPEnemySmasher))
