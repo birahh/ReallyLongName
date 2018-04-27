@@ -4,14 +4,11 @@ using UnityEngine;
 
 public class LPCollectableSpecial : LPBaseCollectable
 {
+    public PowerUp PowerUp;
 
     void Start()
     {
-
-    }
-    
-    void Update()
-    {
-
+        base.Start();
+        base.powerUp = PowerUp;
     }
 }

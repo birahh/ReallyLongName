@@ -5,10 +5,13 @@ using UnityEngine;
 
 public class LPBaseCollectable : LPBaseObject
 {
-    public delegate void Collected(int value);
-    public static event Collected OnCollected;
-    
+    public delegate void CollectedCoin(int value);
+    public delegate void CollectedSpecial(PowerUp powerUp);
+    public static event CollectedCoin OnCollectedCoin;
+    public static event CollectedSpecial OnCollectedSpecial;
+
     protected int value;
+    protected PowerUp powerUp;
     protected bool shouldFollow = false;
     protected Transform targetToFollow;
 
@@ -78,8 +81,14 @@ public class LPBaseCollectable : LPBaseObject
 
     void SelfDestroy()
     {
-        if (OnCollected != null)
-            OnCollected(value);
+        if(OnCollectedCoin != null || OnCollectedSpecial != null) {
+
+            if(this.GetType() == typeof(LPCollectableCoin))
+                OnCollectedCoin(value);
+
+            if(this.GetType() == typeof(LPCollectableSpecial))
+                OnCollectedSpecial(powerUp);
+        }
 
         GameObject.Destroy(gameObject);
     }

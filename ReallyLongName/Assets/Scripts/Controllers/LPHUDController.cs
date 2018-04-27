@@ -17,7 +17,7 @@ public class LPHUDController : MonoBehaviour
 	// Use this for initialization
 	void Start () 
 	{
-        LPBaseCollectable.OnCollected += AddCoin;
+        LPBaseCollectable.OnCollectedCoin += AddCoin;
 	}
 
 	// Update is called once per frame

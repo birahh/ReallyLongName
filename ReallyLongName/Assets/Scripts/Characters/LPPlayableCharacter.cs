@@ -49,6 +49,8 @@ public class LPPlayableCharacter : LPBaseCharacter
 	{
 		base.Start();
 
+        LPBaseCollectable.OnCollectedSpecial += ReceivePowerUp;
+
         jumpCount = maxJumpCount;
         gravity = -(2 * maxJumpHeight) / Mathf.Pow (timeToJumpApex, 2);
 
@@ -181,5 +183,13 @@ public class LPPlayableCharacter : LPBaseCharacter
     public void AddImpulseBack()
     {
         velocity = new Vector3((velocity.x > 0? -LPDefinitions.Character_ImpulseBack: LPDefinitions.Character_ImpulseBack), velocity.y, velocity.z);
+    }
+
+    public void ReceivePowerUp(PowerUp powerUp)
+    {
+        if(powerUp == PowerUp.DoubleJump) {
+            
+            maxJumpCount = LPDefinitions.Character_MaxJumpCount = 2;
+        }
     }
 }
