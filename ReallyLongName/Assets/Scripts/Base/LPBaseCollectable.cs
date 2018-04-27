@@ -23,16 +23,14 @@ public class LPBaseCollectable : LPBaseObject
     {
         if (shouldFollow) {
 
-            float newX = Mathf.Lerp(transform.position.x, targetToFollow.position.x, followFactor * 1.5f);
-            float newY = Mathf.Lerp(transform.position.y, targetToFollow.position.y, followFactor);
+            float newX = Mathf.Lerp(transform.position.x, targetToFollow.position.x, followFactor * 1.5f * Speed);
+            float newY = Mathf.Lerp(transform.position.y, targetToFollow.position.y, followFactor * Speed);
             float newZ = transform.position.z;
-
+     
             transform.position = new Vector3(newX, newY, newZ);
 
-            if (transform.position == targetToFollow.position) {
-
+            if (transform.position == targetToFollow.position)
                 shouldFollow = false;
-            }
         }
     }
     
@@ -41,9 +39,9 @@ public class LPBaseCollectable : LPBaseObject
         if (coll.tag.Equals("CoinCatcher")) {
 
             LPPlayableCharacter player = coll.transform.parent.GetComponent<LPPlayableCharacter>();
-
+            
             if (player.CurrentPowerUp == PowerUp.Magnet) {
-
+                
                 targetToFollow = player.transform;
                 shouldFollow = true;
             }
@@ -55,6 +53,28 @@ public class LPBaseCollectable : LPBaseObject
             SelfDestroy();
         }
     }
+
+    public void OnTriggerStay2D(Collider2D coll)
+    {
+        if (coll.tag.Equals("CoinCatcher"))
+        {
+            LPPlayableCharacter player = coll.transform.parent.GetComponent<LPPlayableCharacter>();
+
+            if (player.CurrentPowerUp == PowerUp.Magnet)
+            {
+
+                targetToFollow = player.transform;
+                shouldFollow = true;
+            }
+        }
+
+        if (coll.tag.Equals("Player"))
+        {
+            shouldFollow = false;
+            SelfDestroy();
+        }
+    }
+
 
     void SelfDestroy()
     {
