@@ -9,8 +9,7 @@ public class LPCollectableSpecial : LPBaseCollectable
     {
 
     }
-
-
+    
     void Update()
     {
 
