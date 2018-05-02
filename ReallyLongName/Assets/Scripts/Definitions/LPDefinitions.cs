@@ -14,24 +14,27 @@ public static class LPDefinitions
     public static float Character_ImpulseUp = 8.0f;
     public static float Character_ImpulseBack = 8.0f;
     public static float Character_HitCooldown = 0.2f;
-    public static int Character_MaxJumpCount = 1;
-    //	public static float Character_Deprecated;
     public static float Character_WeatherHeatFactor;
 	public static float Character_WeatherColdFactor;
+    public static int Character_MaxJumpCount = 1;
 
-	//	Smasher Settings
-	public static float Smasher_Speed = 1.0f;
+    //	Smasher Settings
+    public static float Smasher_Speed = 1.0f;
 	public static float Smasher_GroundTime = 3.0f;
-	public static float Smasher_BackToPositionTime = 1.0f;
+    public static float Smasher_BeforeFallTime = 0.5f;
+    public static float Smasher_BackToPositionTime = 1.0f;
+    
+    //	Melee Settings
+    public static float Melee_Speed = 1.5f;
 
-	//	World Settings
-	public static float World_Gravity = 8.0f;
+    //	Shooter Settings
+    public static float Shooter_Speed = 8f;
+    public static float Shooter_BeforeShootTime = 1.0f;
+
+    //	World Settings
+    public static float World_Gravity = 8.0f;
 	public static float World_WindSpeed = 1.0f;
 	public static float World_WeatherTemperature = 1.0f;
-
-	//	Bullet Settings
-	public static float Bullet_Speed = 1.0f;
-	public static float Bullet_Direction = 1.0f;
 
 	//	Platform Settings
 	public static float Platform_Speed = 1.0f;
@@ -47,6 +50,7 @@ public static class LPDefinitions
 
     //  Collectables Settings
     public static float Coin_FollowFactor = 0.05f;
+    public static float Magnet_LastDuration = 5.0f;
 }
 
 public enum PowerUp { Magnet, DoubleJump, Speed, None };

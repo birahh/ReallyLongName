@@ -81,14 +81,13 @@ public class LPBaseCollectable : LPBaseObject
 
     void SelfDestroy()
     {
-        if(OnCollectedCoin != null || OnCollectedSpecial != null) {
-
+        if(OnCollectedCoin != null)
             if(this.GetType() == typeof(LPCollectableCoin))
                 OnCollectedCoin(value);
 
-            if(this.GetType() == typeof(LPCollectableSpecial))
+        if (OnCollectedSpecial != null)
+            if (this.GetType() == typeof(LPCollectableSpecial))
                 OnCollectedSpecial(powerUp);
-        }
 
         GameObject.Destroy(gameObject);
     }

@@ -16,15 +16,20 @@ public class LPBaseEnemy : LPBaseObject
 	[Range(0,2)]
 	public float EaseAmount;
 
-	int fromWaypointIndex;
-    int cycleIteration;
-    int cycleLimit;
-    float percentBetweenWaypoints;
-	float nextMoveTime;
-	bool shouldPlay;
-    
-	public void Start ()
+    private int fromWaypointIndex;
+    private int cycleIteration;
+    private int cycleLimit;
+    protected float percentBetweenWaypoints;
+    private float nextMoveTime;
+    private bool shouldPlay;
+    protected bool dontComeBack;
+    private Vector3 initialPosition;
+    private int lenght = 0;
+
+    public void Start ()
     {
+        initialPosition = transform.position;
+
 		base.Start();
 
         cycleLimit = int.MaxValue;
@@ -32,14 +37,14 @@ public class LPBaseEnemy : LPBaseObject
 
         shouldPlay = ShouldPlayFromStart;
 
-		globalWaypoints = new Vector3[LocalWaypoints.Length];
+        lenght = LocalWaypoints.Length;
+        
+        globalWaypoints = new Vector3[lenght];
 
-		for (int i =0; i < LocalWaypoints.Length; i++) {
-			globalWaypoints[i] = LocalWaypoints[i] + transform.position;
-		}
-
-        Activate(1);
-	}
+        for (int i = 0; i < lenght; i++) {
+            globalWaypoints[i] = LocalWaypoints[i] + transform.position;
+        }
+    }
 
 	public void Update ()
 	{
@@ -48,17 +53,18 @@ public class LPBaseEnemy : LPBaseObject
             if (cycleIteration < cycleLimit) {
 
                 Vector3 velocity = CalculateMovement();
-
                 transform.Translate(velocity);
 
             } else {
+
                 shouldPlay = false;
                 cycleIteration = -1;
             }
 		}
 	}
 
-	public void Activate()
+    #region Activate/Reset Enemy
+    public void Activate()
 	{
 		shouldPlay = true;
 	}
@@ -69,6 +75,32 @@ public class LPBaseEnemy : LPBaseObject
         shouldPlay = true;
     }
 
+    public void Activate(float delay)
+    {
+        Invoke("Activate", delay);
+    }
+
+    public void Reset()
+    {
+        transform.position = initialPosition;
+
+        cycleLimit = int.MaxValue;
+        cycleIteration = 0;
+
+        shouldPlay = ShouldPlayFromStart;
+
+        globalWaypoints = new Vector3[lenght];
+        percentBetweenWaypoints = 0;
+        fromWaypointIndex = 0;
+
+        for (int i = 0; i < lenght; i++)
+        {
+            globalWaypoints[i] = LocalWaypoints[i] + transform.position;
+        }
+    }
+    #endregion
+
+    #region Movement Methods
     float Ease(float x) {
 		float a = EaseAmount + 1;
 		return Mathf.Pow(x,a) / (Mathf.Pow(x,a) + Mathf.Pow(1-x,a));
@@ -80,13 +112,19 @@ public class LPBaseEnemy : LPBaseObject
 			return Vector3.zero;
 		}
 
+        //  Just Go, Never Get Back
+        if (dontComeBack && percentBetweenWaypoints >= 0.9f) {
+            shouldPlay = false;
+            Invoke("Reset", 0.1f);
+        }
+
 		fromWaypointIndex %= globalWaypoints.Length;
 		int toWaypointIndex = (fromWaypointIndex + 1) % globalWaypoints.Length;
 		float distanceBetweenWaypoints = Vector3.Distance (globalWaypoints [fromWaypointIndex], globalWaypoints [toWaypointIndex]);
 		percentBetweenWaypoints += Time.deltaTime * Speed/distanceBetweenWaypoints;
 		percentBetweenWaypoints = Mathf.Clamp01 (percentBetweenWaypoints);
 		float easedPercentBetweenWaypoints = Ease (percentBetweenWaypoints);
-
+        
 		Vector3 newPos = Vector3.Lerp (globalWaypoints [fromWaypointIndex], globalWaypoints [toWaypointIndex], easedPercentBetweenWaypoints);
 
 		if (percentBetweenWaypoints >= 1) {
@@ -108,18 +146,20 @@ public class LPBaseEnemy : LPBaseObject
 
 		return newPos - transform.position;
 	}
-    
+    #endregion
+
+    #region Collisions
     void OnTriggerEnter2D(Collider2D coll)
     {
         if (coll.tag.Equals("Player")) {
 
             LPPlayableCharacter player = coll.GetComponentInParent<LPPlayableCharacter>();
 
-            if(player.CanGetHit) {
+            if (player.CanGetHit) {
 
                 float heightDiff = player.transform.position.y - transform.position.y;
 
-                if(player.IsFalling && CanDie && ( heightDiff > 0.8f)) {
+                if (player.IsFalling && CanDie && ( heightDiff >= 0.5f)) {
 
                     player.AddImpulseUp();
                     GameObject.Destroy(gameObject);
@@ -133,18 +173,21 @@ public class LPBaseEnemy : LPBaseObject
             }
         }
     }
+    #endregion
 
+    #region UI On Editor
     void OnDrawGizmos() 
 	{
 		if (LocalWaypoints != null) {
 			Gizmos.color = Color.red;
 			float size = .3f;
 
-			for (int i =0; i < LocalWaypoints.Length; i ++) {
+			for (int i =0; i < lenght; i ++) {
 				Vector3 globalWaypointPos = (Application.isPlaying)?globalWaypoints[i] : LocalWaypoints[i] + transform.position;
 				Gizmos.DrawLine(globalWaypointPos - Vector3.up * size, globalWaypointPos + Vector3.up * size);
 				Gizmos.DrawLine(globalWaypointPos - Vector3.left * size, globalWaypointPos + Vector3.left * size);
 			}
 		}
 	}
+    #endregion
 }

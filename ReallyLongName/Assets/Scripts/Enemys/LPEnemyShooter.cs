@@ -3,19 +3,25 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class LPEnemyShooter : LPBaseEnemy
-{
-	
-
+{	
     void Start()
     {
-		base.Start();
+        Speed = LPDefinitions.Shooter_Speed;
 
+        dontComeBack = true;        
+
+        base.Start();
     }
 
 
     void Update()
-	{
-		base.Start();
-
+    {
+        base.Update();
+        print(percentBetweenWaypoints);
+    }
+    
+    public void Activate(float delayTime)
+    {
+        base.Activate(delayTime);
     }
 }

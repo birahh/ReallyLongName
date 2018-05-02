@@ -61,7 +61,7 @@ public class LPPlayableCharacter : LPBaseCharacter
 	void Update() 
 	{
         base.Update();
-
+        
 		gravity = -(2 * maxJumpHeight) / Mathf.Pow (timeToJumpApex, 2) + Mathf.Clamp(LPDefinitions.World_Gravity, 1, 100);	//	WorldGravity Attenuation
 
 		maxJumpHeight = Mathf.Clamp(LPDefinitions.Character_MaxJumpHeight, 4, 10);
@@ -88,7 +88,7 @@ public class LPPlayableCharacter : LPBaseCharacter
 			}
 		}
 
-        IsFalling = velocity.y < 0;
+        IsFalling = velocity.y <= 0.00000001f;
     }
 
 	public void SetDirectionalInput (Vector2 input) 
@@ -161,9 +161,7 @@ public class LPPlayableCharacter : LPBaseCharacter
 			} else {
 				timeToWallUnstick = wallStickTime;
 			}
-
 		}
-
 	}
 
 	void CalculateVelocity() 
@@ -187,9 +185,19 @@ public class LPPlayableCharacter : LPBaseCharacter
 
     public void ReceivePowerUp(PowerUp powerUp)
     {
-        if(powerUp == PowerUp.DoubleJump) {
-            
+        if(powerUp == PowerUp.DoubleJump)             
             maxJumpCount = LPDefinitions.Character_MaxJumpCount = 2;
+
+        if (powerUp == PowerUp.Magnet) {
+
+            CurrentPowerUp = powerUp;
+
+            Invoke("ResetPowerUp", LPDefinitions.Magnet_LastDuration);
         }
+    }
+
+    void ResetPowerUp()
+    {
+        CurrentPowerUp = PowerUp.None;
     }
 }

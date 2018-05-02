@@ -9,7 +9,7 @@ public class LPEnemyMelee : LPBaseEnemy
     {
 		base.Start();
 
-		Speed = 1.5f;
+		Speed = LPDefinitions.Melee_Speed;
     }
 
 

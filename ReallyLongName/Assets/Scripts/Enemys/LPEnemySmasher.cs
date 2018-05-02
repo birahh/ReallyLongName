@@ -9,6 +9,8 @@ public class LPEnemySmasher : LPBaseEnemy
     void Start()
     {
 		base.Start();
+
+        base.Activate(1);
     }
 
     void Update()
@@ -16,13 +18,8 @@ public class LPEnemySmasher : LPBaseEnemy
 		base.Update();        
     }
 
-    public void Activate()
+    public void Activate(float delayTime)
     {
-        Invoke("CallBaseActivate", WaitTimeBeforeFall);
-    }
-
-    void CallBaseActivate()
-    {
-        base.Activate(1);
+        base.Activate(delayTime);
     }
 }

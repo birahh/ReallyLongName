@@ -393,7 +393,6 @@ MonoBehaviour:
   timer: {fileID: 114885878347931002}
   coinCounter: {fileID: 114021685325765512}
   continueCounter: {fileID: 114758441167911826}
-  initialTime: 300
 --- !u!114 &114758441167911826
 MonoBehaviour:
   m_ObjectHideFlags: 1
