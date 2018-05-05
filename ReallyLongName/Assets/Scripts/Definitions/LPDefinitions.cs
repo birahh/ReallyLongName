@@ -28,7 +28,7 @@ public static class LPDefinitions
     public static float Melee_Speed = 1.5f;
 
     //	Shooter Settings
-    public static float Shooter_Speed = 8f;
+    public static float Shooter_Speed = 13f;
     public static float Shooter_BeforeShootTime = 1.0f;
 
     //	World Settings
