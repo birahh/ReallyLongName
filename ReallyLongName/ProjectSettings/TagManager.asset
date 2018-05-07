@@ -8,6 +8,7 @@ TagManager:
   - Coin
   - Enemy
   - CoinCatcher
+  - RollPin
   layers:
   - Default
   - TransparentFX

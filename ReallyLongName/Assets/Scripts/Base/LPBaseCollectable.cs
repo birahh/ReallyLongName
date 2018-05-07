@@ -26,8 +26,8 @@ public class LPBaseCollectable : LPBaseObject
     {
         if (shouldFollow) {
 
-            float newX = Mathf.Lerp(transform.position.x, targetToFollow.position.x, followFactor * 1.5f * Speed);
-            float newY = Mathf.Lerp(transform.position.y, targetToFollow.position.y, followFactor * Speed);
+            float newX = Mathf.Lerp(transform.position.x, targetToFollow.position.x, followFactor * 2f * Speed);
+            float newY = Mathf.Lerp(transform.position.y, targetToFollow.position.y, followFactor * 1.5f * Speed);
             float newZ = transform.position.z;
      
             transform.position = new Vector3(newX, newY, newZ);

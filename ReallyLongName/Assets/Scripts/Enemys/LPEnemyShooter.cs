@@ -17,7 +17,6 @@ public class LPEnemyShooter : LPBaseEnemy
     void Update()
     {
         base.Update();
-        print(percentBetweenWaypoints);
     }
     
     public void Activate(float delayTime)

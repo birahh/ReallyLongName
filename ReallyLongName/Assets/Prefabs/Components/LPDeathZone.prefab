@@ -9,46 +9,46 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 1516086770411814}
+  m_RootGameObject: {fileID: 1027309939960188}
   m_IsPrefabParent: 1
---- !u!1 &1516086770411814
+--- !u!1 &1027309939960188
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 5
   m_Component:
-  - component: {fileID: 4664804382966090}
-  - component: {fileID: 33612345016151902}
-  - component: {fileID: 23111159547815754}
-  - component: {fileID: 95196200777152834}
-  - component: {fileID: 58991512665024428}
-  m_Layer: 8
-  m_Name: Roll
+  - component: {fileID: 4132366141839854}
+  - component: {fileID: 33161809715909314}
+  - component: {fileID: 23708868360767748}
+  - component: {fileID: 114750199756607748}
+  - component: {fileID: 61520373684512238}
+  m_Layer: 0
+  m_Name: LPDeathZone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4664804382966090
+--- !u!4 &4132366141839854
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1516086770411814}
+  m_GameObject: {fileID: 1027309939960188}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 1.62, y: 0.89, z: 0}
+  m_LocalScale: {x: 4.191298, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!23 &23111159547815754
+--- !u!23 &23708868360767748
 MeshRenderer:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1516086770411814}
+  m_GameObject: {fileID: 1027309939960188}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -57,7 +57,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 87acabb5889e6442f9ce933f35350a9b, type: 2}
+  - {fileID: 2100000, guid: 38a86fdb6a848394dadf77377927e089, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -65,7 +65,7 @@ MeshRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
-  m_PreserveUVs: 0
+  m_PreserveUVs: 1
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
   m_StitchLightmapSeams: 0
@@ -77,42 +77,46 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!33 &33612345016151902
+--- !u!33 &33161809715909314
 MeshFilter:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1516086770411814}
-  m_Mesh: {fileID: 4300000, guid: bd2bb3acf08954b1d923995448ff9e16, type: 3}
---- !u!58 &58991512665024428
-CircleCollider2D:
+  m_GameObject: {fileID: 1027309939960188}
+  m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!61 &61520373684512238
+BoxCollider2D:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1516086770411814}
+  m_GameObject: {fileID: 1027309939960188}
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
   serializedVersion: 2
-  m_Radius: 0.8
---- !u!95 &95196200777152834
-Animator:
-  serializedVersion: 3
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
+--- !u!114 &114750199756607748
+MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1516086770411814}
+  m_GameObject: {fileID: 1027309939960188}
   m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: bd2bb3acf08954b1d923995448ff9e16, type: 3}
-  m_Controller: {fileID: 0}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f2555b8ab211db428deb9e8f99ed57c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

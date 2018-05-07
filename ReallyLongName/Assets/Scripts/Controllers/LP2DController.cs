@@ -140,6 +140,12 @@ public class LP2DController : LPRaycastController
                         }
                     }
 
+                    if (hit.collider.tag.Equals("RollPin")) {
+
+                        moveAmount.x = moveAmount.x + (hit.collider.GetComponent<LPRollPin>().Torque *-0.01f);
+                        //Move(new Vector2(hit.collider.GetComponent<LPRollPin>().Torque, moveAmount.y), false);
+                    }
+                    
                     moveAmount.y = (hit.distance - skinWidth) * directionY;
                     rayLength = hit.distance;
 

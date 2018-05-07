@@ -64,6 +64,7 @@
      <Compile Include="Assets\Scripts\Collectables\LPCollectablePart.cs" />
      <Compile Include="Assets\Scripts\Collectables\LPCollectableSpecial.cs" />
      <Compile Include="Assets\Scripts\Components\LPCameraFollow.cs" />
+     <Compile Include="Assets\Scripts\Components\LPDeathZone.cs" />
      <Compile Include="Assets\Scripts\Controllers\LP2DController.cs" />
      <Compile Include="Assets\Scripts\Controllers\LPAudioController.cs" />
      <Compile Include="Assets\Scripts\Controllers\LPCheatCodeController.cs" />
@@ -79,6 +80,7 @@
      <Compile Include="Assets\Scripts\Enemys\LPEnemyShooter.cs" />
      <Compile Include="Assets\Scripts\Enemys\LPEnemySmasher.cs" />
      <Compile Include="Assets\Scripts\Enemys\LPEnemyTrigger.cs" />
+     <Compile Include="Assets\Scripts\GameMode\LPGameInstance.cs" />
      <Compile Include="Assets\Scripts\GameMode\LPGameMode.cs" />
      <Compile Include="Assets\Scripts\Scenery\Platforms\LPPlatformDrop.cs" />
      <Compile Include="Assets\Scripts\Scenery\Platforms\LPPlatformGlitch.cs" />
