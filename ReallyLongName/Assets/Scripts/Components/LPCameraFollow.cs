@@ -27,29 +27,32 @@ public class LPCameraFollow : MonoBehaviour {
 
 	void LateUpdate() 
 	{
-		focusArea.Update (target.collider.bounds);
+		if (target.GetComponent<LPPlayableCharacter>().IsAlive) {
 
-		Vector2 focusPosition = focusArea.centre + Vector2.up * verticalOffset;
+			focusArea.Update (target.collider.bounds);
 
-		if (focusArea.velocity.x != 0) {
-			lookAheadDirX = Mathf.Sign (focusArea.velocity.x);
-			if (Mathf.Sign(target.playerInput.x) == Mathf.Sign(focusArea.velocity.x) && target.playerInput.x != 0) {
-				lookAheadStopped = false;
-				targetLookAheadX = lookAheadDirX * lookAheadDstX;
-			}
-			else {
-				if (!lookAheadStopped) {
-					lookAheadStopped = true;
-					targetLookAheadX = currentLookAheadX + (lookAheadDirX * lookAheadDstX - currentLookAheadX)/4f;
+			Vector2 focusPosition = focusArea.centre + Vector2.up * verticalOffset;
+
+			if (focusArea.velocity.x != 0) {
+				lookAheadDirX = Mathf.Sign (focusArea.velocity.x);
+				if (Mathf.Sign(target.playerInput.x) == Mathf.Sign(focusArea.velocity.x) && target.playerInput.x != 0) {
+					lookAheadStopped = false;
+					targetLookAheadX = lookAheadDirX * lookAheadDstX;
+				}
+				else {
+					if (!lookAheadStopped) {
+						lookAheadStopped = true;
+						targetLookAheadX = currentLookAheadX + (lookAheadDirX * lookAheadDstX - currentLookAheadX)/4f;
+					}
 				}
 			}
+
+			currentLookAheadX = Mathf.SmoothDamp (currentLookAheadX, targetLookAheadX, ref smoothLookVelocityX, lookSmoothTimeX);
+
+			focusPosition.y = Mathf.SmoothDamp (transform.position.y, focusPosition.y, ref smoothVelocityY, verticalSmoothTime);
+			focusPosition += Vector2.right * currentLookAheadX;
+			transform.position = (Vector3)focusPosition + Vector3.forward * -6;
 		}
-
-		currentLookAheadX = Mathf.SmoothDamp (currentLookAheadX, targetLookAheadX, ref smoothLookVelocityX, lookSmoothTimeX);
-
-		focusPosition.y = Mathf.SmoothDamp (transform.position.y, focusPosition.y, ref smoothVelocityY, verticalSmoothTime);
-		focusPosition += Vector2.right * currentLookAheadX;
-		transform.position = (Vector3)focusPosition + Vector3.forward * -6;
 	}
 
 	void OnDrawGizmos() 

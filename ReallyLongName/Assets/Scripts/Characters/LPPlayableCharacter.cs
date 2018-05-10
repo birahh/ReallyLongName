@@ -43,6 +43,9 @@ public class LPPlayableCharacter : LPBaseCharacter
     public PowerUp CurrentPowerUp;
     #endregion
 
+	#region AliveSettings
+	public bool IsAlive = true;
+	#endregion
     Vector2 directionalInput;
 
 	void Start() 
@@ -200,4 +203,9 @@ public class LPPlayableCharacter : LPBaseCharacter
     {
         CurrentPowerUp = PowerUp.None;
     }
+
+	public void KillPlayer()
+	{
+		IsAlive = false;	
+	}
 }

@@ -13,7 +13,7 @@ public class LPDeathZone : MonoBehaviour
     void OnTriggerEnter2D (Collider2D coll)
     {
         if (coll.tag.Equals("Player")) {
-                        
+			coll.GetComponent<LPPlayableCharacter>().KillPlayer();
         }
     }
 }
