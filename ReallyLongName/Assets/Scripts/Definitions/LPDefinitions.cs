@@ -14,9 +14,11 @@ public static class LPDefinitions
     public static float Character_ImpulseUp = 8.0f;
     public static float Character_ImpulseBack = 8.0f;
     public static float Character_HitCooldown = 0.2f;
+    public static float Character_MotionThreshold = 0.5f;
     public static float Character_WeatherHeatFactor;
 	public static float Character_WeatherColdFactor;
     public static int Character_MaxJumpCount = 1;
+    public static int Character_MaxLife = 1;
 
     //	Smasher Settings
     public static float Smasher_Speed = 1.0f;

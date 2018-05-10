@@ -1,16 +1,31 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
-public class LPGameMode : MonoBehaviour {
+public class LPGameMode : MonoBehaviour
+{
 
-	// Use this for initialization
-	void Start () {
-		
+
+	void Start ()
+    {
+        LPPlayableCharacter.OnCharacterDie += PlayerDied;
 	}
 	
-	// Update is called once per frame
-	void Update () {
+	
+	void Update ()
+    {
 		
 	}
+
+    void PlayerDied ()
+    {
+        SceneManager.UnloadSceneAsync(SceneManager.GetActiveScene());
+        Invoke("RestartScene", 1.0f);
+    }
+
+    void RestartScene ()
+    {
+        SceneManager.LoadScene(LPGameInstance.CurrentScene, LoadSceneMode.Single);
+    }
 }

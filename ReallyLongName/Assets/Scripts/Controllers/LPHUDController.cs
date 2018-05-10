@@ -18,6 +18,9 @@ public class LPHUDController : MonoBehaviour
 	void Start () 
 	{
         LPBaseCollectable.OnCollectedCoin += AddCoin;
+        LPBaseCharacter.OnCharacterDie += RemoveContinue;
+
+        continueAmount = LPGameInstance.ContinueAmount;
 	}
 
 	// Update is called once per frame
@@ -31,12 +34,21 @@ public class LPHUDController : MonoBehaviour
 	public void AddCoin (int newValue)
 	{
         coinAmount += newValue;
-	}
+        LPGameInstance.CoinAmount += coinAmount;
+    }
 
 	public void AddContinue (int newValue)
 	{
         continueAmount += newValue;
-	}
+        LPGameInstance.ContinueAmount += continueAmount;
+
+    }
+
+    public void RemoveContinue()
+    {
+        continueAmount -= 1;
+        LPGameInstance.ContinueAmount--;
+    }
 
     void UpdateHUDText()
     {

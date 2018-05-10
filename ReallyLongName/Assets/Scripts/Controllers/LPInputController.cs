@@ -17,19 +17,17 @@ public class LPInputController : MonoBehaviour
 	{
 		Vector2 directionalInput = new Vector2 (Input.GetAxisRaw ("Horizontal"), Input.GetAxisRaw ("Vertical"));
 
-		float motionX = 1;
+		float motionX = 0.0f;
 
-		motionX = (Input.GetAxisRaw("Horizontal")>0.5)?1:(Input.GetAxisRaw("Horizontal")<-0.5)?-1:motionX;
+		motionX = (Input.GetAxisRaw("Horizontal")>LPDefinitions.Character_MotionThreshold)?1:(Input.GetAxisRaw("Horizontal")<-LPDefinitions.Character_MotionThreshold) ?-1:motionX;
 
-		player.SetDirectionalInput (directionalInput);
+		player.SetDirectionalInput (directionalInput, motionX);
 
-		player.transform.localScale = new Vector3(motionX, player.transform.localScale.y, player.transform.localScale.z);
-
-		if (Input.GetKeyDown (KeyCode.Space)) {
+		if (Input.GetKeyDown (KeyCode.Space) || directionalInput.y > 0.0f) {
 			player.OnJumpInputDown ();
 		}
 
-		if (Input.GetKeyUp (KeyCode.Space)) {
+		if (Input.GetKeyUp (KeyCode.Space) || directionalInput.y <= 0.0f) {
 			player.OnJumpInputUp ();
 		}
 

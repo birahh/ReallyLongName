@@ -243,6 +243,11 @@ public class LP2DController : LPRaycastController
 		}
 	}
 
+    public void TurnOffCollisions ()
+    {
+        collisionMask = 0;
+    }
+
 	void ResetFallingThroughPlatform() 
 	{
 		collisions.fallingThroughPlatform = false;

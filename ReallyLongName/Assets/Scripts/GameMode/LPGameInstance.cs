@@ -8,6 +8,9 @@ public static class LPGameInstance
     public static LPBaseObject[] SceneObjects;
     public static string CurrentScene = "BaseScene";
 
+    public static int CoinAmount = 0;
+    public static int ContinueAmount = 2;
+
     public static void ReloadCurrentScene()
     {
         SceneManager.LoadScene(CurrentScene);

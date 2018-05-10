@@ -45,12 +45,20 @@ public class LPPlayableCharacter : LPBaseCharacter
 
 	#region AliveSettings
 	public bool IsAlive = true;
-	#endregion
-    Vector2 directionalInput;
+    #endregion
 
-	void Start() 
+    #region DirectionalSettings
+    Vector2 directionalInput;
+    float lastXDirection = 1.0f;
+    #endregion
+
+    void Start() 
 	{
 		base.Start();
+
+        Life = LPDefinitions.Character_MaxLife;
+
+        OnCharacterDie += PlayerDied;
 
         LPBaseCollectable.OnCollectedSpecial += ReceivePowerUp;
 
@@ -62,7 +70,7 @@ public class LPPlayableCharacter : LPBaseCharacter
 	}
 
 	void Update() 
-	{
+{
         base.Update();
         
 		gravity = -(2 * maxJumpHeight) / Mathf.Pow (timeToJumpApex, 2) + Mathf.Clamp(LPDefinitions.World_Gravity, 1, 100);	//	WorldGravity Attenuation
@@ -81,8 +89,8 @@ public class LPPlayableCharacter : LPBaseCharacter
 		CalculateVelocity ();
 		HandleWallSliding ();
 
-		Move (velocity * Time.deltaTime, directionalInput);
-
+        Move(velocity * Time.deltaTime, directionalInput);
+            
 		if (collisions.above || collisions.below) {
 			if (collisions.slidingDownMaxSlope) {
 				velocity.y += collisions.slopeNormal.y * -gravity * Time.deltaTime;
@@ -91,53 +99,62 @@ public class LPPlayableCharacter : LPBaseCharacter
 			}
 		}
 
-        IsFalling = velocity.y <= 0.00000001f;
+        IsFalling = velocity.y <= 0.00000001f;        
     }
 
-	public void SetDirectionalInput (Vector2 input) 
-	{
-		directionalInput = input;
+	public void SetDirectionalInput (Vector2 input, float motionX)
+    {
+        if (IsAlive) {
+            directionalInput = input;
+
+            if (motionX != 0.0f)
+                lastXDirection = motionX;
+
+            transform.localScale = new Vector3(lastXDirection, transform.localScale.y, transform.localScale.z);
+        }
 	}
 
 	public void OnJumpInputDown() 
 	{
-		if (wallSliding) {
-			if (wallDirX == directionalInput.x) {
-				velocity.x = -wallDirX * WallJumpClimb.x;
-				velocity.y = WallJumpClimb.y;
-			} else if (directionalInput.x == 0) {
-				velocity.x = -wallDirX * WallJumpOff.x;
-				velocity.y = WallJumpOff.y;
-			} else {
-				velocity.x = -wallDirX * WallLeap.x;
-				velocity.y = WallLeap.y;
-			}
-		}
-
-		if (collisions.below || jumpCount > 1) {
-
-            jumpCount--;
-
-            if (collisions.below) {
-                jumpCount = maxJumpCount;
+        if (IsAlive) {
+            if (wallSliding) {
+                if (wallDirX == directionalInput.x) {
+                    velocity.x = -wallDirX * WallJumpClimb.x;
+                    velocity.y = WallJumpClimb.y;
+                } else if (directionalInput.x == 0) {
+                    velocity.x = -wallDirX * WallJumpOff.x;
+                    velocity.y = WallJumpOff.y;
+                } else {
+                    velocity.x = -wallDirX * WallLeap.x;
+                    velocity.y = WallLeap.y;
+                }
             }
 
-			if (collisions.slidingDownMaxSlope) {
-				if (directionalInput.x != -Mathf.Sign (collisions.slopeNormal.x)) { // not jumping against max slope
-					velocity.y = maxJumpVelocity * collisions.slopeNormal.y;
-					velocity.x = maxJumpVelocity * collisions.slopeNormal.x;
-				}
-			} else {
-				velocity.y = maxJumpVelocity;
-			}
-		}
+            if (collisions.below || jumpCount > 1) {
+
+                jumpCount--;
+
+                if (collisions.below) {
+                    jumpCount = maxJumpCount;
+                }
+
+                if (collisions.slidingDownMaxSlope) {
+                    if (directionalInput.x != -Mathf.Sign(collisions.slopeNormal.x)) { // not jumping against max slope
+                        velocity.y = maxJumpVelocity * collisions.slopeNormal.y;
+                        velocity.x = maxJumpVelocity * collisions.slopeNormal.x;
+                    }
+                } else {
+                    velocity.y = maxJumpVelocity;
+                }
+            }
+        }
 	}
 
 	public void OnJumpInputUp() 
 	{
-		if (velocity.y > minJumpVelocity) {
-			velocity.y = minJumpVelocity;
-		}
+        if (IsAlive)
+		    if (velocity.y > minJumpVelocity)
+			    velocity.y = minJumpVelocity;
 	}
 
 	void HandleWallSliding() 
@@ -167,13 +184,15 @@ public class LPPlayableCharacter : LPBaseCharacter
 		}
 	}
 
-	void CalculateVelocity() 
-	{
-		float targetVelocityX = directionalInput.x * moveSpeed;
-		velocity.x = Mathf.Lerp( velocity.x, 
-								 Mathf.SmoothDamp (velocity.x, targetVelocityX, ref velocityXSmoothing, (collisions.below)?accelerationTimeGrounded:accelerationTimeAirborne), 
-								 groundSlideFactor );
-		velocity.y += gravity * Time.deltaTime;
+	void CalculateVelocity()
+    {
+        float targetVelocityX = directionalInput.x * moveSpeed;
+
+        velocity.x = Mathf.Lerp( velocity.x,
+                                    Mathf.SmoothDamp(velocity.x, targetVelocityX, ref velocityXSmoothing, (collisions.below) ? accelerationTimeGrounded : accelerationTimeAirborne),
+                                    groundSlideFactor);
+
+        velocity.y += gravity * Time.deltaTime;
 	}
     
     public void AddImpulseUp()
@@ -204,8 +223,14 @@ public class LPPlayableCharacter : LPBaseCharacter
         CurrentPowerUp = PowerUp.None;
     }
 
-	public void KillPlayer()
-	{
-		IsAlive = false;	
-	}
+    public void PlayerDied()
+    {
+        if (IsAlive) {
+
+            IsAlive = false;
+            base.TurnOffCollisions();
+            AddImpulseUp();
+            AddImpulseBack();
+        }
+    }
 }

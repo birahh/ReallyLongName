@@ -12,8 +12,8 @@ public class LPDeathZone : MonoBehaviour
 
     void OnTriggerEnter2D (Collider2D coll)
     {
-        if (coll.tag.Equals("Player")) {
-			coll.GetComponent<LPPlayableCharacter>().KillPlayer();
-        }
+        if (coll.tag.Equals("Player"))
+            if (coll.GetComponent<LPPlayableCharacter>().IsAlive)
+                coll.GetComponent<LPPlayableCharacter>().Die();
     }
 }

@@ -7,6 +7,9 @@ public class LPBaseCharacter : LP2DController
     public int Life;
     public bool CanGetHit = true;
 
+    public delegate void CharacterDie();
+    public static event CharacterDie OnCharacterDie;
+
     void Start()
     {
 		base.Start();
@@ -34,8 +37,11 @@ public class LPBaseCharacter : LP2DController
         CanGetHit = true;
     }
 
-    void Die()
+    public void Die()
     {
-        print("Player Died");
+        if (OnCharacterDie != null) {
+            OnCharacterDie();
+            CanGetHit = false;
+        }        
     }
 }
