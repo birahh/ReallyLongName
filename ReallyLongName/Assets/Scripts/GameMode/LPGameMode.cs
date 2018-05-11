@@ -19,13 +19,12 @@ public class LPGameMode : MonoBehaviour
 	}
 
     void PlayerDied ()
-    {
-        SceneManager.UnloadSceneAsync(SceneManager.GetActiveScene());
+    {        
         Invoke("RestartScene", 1.0f);
     }
 
     void RestartScene ()
     {
-        SceneManager.LoadScene(LPGameInstance.CurrentScene, LoadSceneMode.Single);
+        LPGameInstance.ReloadMap();
     }
 }

@@ -25,23 +25,20 @@ public class LPInputController : MonoBehaviour
 
 		player.SetDirectionalInput (directionalInput, motionX);
 
-		if (directionalInput.y > 0) {
-
+        #region JumpKeys
+        if (directionalInput.y > 0) 
 			if (canJumpAgain) {
 				isJumping = false;
 				canJumpAgain = false;
 				player.OnJumpInputDown ();
 			}
-		}
 
-		if (directionalInput.y <= 0) {
-
+		if (directionalInput.y <= 0) 
 			if (!isJumping) {
 				isJumping = true;
 				canJumpAgain = true;
 				player.OnJumpInputUp ();
 			}
-		}
 
 		if (Input.GetKeyDown (KeyCode.Space)) {
 			player.OnJumpInputDown ();
@@ -49,14 +46,17 @@ public class LPInputController : MonoBehaviour
 
 		if (Input.GetKeyUp (KeyCode.Space)) {
 			player.OnJumpInputUp ();
-		}
+        }
+        #endregion
 
-		if (Input.GetKeyDown (KeyCode.LeftShift)) {
+        #region RunningKeys
+        if (Input.GetKeyDown (KeyCode.LeftShift)) {
 			player.IsRunning = true;
 		}
 
 		if (Input.GetKeyUp (KeyCode.LeftShift)) {
 			player.IsRunning = false;
 		}
-	}
+        #endregion
+    }
 }

@@ -17,8 +17,9 @@ public class LPHUDController : MonoBehaviour
 	// Use this for initialization
 	void Start () 
 	{
-        LPBaseCollectable.OnCollectedCoin += AddCoin;
-        LPBaseCharacter.OnCharacterDie += RemoveContinue;
+        LPBaseCollectable.OnCollectedSpecial += LPGameInstance.AddContinue;
+        LPBaseCollectable.OnCollectedCoin += LPGameInstance.AddCoin;
+        LPBaseCharacter.OnCharacterDie += LPGameInstance.RemoveContinue;
 
         continueAmount = LPGameInstance.ContinueAmount;
 	}
@@ -28,26 +29,10 @@ public class LPHUDController : MonoBehaviour
 	{
 		initialTime = initialTime - Time.deltaTime;
 
+        coinAmount = LPGameInstance.LevelCoinAmount;
+        continueAmount = LPGameInstance.ContinueAmount;
+
         UpdateHUDText();
-    }
-
-	public void AddCoin (int newValue)
-	{
-        coinAmount += newValue;
-        LPGameInstance.CoinAmount += coinAmount;
-    }
-
-	public void AddContinue (int newValue)
-	{
-        continueAmount += newValue;
-        LPGameInstance.ContinueAmount += continueAmount;
-
-    }
-
-    public void RemoveContinue()
-    {
-        continueAmount -= 1;
-        LPGameInstance.ContinueAmount--;
     }
 
     void UpdateHUDText()

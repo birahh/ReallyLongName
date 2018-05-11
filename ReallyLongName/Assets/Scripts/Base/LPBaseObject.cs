@@ -26,8 +26,12 @@ public class LPBaseObject : MonoBehaviour
 
 	protected void RunAnimationByName(string animationName)
 	{
-		if (animator) {
+		if (animator)
 			animator.Play(animationName);
-		}
 	}
+
+    public Vector3 StoreTransform()
+    {
+        return transform.position;
+    }
 }

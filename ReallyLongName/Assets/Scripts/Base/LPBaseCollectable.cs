@@ -65,7 +65,6 @@ public class LPBaseCollectable : LPBaseObject
 
             if (player.CurrentPowerUp == PowerUp.Magnet)
             {
-
                 targetToFollow = player.transform;
                 shouldFollow = true;
             }
