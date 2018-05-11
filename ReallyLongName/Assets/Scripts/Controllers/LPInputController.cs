@@ -7,6 +7,8 @@ using UnityEngine;
 public class LPInputController : MonoBehaviour 
 {
 	LPPlayableCharacter player;
+	bool canJumpAgain = true;
+	bool isJumping = false;
 
 	void Start ()
 	{
@@ -23,11 +25,29 @@ public class LPInputController : MonoBehaviour
 
 		player.SetDirectionalInput (directionalInput, motionX);
 
-		if (Input.GetKeyDown (KeyCode.Space) || directionalInput.y > 0.0f) {
+		if (directionalInput.y > 0) {
+
+			if (canJumpAgain) {
+				isJumping = false;
+				canJumpAgain = false;
+				player.OnJumpInputDown ();
+			}
+		}
+
+		if (directionalInput.y <= 0) {
+
+			if (!isJumping) {
+				isJumping = true;
+				canJumpAgain = true;
+				player.OnJumpInputUp ();
+			}
+		}
+
+		if (Input.GetKeyDown (KeyCode.Space)) {
 			player.OnJumpInputDown ();
 		}
 
-		if (Input.GetKeyUp (KeyCode.Space) || directionalInput.y <= 0.0f) {
+		if (Input.GetKeyUp (KeyCode.Space)) {
 			player.OnJumpInputUp ();
 		}
 
