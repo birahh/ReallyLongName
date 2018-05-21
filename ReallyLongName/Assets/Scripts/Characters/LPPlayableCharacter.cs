@@ -70,7 +70,7 @@ public class LPPlayableCharacter : LPBaseCharacter
 	}
 
 	void Update() 
-{
+	{
         base.Update();
         
 		gravity = -(2 * maxJumpHeight) / Mathf.Pow (timeToJumpApex, 2) + Mathf.Clamp(LPDefinitions.World_Gravity, 1, 100);	//	WorldGravity Attenuation
@@ -205,6 +205,11 @@ public class LPPlayableCharacter : LPBaseCharacter
         velocity = new Vector3((velocity.x > 0? -LPDefinitions.Character_ImpulseBack: LPDefinitions.Character_ImpulseBack), velocity.y, velocity.z);
     }
 
+	public void AddIpulseTowardsCamera()
+	{
+		transform.position = new Vector3(transform.position.x, transform.position.y, -0.5f);
+	}
+
     public void ReceivePowerUp(PowerUp powerUp)
     {
         if(powerUp == PowerUp.DoubleJump)             
@@ -227,10 +232,13 @@ public class LPPlayableCharacter : LPBaseCharacter
     {
         if (IsAlive) {
 
+			base.TurnOffCollisions();
+
             IsAlive = false;
-            base.TurnOffCollisions();
+
+			AddIpulseTowardsCamera();
+			AddImpulseBack();
             AddImpulseUp();
-            AddImpulseBack();
         }
     }
 }

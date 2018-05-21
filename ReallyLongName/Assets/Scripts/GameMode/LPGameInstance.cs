@@ -5,8 +5,10 @@ using UnityEngine.SceneManagement;
 
 public static class LPGameInstance
 {
-    public static LPBaseObject[] SceneObjects;
-    public static string CurrentScene = "BaseScene";
+	public static LPBaseObject[] SceneObjects;
+	public static string CurrentScene = "BaseScene";
+	public static string NextScene = "BaseScene";
+	public static string TransitionScene = "TransitionScene";
 
     public static int TotalCoinAmount = 0;
     public static int LevelCoinAmount = 0;
@@ -19,6 +21,12 @@ public static class LPGameInstance
         Scene scene = SceneManager.GetSceneByName(CurrentScene);
         SceneManager.SetActiveScene(scene);
     }
+
+
+	public static void LoadTransitionMap()
+	{
+		LoadMap(TransitionScene);
+	}
 
     public static void ReloadMap()
     {
