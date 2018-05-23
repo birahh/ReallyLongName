@@ -52,6 +52,12 @@ public class LPPlayableCharacter : LPBaseCharacter
     float lastXDirection = 1.0f;
     #endregion
 
+    #region ParticlesSettings
+    public ParticleSystem RunEmitter;
+    public ParticleSystem JumpUpEmitter;
+    public ParticleSystem JumpDownEmitter;
+    #endregion
+
     void Start() 
 	{
 		base.Start();
@@ -99,7 +105,32 @@ public class LPPlayableCharacter : LPBaseCharacter
 			}
 		}
 
-        IsFalling = velocity.y <= 0.00000001f;        
+        IsFalling = velocity.y <= 0.00000001f;
+
+        #region ParticleSystemHandle
+
+        //  RunEmitter
+        if (Mathf.Abs(velocity.x) > 0.00000001f && collisions.below) {
+            RunEmitter.Play();
+        } else {
+            RunEmitter.Stop();
+        }
+
+        //  JumpUpEmitter
+        if (velocity.y > 0.00000001f && collisions.below) {
+            JumpUpEmitter.Play();
+        } else {
+            JumpUpEmitter.Stop();
+        }
+        
+        //  JumpDownEmitter
+        if (IsFalling && collisions.below) {
+            JumpDownEmitter.Play();
+        } else {
+            JumpDownEmitter.Stop();
+        }
+
+        #endregion
     }
 
 	public void SetDirectionalInput (Vector2 input, float motionX)

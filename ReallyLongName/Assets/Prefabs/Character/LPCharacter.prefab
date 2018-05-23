@@ -114,7 +114,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1854245786523624}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.333, y: 0.79, z: 0}
+  m_LocalPosition: {x: -7.1, y: 0.65, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4977034259992646}
@@ -219,7 +219,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.7568737, y: 1}
+  m_Size: {x: 0.5, y: 1}
   m_EdgeRadius: 0
 --- !u!61 &61901998394892952
 BoxCollider2D:
@@ -287,6 +287,9 @@ MonoBehaviour:
   WallLeap: {x: 0, y: 0}
   CurrentPowerUp: 3
   IsAlive: 1
+  RunEmitter: {fileID: 198830187755057996}
+  JumpUpEmitter: {fileID: 0}
+  JumpDownEmitter: {fileID: 0}
 --- !u!198 &198830187755057996
 ParticleSystem:
   m_ObjectHideFlags: 1
@@ -347,7 +350,7 @@ ParticleSystem:
   moveWithTransform: 1
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: -1191376538
+  randomSeed: 1168134181
   InitialModule:
     serializedVersion: 3
     enabled: 1
