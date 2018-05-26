@@ -146,6 +146,11 @@ public class LP2DController : LPRaycastController
                         //Move(new Vector2(hit.collider.GetComponent<LPRollPin>().Torque, moveAmount.y), false);
                     }
                     
+                    //if (hit.collider.tag.Equals("MovingPlatform")) {
+
+                    //    Move(new Vector2(hit.collider.gameObject.transform.position.x, 0), true);
+                    //}
+
                     moveAmount.y = (hit.distance - skinWidth) * directionY;
                     rayLength = hit.distance;
 

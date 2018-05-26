@@ -105,10 +105,9 @@ public class LPPlayableCharacter : LPBaseCharacter
 			}
 		}
 
-        IsFalling = velocity.y <= 0.00000001f;
+        IsFalling = velocity.y < -0.00000001f;
 
         #region ParticleSystemHandle
-
         //  RunEmitter
         if (Mathf.Abs(velocity.x) > 0.00000001f && collisions.below) {
             RunEmitter.Play();
@@ -118,18 +117,18 @@ public class LPPlayableCharacter : LPBaseCharacter
 
         //  JumpUpEmitter
         if (velocity.y > 0.00000001f && collisions.below) {
-            JumpUpEmitter.Play();
+            //JumpUpEmitter.Play();
         } else {
-            JumpUpEmitter.Stop();
-        }
-        
-        //  JumpDownEmitter
-        if (IsFalling && collisions.below) {
-            JumpDownEmitter.Play();
-        } else {
-            JumpDownEmitter.Stop();
+            //JumpUpEmitter.Stop();
         }
 
+        //  JumpDownEmitter
+        if (IsFalling && collisions.below) {
+            print(IsFalling+", "+collisions.below);
+            //JumpDownEmitter.Play();
+        } else {
+            //JumpDownEmitter.Stop();
+        }
         #endregion
     }
 

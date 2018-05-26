@@ -7,12 +7,12 @@ public class LPPlatformMoving : LPBasePlatform
 
     void Start()
     {
-
+        base.Start();
     }
 
 
     void Update()
     {
-
+        base.Update();
     }
 }

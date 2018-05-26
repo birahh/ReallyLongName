@@ -9,6 +9,7 @@ TagManager:
   - Enemy
   - CoinCatcher
   - RollPin
+  - MovingPlatform
   layers:
   - Default
   - TransparentFX
