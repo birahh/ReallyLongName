@@ -19,7 +19,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4265999301591874}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: DotRight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -34,7 +34,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4428350108077686}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Platform
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -49,7 +49,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4370490600846516}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: transform3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -64,7 +64,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4712961269067050}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: DotMiddle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -79,7 +79,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4488034098106618}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: DotLeft
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -94,7 +94,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4270848122434278}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: transform2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -111,7 +111,7 @@ GameObject:
   - component: {fileID: 4566824318812226}
   - component: {fileID: 33915918326493208}
   - component: {fileID: 23946030044443710}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: PlatformMover
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -129,7 +129,7 @@ GameObject:
   - component: {fileID: 95829889461690108}
   - component: {fileID: 61395239946802822}
   - component: {fileID: 114467598498866204}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: PlatformMover
   m_TagString: Platform
   m_Icon: {fileID: 0}
@@ -144,7 +144,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4841368234765734}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: transform4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -159,7 +159,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4240288196109676}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: transform1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -401,7 +401,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   collisionMask:
     serializedVersion: 2
-    m_Bits: 1
+    m_Bits: 0
   horizontalRayCount: 0
   verticalRayCount: 0
   horizontalRaySpacing: 0
@@ -409,11 +409,11 @@ MonoBehaviour:
   collider: {fileID: 61395239946802822}
   passengerMask:
     serializedVersion: 2
-    m_Bits: 1
+    m_Bits: 2048
   localWaypoints:
   - {x: -2, y: 0, z: 0}
   - {x: 2, y: 0, z: 0}
   speed: 2
   cyclic: 1
   waitTime: 0
-  easeAmount: 0
+  easeAmount: 0.618

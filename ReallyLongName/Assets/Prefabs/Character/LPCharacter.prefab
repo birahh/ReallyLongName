@@ -90,7 +90,7 @@ GameObject:
   - component: {fileID: 114963168152132324}
   - component: {fileID: 114782754908706688}
   - component: {fileID: 50898723165674674}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: LPCharacter
   m_TagString: Player
   m_Icon: {fileID: 0}
