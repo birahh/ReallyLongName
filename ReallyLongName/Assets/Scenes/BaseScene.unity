@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481694, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -1045,7 +1045,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4832347208978812, guid: 9525cf40d737d4f909ac9c753e5d392a, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 9.806999
+      value: 6.06
       objectReference: {fileID: 0}
     - target: {fileID: 4832347208978812, guid: 9525cf40d737d4f909ac9c753e5d392a, type: 2}
       propertyPath: m_LocalPosition.y
@@ -1079,6 +1079,56 @@ Prefab:
         type: 2}
       propertyPath: easeAmount
       value: 0.618
+      objectReference: {fileID: 0}
+    - target: {fileID: 114467598498866204, guid: 9525cf40d737d4f909ac9c753e5d392a,
+        type: 2}
+      propertyPath: collisionMask.m_Bits
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114467598498866204, guid: 9525cf40d737d4f909ac9c753e5d392a,
+        type: 2}
+      propertyPath: passengerMask.m_Bits
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1711281225201602, guid: 9525cf40d737d4f909ac9c753e5d392a, type: 2}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1031772421097538, guid: 9525cf40d737d4f909ac9c753e5d392a, type: 2}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1207882441716164, guid: 9525cf40d737d4f909ac9c753e5d392a, type: 2}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1730719537348086, guid: 9525cf40d737d4f909ac9c753e5d392a, type: 2}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1379144409035062, guid: 9525cf40d737d4f909ac9c753e5d392a, type: 2}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1418793922053582, guid: 9525cf40d737d4f909ac9c753e5d392a, type: 2}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1584102843605154, guid: 9525cf40d737d4f909ac9c753e5d392a, type: 2}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1864048587420952, guid: 9525cf40d737d4f909ac9c753e5d392a, type: 2}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1297597401644610, guid: 9525cf40d737d4f909ac9c753e5d392a, type: 2}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1103067337835842, guid: 9525cf40d737d4f909ac9c753e5d392a, type: 2}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9525cf40d737d4f909ac9c753e5d392a, type: 2}

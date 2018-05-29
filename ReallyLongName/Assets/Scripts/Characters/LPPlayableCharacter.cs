@@ -56,6 +56,9 @@ public class LPPlayableCharacter : LPBaseCharacter
     public ParticleSystem RunEmitter;
     public ParticleSystem JumpUpEmitter;
     public ParticleSystem JumpDownEmitter;
+
+	bool hadCollisionsBelow = false;
+	bool wasFallingDown = false;
     #endregion
 
     void Start() 
@@ -108,26 +111,35 @@ public class LPPlayableCharacter : LPBaseCharacter
         IsFalling = velocity.y < -0.00000001f;
 
         #region ParticleSystemHandle
+		if (IsFalling && !wasFallingDown)
+			wasFallingDown = true;
+
+		if (collisions.below && !hadCollisionsBelow)
+			hadCollisionsBelow = true;
+
         //  RunEmitter
-        if (Mathf.Abs(velocity.x) > 0.00000001f && collisions.below) {
+        if (Mathf.Abs(velocity.x) > 0.5f && collisions.below) {
             RunEmitter.Play();
         } else {
             RunEmitter.Stop();
         }
 
         //  JumpUpEmitter
-        if (velocity.y > 0.00000001f && collisions.below) {
-            //JumpUpEmitter.Play();
+		if (velocity.y > 0.00000001f && hadCollisionsBelow) {			
+            JumpUpEmitter.Play();
+			hadCollisionsBelow = false;
+			print("Jump Up");
         } else {
-            //JumpUpEmitter.Stop();
+            JumpUpEmitter.Stop();
         }
 
         //  JumpDownEmitter
-        if (IsFalling && collisions.below) {
-            print(IsFalling+", "+collisions.below);
-            //JumpDownEmitter.Play();
+		if (wasFallingDown && collisions.below) {
+            JumpDownEmitter.Play();
+			wasFallingDown = false;
+			print("Jump Down");
         } else {
-            //JumpDownEmitter.Stop();
+            JumpDownEmitter.Stop();
         }
         #endregion
     }
