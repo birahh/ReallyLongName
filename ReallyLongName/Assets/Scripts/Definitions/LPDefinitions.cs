@@ -39,7 +39,7 @@ public static class LPDefinitions
 	public static float World_WeatherTemperature = 1.0f;
 
 	//	Platform Settings
-	public static float Platform_Speed = 1.0f;
+	public static float Platform_Speed = 2f;
 	//	public static float Platform_Path;
 
 	//	Cutting Disc Settings
