@@ -128,7 +128,6 @@ public class LPPlayableCharacter : LPBaseCharacter
 		if (velocity.y > 0.00000001f && hadCollisionsBelow) {			
             JumpUpEmitter.Play();
 			hadCollisionsBelow = false;
-			print("Jump Up");
         } else {
             JumpUpEmitter.Stop();
         }
@@ -137,10 +136,16 @@ public class LPPlayableCharacter : LPBaseCharacter
 		if (wasFallingDown && collisions.below) {
             JumpDownEmitter.Play();
 			wasFallingDown = false;
-			print("Jump Down");
         } else {
             JumpDownEmitter.Stop();
         }
+        #endregion
+
+        #region Platforms Activate
+        if(collisions.below)
+            if(collisions.objectTag.Equals("Platform"))
+                if(collisions.objectGameObject.GetComponent<LPBasePlatform>())
+                    collisions.objectGameObject.GetComponent<LPBasePlatform>().Activate();
         #endregion
     }
 

@@ -214,7 +214,11 @@ public class LP2DController : LPRaycastController
 			RaycastHit2D hit = Physics2D.Raycast (rayOrigin, -Vector2.up, Mathf.Infinity, collisionMask);
 
 			if (hit) {
-				float slopeAngle = Vector2.Angle (hit.normal, Vector2.up);
+
+                collisions.objectTag = hit.transform.tag;
+                collisions.objectGameObject = hit.transform.gameObject;
+
+                float slopeAngle = Vector2.Angle (hit.normal, Vector2.up);
 				if (slopeAngle != 0 && slopeAngle <= maxSlopeAngle) {
 					if (Mathf.Sign (hit.normal.x) == directionX) {
 						if (hit.distance - skinWidth <= Mathf.Tan (slopeAngle * Mathf.Deg2Rad) * Mathf.Abs (moveAmount.x)) {
@@ -272,8 +276,10 @@ public class LP2DController : LPRaycastController
 		public Vector2 moveAmountOld;
 		public int faceDir;
 		public bool fallingThroughPlatform;
+        public string objectTag;
+        public GameObject objectGameObject;
 
-		public void Reset() 
+        public void Reset() 
 		{
 			above = below = false;
 			left = right = false;
@@ -282,7 +288,10 @@ public class LP2DController : LPRaycastController
 			slidingDownMaxSlope = false;
 			slopeNormal = Vector2.zero;
 
-			slopeAngleOld = slopeAngle;
+            objectTag = "";
+            objectGameObject = null;
+
+            slopeAngleOld = slopeAngle;
 			slopeAngle = 0;
 		}
 	}
