@@ -55,4 +55,4 @@ public static class LPDefinitions
     public static float Magnet_LastDuration = 5.0f;
 }
 
-public enum PowerUp { Magnet, DoubleJump, Speed, Continue, None };
+public enum PowerUp { Magnet, DoubleJump, Continue, None };

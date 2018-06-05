@@ -4,15 +4,12 @@ using UnityEngine;
 
 public class LPPlatformSpike : LPBasePlatform
 {
-
     void Start()
     {
-
     }
 
 
     void Update()
     {
-
     }
 }

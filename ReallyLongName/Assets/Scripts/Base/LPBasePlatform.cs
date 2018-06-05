@@ -16,12 +16,13 @@ public class LPBasePlatform : LPRaycastController
 	[Range(0,2)]
 	public float easeAmount;
 
-	int fromWaypointIndex;
-	float percentBetweenWaypoints;
-	float nextMoveTime;
-
+    private bool isOn = true;
+    private int fromWaypointIndex;
+    private float percentBetweenWaypoints;
+    private float nextMoveTime;
+    
+	public Dictionary<Transform, LP2DController> passengerDictionary = new Dictionary<Transform, LP2DController>();
 	List<PassengerMovement> passengerMovement;
-	Dictionary<Transform, LP2DController> passengerDictionary = new Dictionary<Transform, LP2DController>();
 
 	public override void Start () 
 	{
@@ -38,22 +39,60 @@ public class LPBasePlatform : LPRaycastController
 
 	public void Update () 
 	{
-		UpdateRaycastOrigins ();
+        if(isOn) {
+            
+		    UpdateRaycastOrigins ();
 
-		Vector3 velocity = CalculatePlatformMovement();
+		    Vector3 velocity = CalculatePlatformMovement();
 
-		if (localWaypoints.Length > 0) {			
+		    if (localWaypoints.Length > 0) {			
 
-			CalculatePassengerMovement(velocity);
+			    CalculatePassengerMovement(velocity);
 
-			MovePassengers (true);
-			transform.Translate (velocity);
-			MovePassengers (false);
+			    MovePassengers (true);
+			    transform.Translate (velocity);
+			    MovePassengers (false);
+            }
+        }
+    }
 
-		}
-	}
+    public void TurnOff()
+    {
+        isOn = false;
+    }
 
-	float Ease(float x) 
+    public void TurnOn()
+    {
+        isOn = true;
+    }
+
+    public void Fall()
+    {
+
+    }
+
+    public void Glitch()
+    {
+
+    }
+
+    public void Activate()
+    {
+        if(this.GetType() == typeof(LPPlatformMoving))
+            TurnOn();
+            
+        if(this.GetType() == typeof(LPPlatformDrop)) {
+            TurnOff();
+            Fall();
+        }
+
+        if(this.GetType() == typeof(LPPlatformGlitch)) {
+            TurnOff();
+            Glitch();
+        }
+    }
+
+    float Ease(float x) 
 	{
 		float a = easeAmount + 1;
 		return Mathf.Pow(x,a) / (Mathf.Pow(x,a) + Mathf.Pow(1-x,a));
