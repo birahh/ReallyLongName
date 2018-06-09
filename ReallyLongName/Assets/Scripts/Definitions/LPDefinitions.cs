@@ -38,12 +38,16 @@ public static class LPDefinitions
 	public static float World_WindSpeed = 1.0f;
 	public static float World_WeatherTemperature = 1.0f;
 
-	//	Platform Settings
-	public static float Platform_Speed = 2f;
-	//	public static float Platform_Path;
+    //	Platform Settings
+    public static float Platform_Speed = 2f;
+    public static float Platform_VanishingTime = 2f;
+    public static float PlatformFalling_TimeBeforeActivate = 2f;
+    public static float PlatformGlitch_TimeBeforeActivate = 2f;
+    public static float PlatformGlitch_TimeToReset = 2f;
+    //	public static float Platform_Path;
 
-	//	Cutting Disc Settings
-	public static float CuttingDisc_Speed = 1.0f;
+    //	Cutting Disc Settings
+    public static float CuttingDisc_Speed = 1.0f;
 	//	public static float CuttingDisc_Path;
 
 	//	Glitch Settings

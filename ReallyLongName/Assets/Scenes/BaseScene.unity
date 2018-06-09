@@ -3417,6 +3417,38 @@ Transform:
   m_PrefabParentObject: {fileID: 4006230742270648, guid: 297835f8a7fbe4a77ad9c2bfe5224ae0,
     type: 2}
   m_PrefabInternal: {fileID: 189348722}
+--- !u!1 &190728719 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1855356504606264, guid: 8a0e80b54c8b6c7478afa49ee7f60a3c,
+    type: 2}
+  m_PrefabInternal: {fileID: 2144465380}
+--- !u!114 &190728720
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 190728719}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 88368c84d710bc742988d9a991099d82, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  collisionMask:
+    serializedVersion: 2
+    m_Bits: 0
+  horizontalRayCount: 0
+  verticalRayCount: 0
+  horizontalRaySpacing: 0
+  verticalRaySpacing: 0
+  collider: {fileID: 0}
+  passengerMask:
+    serializedVersion: 2
+    m_Bits: 2048
+  localWaypoints: []
+  speed: 0
+  cyclic: 0
+  waitTime: 0
+  easeAmount: 0
 --- !u!1001 &191836228
 Prefab:
   m_ObjectHideFlags: 0
@@ -17516,7 +17548,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4693214858190790, guid: fb615ea7462284d64b2225a526891a2c, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 8.217
+      value: 0.35
       objectReference: {fileID: 0}
     - target: {fileID: 4693214858190790, guid: fb615ea7462284d64b2225a526891a2c, type: 2}
       propertyPath: m_LocalPosition.y
@@ -20135,7 +20167,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4130391869027564, guid: 2aa320abc6d71c64fa27c09ef576a0cd, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 18.99
+      value: 1.672
       objectReference: {fileID: 0}
     - target: {fileID: 4130391869027564, guid: 2aa320abc6d71c64fa27c09ef576a0cd, type: 2}
       propertyPath: m_LocalPosition.y

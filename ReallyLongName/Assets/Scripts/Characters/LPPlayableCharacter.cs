@@ -81,10 +81,10 @@ public class LPPlayableCharacter : LPBaseCharacter
 	void Update() 
 	{
         base.Update();
-        
-		gravity = -(2 * maxJumpHeight) / Mathf.Pow (timeToJumpApex, 2) + Mathf.Clamp(LPDefinitions.World_Gravity, 1, 100);	//	WorldGravity Attenuation
 
-		maxJumpHeight = Mathf.Clamp(LPDefinitions.Character_MaxJumpHeight, 4, 10);
+		gravity = -(2 * maxJumpHeight) / Mathf.Pow (timeToJumpApex, 2) + Mathf.Clamp(LPDefinitions.World_Gravity, 1, 100);  //	WorldGravity Attenuation
+
+        maxJumpHeight = Mathf.Clamp(LPDefinitions.Character_MaxJumpHeight, 4, 10);
 		minJumpHeight = Mathf.Clamp(LPDefinitions.Character_MinJumpHeight, 1, 5);
 
 		wallSlideSpeedMax = Mathf.Clamp(LPDefinitions.Character_WallSlideSpeed, 1, 10);
@@ -102,7 +102,7 @@ public class LPPlayableCharacter : LPBaseCharacter
             
 		if (collisions.above || collisions.below) {
 			if (collisions.slidingDownMaxSlope) {
-				velocity.y += collisions.slopeNormal.y * -gravity * Time.deltaTime;
+				velocity.y += collisions.slopeNormal.y * - gravity * Time.deltaTime;
 			} else {
 				velocity.y = 0;
 			}

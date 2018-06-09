@@ -8,8 +8,9 @@ public class LPBasePlatform : LPRaycastController
 
 	public Vector3[] localWaypoints;
 	Vector3[] globalWaypoints;
+    Vector3 velocity;
 
-	public float speed;
+    public float speed;
 	public bool cyclic;
 	public float waitTime;
 
@@ -17,9 +18,12 @@ public class LPBasePlatform : LPRaycastController
 	public float easeAmount;
 
     private bool isOn = true;
+    private bool isFalling = false;
     private int fromWaypointIndex;
     private float percentBetweenWaypoints;
     private float nextMoveTime;
+    private float gravity;
+    private Animator animator;
     
 	public Dictionary<Transform, LP2DController> passengerDictionary = new Dictionary<Transform, LP2DController>();
 	List<PassengerMovement> passengerMovement;
@@ -27,6 +31,8 @@ public class LPBasePlatform : LPRaycastController
 	public override void Start () 
 	{
 		base.Start ();
+
+        animator = GetComponent<Animator>();
 
 		speed = LPDefinitions.Platform_Speed;
 
@@ -43,7 +49,7 @@ public class LPBasePlatform : LPRaycastController
             
 		    UpdateRaycastOrigins ();
 
-		    Vector3 velocity = CalculatePlatformMovement();
+            velocity = CalculatePlatformMovement();
 
 		    if (localWaypoints.Length > 0) {			
 
@@ -54,8 +60,32 @@ public class LPBasePlatform : LPRaycastController
 			    MovePassengers (false);
             }
         }
+
+        if(isFalling) {
+            velocity.y += gravity * Time.deltaTime;
+
+            transform.Translate(velocity);
+        }
     }
 
+    #region General Activation
+    public void Activate()
+    {
+        if(animator)
+            animator.Play("Activate");
+
+        if(this.GetType() == typeof(LPPlatformMoving))
+            TurnOn();
+
+        if(this.GetType() == typeof(LPPlatformDrop))
+            Invoke("Fall", LPDefinitions.PlatformFalling_TimeBeforeActivate);
+
+        if(this.GetType() == typeof(LPPlatformGlitch))
+            Invoke("Glitch", LPDefinitions.PlatformGlitch_TimeBeforeActivate);
+    }
+    #endregion
+
+    #region On/Off Settings
     public void TurnOff()
     {
         isOn = false;
@@ -65,33 +95,52 @@ public class LPBasePlatform : LPRaycastController
     {
         isOn = true;
     }
+    #endregion
 
+    #region Falling Mechanic
     public void Fall()
     {
+        TurnOff();
 
+        isFalling = true;
+
+        gravity = -Mathf.Clamp(LPDefinitions.World_Gravity, 1, 100);
+
+        Invoke("Desapear", LPDefinitions.Platform_VanishingTime);
     }
 
+    public void Desapear()
+    {
+        //  Maybe apply a LERP in transparency
+
+        GameObject.Destroy(gameObject);
+    }
+    #endregion
+
+    #region Glitch Mechanic
     public void Glitch()
     {
+        TurnOff();
 
+        SetGlitchOn();
+
+        Invoke("SetGlitchOff", LPDefinitions.PlatformGlitch_TimeToReset);
     }
 
-    public void Activate()
+    public void SetGlitchOn()
     {
-        if(this.GetType() == typeof(LPPlatformMoving))
-            TurnOn();
-            
-        if(this.GetType() == typeof(LPPlatformDrop)) {
-            TurnOff();
-            Fall();
-        }
-
-        if(this.GetType() == typeof(LPPlatformGlitch)) {
-            TurnOff();
-            Glitch();
-        }
+        gameObject.GetComponent<BoxCollider2D>().enabled = false;
+        gameObject.GetComponent<MeshRenderer>().enabled = false;
     }
 
+    public void SetGlitchOff()
+    {
+        gameObject.GetComponent<BoxCollider2D>().enabled = true;
+        gameObject.GetComponent<MeshRenderer>().enabled = true;
+    }
+    #endregion
+    
+    #region Movement Mechanic    
     float Ease(float x) 
 	{
 		float a = easeAmount + 1;
@@ -136,7 +185,8 @@ public class LPBasePlatform : LPRaycastController
 		return Vector3.zero;
 	}
 
-	void MovePassengers(bool beforeMovePlatform) 
+    #region PassengerMovement
+    void MovePassengers(bool beforeMovePlatform) 
 	{
 		foreach (PassengerMovement passenger in passengerMovement) {
 			if (!passengerDictionary.ContainsKey(passenger.transform)) {
@@ -233,8 +283,11 @@ public class LPBasePlatform : LPRaycastController
 			moveBeforePlatform = _moveBeforePlatform;
 		}
 	}
+    #endregion
+    #endregion
 
-	void OnDrawGizmos() {
+    #region EDITOR Stuff
+    void OnDrawGizmos() {
 		if (localWaypoints != null) {
 			Gizmos.color = Color.red;
 			float size = .3f;
@@ -245,6 +298,6 @@ public class LPBasePlatform : LPRaycastController
 				Gizmos.DrawLine(globalWaypointPos - Vector3.left * size, globalWaypointPos + Vector3.left * size);
 			}
 		}
-	}
-
+    }
+    #endregion
 }

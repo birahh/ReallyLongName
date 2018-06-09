@@ -14,5 +14,5 @@ public class LPPlatformDrop : LPBasePlatform
     void Update()
     {
         base.Update();
-    }
+    }    
 }
