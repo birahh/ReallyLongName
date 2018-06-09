@@ -10,6 +10,7 @@ TagManager:
   - CoinCatcher
   - RollPin
   - MovingPlatform
+  - LP_GameMode
   layers:
   - Default
   - TransparentFX
