@@ -6,5 +6,26 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/World 1 (platform)/Level1.unity
+    path: Assets/Scenes/0-DefaultScenes/MenuScene.unity
+    guid: cb39a484a9c8eb149abc9e83e140e19a
+  - enabled: 1
+    path: Assets/Scenes/1-WorldPlatform/Level1.unity
     guid: 2ade79e21074aed40b08250a905b44cd
+  - enabled: 1
+    path: Assets/Scenes/1-WorldPlatform/Level2.unity
+    guid: b4f5234cb6d40904789b7a96b9a409dc
+  - enabled: 1
+    path: Assets/Scenes/1-WorldPlatform/Level3.unity
+    guid: 8596507b474df8349af92442a131d135
+  - enabled: 1
+    path: Assets/Scenes/1-WorldPlatform/Level4.unity
+    guid: 706e1078cdf6b474398a6295c67676ac
+  - enabled: 1
+    path: Assets/Scenes/0-DefaultScenes/FinalScene.unity
+    guid: 5fe787ed4656246fab88cc1920b204cd
+  - enabled: 1
+    path: Assets/Scenes/0-DefaultScenes/GameOverScene.unity
+    guid: a5720d55b166a419d8ebefae3bf9e327
+  - enabled: 1
+    path: Assets/Scenes/0-DefaultScenes/TransitionScene.unity
+    guid: fb8d31a5702494a21b87c7a85d17693d
