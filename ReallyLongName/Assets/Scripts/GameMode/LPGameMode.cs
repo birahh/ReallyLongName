@@ -36,9 +36,4 @@ public class LPGameMode : MonoBehaviour
     {
 
     }
-
-    public void LoadMenuScene()
-    {
-
-    }
 }
