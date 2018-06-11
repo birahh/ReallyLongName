@@ -2149,7 +2149,7 @@ GameObject:
   m_Component:
   - component: {fileID: 534598148}
   m_Layer: 0
-  m_Name: Enemies
+  m_Name: Inimigos
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3884,7 +3884,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: bec0587328946854b9d1426998321b3f, type: 2}
+  - {fileID: 2100000, guid: ab068b39b4552e442bac9225b252f71c, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
