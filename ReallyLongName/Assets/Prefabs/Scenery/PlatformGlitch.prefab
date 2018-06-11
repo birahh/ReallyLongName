@@ -23,6 +23,7 @@ GameObject:
   - component: {fileID: 23872086422990438}
   - component: {fileID: 95033309357508106}
   - component: {fileID: 61729126813689514}
+  - component: {fileID: 114777300572981700}
   m_Layer: 8
   m_Name: PlatformGlitch
   m_TagString: Platform
@@ -126,3 +127,30 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &114777300572981700
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1855356504606264}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 88368c84d710bc742988d9a991099d82, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  collisionMask:
+    serializedVersion: 2
+    m_Bits: 0
+  horizontalRayCount: 0
+  verticalRayCount: 0
+  horizontalRaySpacing: 0
+  verticalRaySpacing: 0
+  collider: {fileID: 0}
+  passengerMask:
+    serializedVersion: 2
+    m_Bits: 0
+  localWaypoints: []
+  speed: 0
+  cyclic: 0
+  waitTime: 0
+  easeAmount: 0
