@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -24936,11 +24936,6 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 210991414}
     m_Modifications:
-    - target: {fileID: 114886484390243708, guid: 23aa3b166b940fa4792cea9d9cc47ab6,
-        type: 2}
-      propertyPath: GameScenes.Array.size
-      value: 4
-      objectReference: {fileID: 0}
     - target: {fileID: 4352111407940858, guid: 23aa3b166b940fa4792cea9d9cc47ab6, type: 2}
       propertyPath: m_LocalPosition.x
       value: -4.7008786
@@ -24972,46 +24967,6 @@ Prefab:
     - target: {fileID: 4352111407940858, guid: 23aa3b166b940fa4792cea9d9cc47ab6, type: 2}
       propertyPath: m_RootOrder
       value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 114886484390243708, guid: 23aa3b166b940fa4792cea9d9cc47ab6,
-        type: 2}
-      propertyPath: TransitionScene
-      value: TransitionScene
-      objectReference: {fileID: 0}
-    - target: {fileID: 114886484390243708, guid: 23aa3b166b940fa4792cea9d9cc47ab6,
-        type: 2}
-      propertyPath: MenuScene
-      value: MenuScene
-      objectReference: {fileID: 0}
-    - target: {fileID: 114886484390243708, guid: 23aa3b166b940fa4792cea9d9cc47ab6,
-        type: 2}
-      propertyPath: GameScenes.Array.data[0]
-      value: Level1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114886484390243708, guid: 23aa3b166b940fa4792cea9d9cc47ab6,
-        type: 2}
-      propertyPath: GameScenes.Array.data[1]
-      value: Level2
-      objectReference: {fileID: 0}
-    - target: {fileID: 114886484390243708, guid: 23aa3b166b940fa4792cea9d9cc47ab6,
-        type: 2}
-      propertyPath: GameScenes.Array.data[2]
-      value: Level3
-      objectReference: {fileID: 0}
-    - target: {fileID: 114886484390243708, guid: 23aa3b166b940fa4792cea9d9cc47ab6,
-        type: 2}
-      propertyPath: GameScenes.Array.data[3]
-      value: Level4
-      objectReference: {fileID: 0}
-    - target: {fileID: 114886484390243708, guid: 23aa3b166b940fa4792cea9d9cc47ab6,
-        type: 2}
-      propertyPath: FinalScene
-      value: FinalScene
-      objectReference: {fileID: 0}
-    - target: {fileID: 114886484390243708, guid: 23aa3b166b940fa4792cea9d9cc47ab6,
-        type: 2}
-      propertyPath: GameOverScene
-      value: GameOverScene
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 23aa3b166b940fa4792cea9d9cc47ab6, type: 2}

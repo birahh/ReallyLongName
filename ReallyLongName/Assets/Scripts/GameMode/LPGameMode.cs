@@ -15,11 +15,20 @@ public class LPGameMode : MonoBehaviour
     {
         LPPlayableCharacter.OnCharacterDie += PlayerDied;
 
-		LPGameInstance.TransitionScene = TransitionScene;
-		LPGameInstance.MenuScene = MenuScene;
-		LPGameInstance.GameScenes = GameScenes;
-		LPGameInstance.GameOverScene = GameOverScene;
-		LPGameInstance.FinalScene = FinalScene;
+		if (LPGameInstance.GameModeInstance == null)
+			LPGameInstance.SetGameModeInstance (this);
+
+
+		if (LPGameInstance.GameModeInstance == this) {			
+			LPGameInstance.TransitionScene = TransitionScene;
+			LPGameInstance.MenuScene = MenuScene;
+			LPGameInstance.GameScenes = GameScenes;
+			LPGameInstance.GameOverScene = GameOverScene;
+			LPGameInstance.FinalScene = FinalScene;
+		} 
+
+		if (LPGameInstance.CurrentLevel == -2)
+			Invoke ("LoadNextLevel", 1.0f);
 	}
 	
 	
@@ -32,4 +41,9 @@ public class LPGameMode : MonoBehaviour
     {        
 		LPGameInstance.PlayerDied();
     }
+
+	void LoadNextLevel() {
+		print ("Next Level: "+LPGameInstance.NextLevel);
+		LPGameInstance.LoadScene (LPGameInstance.NextLevel);
+	}
 }

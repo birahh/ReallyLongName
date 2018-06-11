@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 
 public static class LPGameInstance
 {
+	public static LPGameMode GameModeInstance;
 	public static LPBaseObject[] SceneObjects;
 	public static string[] GameScenes;
 	public static string MenuScene;
@@ -12,16 +13,25 @@ public static class LPGameInstance
 	public static string GameOverScene;
 	public static string FinalScene;
 
-	public static int CurrentLevel = -2;
+	public static int CurrentLevel = 0;
+	public static int NextLevel = 0;
 
     public static int TotalCoinAmount = 0;
     public static int LevelCoinAmount = 0;
     public static int ContinueAmount = 2;
 
-	#region Scene Transitions
+	#region Game Mode
+	public static void SetGameModeInstance (LPGameMode newInstance)
+	{
+		GameModeInstance = newInstance;
+	}
+	#endregion
 
+	#region Scene Transitions
 	public static void PlayerDied()
 	{
+//		NextLevel = CurrentLevel;
+
 		LoadTransitionScene();
 
 		if (ContinueAmount > 0)
@@ -32,12 +42,21 @@ public static class LPGameInstance
 
     public static void ReloadCurrentScene()
     {
-		LoadScene(CurrentLevel);
+//		NextLevel = CurrentLevel;
+		
+		LoadTransitionScene ();
     }
 
 	public static void LoadTransitionScene()
 	{
-		LoadScene(-2);
+		//LoadScene(-2);
+		CurrentLevel = -2;
+
+		LevelCoinAmount = 0;
+
+		SceneObjects = new LPBaseObject[0];
+
+		SceneManager.LoadScene("TransitionScene");
 	}
 
 	public static void LoadGameOverScene()
@@ -67,7 +86,6 @@ public static class LPGameInstance
 
 	public static string GetSceneName(int levelId)
 	{
-
 		switch (levelId) {
 		case -3: 
 			return GameOverScene;
@@ -86,16 +104,19 @@ public static class LPGameInstance
 
 	public static void LoadScene (int nextLevel)
     {
+		
 		string sceneName = GetSceneName(nextLevel);
 
         LevelCoinAmount = 0;
+
+		CurrentLevel = nextLevel;
 
         SceneObjects = new LPBaseObject[0];
 
         SceneManager.LoadScene(sceneName);
 
-        Scene scene = SceneManager.GetSceneByName(sceneName);
-        SceneManager.SetActiveScene(scene);
+//        Scene scene = SceneManager.GetSceneByName(sceneName);
+//        SceneManager.SetActiveScene(scene);
 
         SceneObjects = Object.FindObjectsOfType<LPBaseObject>() as LPBaseObject[];
 	}
