@@ -25003,6 +25003,16 @@ Prefab:
       propertyPath: GameScenes.Array.data[3]
       value: Level4
       objectReference: {fileID: 0}
+    - target: {fileID: 114886484390243708, guid: 23aa3b166b940fa4792cea9d9cc47ab6,
+        type: 2}
+      propertyPath: FinalScene
+      value: FinalScene
+      objectReference: {fileID: 0}
+    - target: {fileID: 114886484390243708, guid: 23aa3b166b940fa4792cea9d9cc47ab6,
+        type: 2}
+      propertyPath: GameOverScene
+      value: GameOverScene
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 23aa3b166b940fa4792cea9d9cc47ab6, type: 2}
   m_IsPrefabParent: 0
