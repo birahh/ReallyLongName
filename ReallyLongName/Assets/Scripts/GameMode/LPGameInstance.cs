@@ -18,22 +18,28 @@ public static class LPGameInstance
     public static int LevelCoinAmount = 0;
     public static int ContinueAmount = 2;
 
-	#region Scene Transitions
+	public static LPGameMode gameModeInstance;
 
+	public static void SetGameModeInstance(LPGameMode gameMode)
+	{
+		gameModeInstance = gameMode;
+	}
+
+	#region Scene Transitions
 	public static void PlayerDied()
 	{
 		LoadTransitionScene();
-
-		if (ContinueAmount > 0)
-			ReloadCurrentScene();
-		else 
-			LoadGameOverScene();
 	}
 
     public static void ReloadCurrentScene()
     {
 		LoadScene(CurrentLevel);
     }
+
+	public static void LoadMenuScene()
+	{
+		LoadScene(-1);
+	}
 
 	public static void LoadTransitionScene()
 	{
@@ -43,11 +49,6 @@ public static class LPGameInstance
 	public static void LoadGameOverScene()
 	{
 		LoadScene(-3);
-	}
-
-	public static void LoadMenuScene()
-	{
-		LoadScene(-1);
 	}
 
 	public static void LoadFinalScene()
@@ -94,8 +95,8 @@ public static class LPGameInstance
 
         SceneManager.LoadScene(sceneName);
 
-        Scene scene = SceneManager.GetSceneByName(sceneName);
-        SceneManager.SetActiveScene(scene);
+//        Scene scene = SceneManager.GetSceneByName(sceneName);
+//        SceneManager.SetActiveScene(scene);
 
         SceneObjects = Object.FindObjectsOfType<LPBaseObject>() as LPBaseObject[];
 	}
