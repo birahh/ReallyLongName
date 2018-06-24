@@ -16,6 +16,7 @@ public class LPBasePlatform : LPRaycastController
 
 	[Range(0,2)]
 	public float easeAmount;
+	public float AnimationDelay = 0.5f;
 
     private bool isOn = true;
     private bool isFalling = false;
@@ -33,6 +34,9 @@ public class LPBasePlatform : LPRaycastController
 		base.Start ();
 
         animator = GetComponent<Animator>();
+
+        if(animator)
+            Invoke("startAnimation", AnimationDelay);
 
 		speed = LPDefinitions.Platform_Speed;
 
@@ -71,9 +75,6 @@ public class LPBasePlatform : LPRaycastController
     #region General Activation
     public void Activate()
     {
-        if(animator)
-            animator.Play("Activate");
-
         if(this.GetType() == typeof(LPPlatformMoving))
             TurnOn();
 
@@ -84,6 +85,14 @@ public class LPBasePlatform : LPRaycastController
             Invoke("Glitch", LPDefinitions.PlatformGlitch_TimeBeforeActivate);
     }
     #endregion
+
+	#region Spike Settings	
+	void startAnimation()
+	{
+		print("Activate - ");
+		animator.Play("Activate");
+	}
+	#endregion
 
     #region On/Off Settings
     public void TurnOff()
