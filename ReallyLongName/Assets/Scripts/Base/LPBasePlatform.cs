@@ -50,7 +50,7 @@ public class LPBasePlatform : LPRaycastController
 	public void Update () 
 	{
         if(isOn) {
-            
+			            
 		    UpdateRaycastOrigins ();
 
             velocity = CalculatePlatformMovement();
@@ -89,7 +89,6 @@ public class LPBasePlatform : LPRaycastController
 	#region Spike Settings	
 	void startAnimation()
 	{
-		print("Activate - ");
 		animator.Play("Activate");
 	}
 	#endregion

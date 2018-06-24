@@ -68,6 +68,7 @@ public class LPPlayableCharacter : LPBaseCharacter
         Life = LPDefinitions.Character_MaxLife;
 
         OnCharacterDie += PlayerDied;
+        OnCharacterFinishLevel += FinishPose;
 
         LPBaseCollectable.OnCollectedSpecial += ReceivePowerUp;
 
@@ -287,5 +288,11 @@ public class LPPlayableCharacter : LPBaseCharacter
 			AddImpulseBack();
             AddImpulseUp();
         }
+    }
+
+    public void FinishPose()
+    {
+        if (IsAlive)
+            IsAlive = false;        
     }
 }

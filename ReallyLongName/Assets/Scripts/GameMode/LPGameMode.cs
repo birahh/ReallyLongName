@@ -14,11 +14,11 @@ public class LPGameMode : MonoBehaviour
     void Start ()
     {
         LPPlayableCharacter.OnCharacterDie += PlayerDied;
+		LPPlayableCharacter.OnCharacterFinishLevel += LoadNextLevel;
 
 		if (LPGameInstance.GameModeInstance == null) {
 			LPGameInstance.SetGameModeInstance (this);
 		}
-
 
 		if (LPGameInstance.GameModeInstance == this) {			
 			LPGameInstance.TransitionScene = TransitionScene;
@@ -27,20 +27,27 @@ public class LPGameMode : MonoBehaviour
 			LPGameInstance.GameOverScene = GameOverScene;
 			LPGameInstance.FinalScene = FinalScene;
 		} 
-
-		if (LPGameInstance.CurrentLevel == -2)
-			Invoke ("LoadNextLevel", 1.0f);
 	}
 	
-	void Update ()
+	void Update()
     {
 		
 	}
 
-    public void PlayerDied ()
+    public void PlayerDiedWithDelay()
+    {        
+		Invoke("PlayerDied", LPDefinitions.GameMode_TransitionDelay);
+    }
+
+    public void PlayerDied()
     {        
 		LPGameInstance.PlayerDied();
     }
+
+	public void LoadNextLevelWithDelay() 
+	{
+		Invoke("LoadNextLevel", LPDefinitions.GameMode_TransitionDelay);
+	}
 
 	public void LoadNextLevel() 
 	{

@@ -9,6 +9,9 @@ public class LPBaseCharacter : LP2DController
 
     public delegate void CharacterDie();
     public static event CharacterDie OnCharacterDie;
+    
+    public delegate void CharacterFinishLevel();
+    public static event CharacterFinishLevel OnCharacterFinishLevel;
 
     void Start()
     {
@@ -42,6 +45,13 @@ public class LPBaseCharacter : LP2DController
         if (OnCharacterDie != null) {
             OnCharacterDie();
             CanGetHit = false;
+        }        
+    }
+
+    public void FinishLevel()
+    {
+        if (OnCharacterFinishLevel != null) {
+            OnCharacterFinishLevel();
         }        
     }
 }

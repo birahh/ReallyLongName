@@ -18,7 +18,7 @@ public static class LPGameInstance
 
     public static int TotalCoinAmount = 0;
     public static int LevelCoinAmount = 0;
-    public static int ContinueAmount = 2;
+    public static int ContinueAmount = 5;
 
 	#region Game Mode
 	public static void SetGameModeInstance (LPGameMode newInstance)
@@ -41,6 +41,9 @@ public static class LPGameInstance
 	public static string GetSceneName(int levelId)
 	{
 		switch (levelId) {
+		case -4: 
+			return FinalScene;
+			break; 
 		case -3: 
 			return GameOverScene;
 			break; 
@@ -63,20 +66,22 @@ public static class LPGameInstance
 
 	public static void LoadTransitionScene()
 	{
-		CurrentLevel = -2;
-
 		LevelCoinAmount = 0;
 
 		SceneObjects = new LPBaseObject[0];
 
-		SceneManager.LoadScene(GetSceneName(CurrentLevel));
+		SceneManager.LoadScene(GetSceneName(-2));
 	}
 
 	public static void LoadSceneAfterTransition()
 	{
 		CurrentLevel = NextLevel;
 
-		SceneManager.LoadScene(GetSceneName(CurrentLevel));
+		if (CurrentLevel > GameScenes.Length - 1) {
+			LoadFinalScene();
+		} else {
+			SceneManager.LoadScene(GetSceneName(CurrentLevel));
+		}
 	}
 
 	public static void LoadGameOverScene()
@@ -104,26 +109,26 @@ public static class LPGameInstance
 	{
 		NextLevel = CurrentLevel + 1;
 
-		LoadTransitionScene();
-	}
-
-	public static void LoadScene ()
-    {	
-		// if (GameScenes.Length - 1 <= NextLevel)
-		// 	LoadScene(NextLevel);
-		// else
+		// if (NextLevel > GameScenes.Length - 1) {
+			// NextLevel = GameScenes.Length - 1;
 		// 	LoadFinalScene();
-
-        LevelCoinAmount = 0;
-
-		CurrentLevel = NextLevel;
-
-        SceneObjects = new LPBaseObject[0];
-
-        SceneManager.LoadScene(GetSceneName(NextLevel));
-
-        SceneObjects = Object.FindObjectsOfType<LPBaseObject>() as LPBaseObject[];
+		// } else {
+			LoadTransitionScene();			
+		// }
 	}
+
+	// public static void LoadScene ()
+    // {	
+        // LevelCoinAmount = 0;
+
+		// CurrentLevel = NextLevel;
+
+        // SceneObjects = new LPBaseObject[0];
+
+        // SceneManager.LoadScene(GetSceneName(NextLevel));
+
+        // SceneObjects = Object.FindObjectsOfType<LPBaseObject>() as LPBaseObject[];
+	// }
 	#endregion
 
 	#region Coins and Checkpoints
