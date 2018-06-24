@@ -30,58 +30,12 @@ public static class LPGameInstance
 	#region Scene Transitions
 	public static void PlayerDied()
 	{
-//		NextLevel = CurrentLevel;
-
-		LoadTransitionScene();
-
 		if (ContinueAmount > 0)
 			ReloadCurrentScene();
 		else 
 			LoadGameOverScene();
-	}
-
-    public static void ReloadCurrentScene()
-    {
-//		NextLevel = CurrentLevel;
 		
-		LoadTransitionScene ();
-    }
-
-	public static void LoadTransitionScene()
-	{
-		//LoadScene(-2);
-		CurrentLevel = -2;
-
-		LevelCoinAmount = 0;
-
-		SceneObjects = new LPBaseObject[0];
-
-		SceneManager.LoadScene("TransitionScene");
-	}
-
-	public static void LoadGameOverScene()
-	{
-		LoadScene(-3);
-	}
-
-	public static void LoadMenuScene()
-	{
-		LoadScene(-1);
-	}
-
-	public static void LoadFinalScene()
-	{
-		LoadScene(-4);
-	}
-
-	public static void LoadNextScene()
-	{
-		int nextLevel = CurrentLevel + 1;
-
-		if (GameScenes.Length - 1 <= nextLevel)
-			LoadScene(nextLevel);
-		else
-			LoadFinalScene();
+		LoadTransitionScene();
 	}
 
 	public static string GetSceneName(int levelId)
@@ -102,21 +56,71 @@ public static class LPGameInstance
 		}
 	}	
 
-	public static void LoadScene (int nextLevel)
-    {
-		
-		string sceneName = GetSceneName(nextLevel);
+    public static void ReloadCurrentScene()
+    {		
+		LoadTransitionScene ();
+    }
+
+	public static void LoadTransitionScene()
+	{
+		CurrentLevel = -2;
+
+		LevelCoinAmount = 0;
+
+		SceneObjects = new LPBaseObject[0];
+
+		SceneManager.LoadScene(GetSceneName(CurrentLevel));
+	}
+
+	public static void LoadSceneAfterTransition()
+	{
+		CurrentLevel = NextLevel;
+
+		SceneManager.LoadScene(GetSceneName(CurrentLevel));
+	}
+
+	public static void LoadGameOverScene()
+	{
+		NextLevel = -3;
+
+		LoadTransitionScene();
+	}
+
+	public static void LoadMenuScene()
+	{
+		NextLevel = -1;
+
+		LoadTransitionScene();
+	}
+
+	public static void LoadFinalScene()
+	{
+		NextLevel = -4;
+
+		LoadTransitionScene();
+	}
+
+	public static void LoadNextScene()
+	{
+		NextLevel = CurrentLevel + 1;
+
+		LoadTransitionScene();
+	}
+
+	public static void LoadScene ()
+    {	
+		// if (GameScenes.Length - 1 <= NextLevel)
+		// 	LoadScene(NextLevel);
+		// else
+		// 	LoadFinalScene();
 
         LevelCoinAmount = 0;
 
-		CurrentLevel = nextLevel;
+		CurrentLevel = NextLevel;
 
         SceneObjects = new LPBaseObject[0];
 
-        SceneManager.LoadScene(sceneName);
-
-//        Scene scene = SceneManager.GetSceneByName(sceneName);
-//        SceneManager.SetActiveScene(scene);
+        SceneManager.LoadScene(GetSceneName(NextLevel));
 
         SceneObjects = Object.FindObjectsOfType<LPBaseObject>() as LPBaseObject[];
 	}

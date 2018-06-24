@@ -4,6 +4,9 @@ using UnityEngine;
 
 public static class LPDefinitions 
 {
+	//	GameMode Settings
+	public static float GameMode_TransitionDelay = 2.0f;
+
 	//	Character Settings
 	public static float Character_Speed = 4.0f;
     public static float Character_GroundSlideFactor = 1f;
@@ -44,7 +47,6 @@ public static class LPDefinitions
     public static float PlatformFalling_TimeBeforeActivate = 2f;
     public static float PlatformGlitch_TimeBeforeActivate = 2f;
     public static float PlatformGlitch_TimeToReset = 2f;
-    //	public static float Platform_Path;
 
     //	Cutting Disc Settings
     public static float CuttingDisc_Speed = 1.0f;
