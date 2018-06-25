@@ -206,6 +206,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemy: {fileID: 114498796356111232}
+  ShouldActivate: 1
 --- !u!114 &114498796356111232
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -220,12 +221,12 @@ MonoBehaviour:
   collider: {fileID: 61203313990360344}
   CanDie: 0
   ShouldRespawn: 0
-  Speed: 25
+  Speed: 50
   VictimMask:
     serializedVersion: 2
     m_Bits: 0
   LocalWaypoints:
-  - {x: 0, y: -3.6, z: 0}
+  - {x: 0, y: -3.4, z: 0}
   - {x: 0, y: 0, z: 0}
   IsCyclic: 0
   ShouldPlayFromStart: 0
