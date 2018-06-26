@@ -71,40 +71,42 @@ public class LP2DController : LPRaycastController
             
 			if (hit) {
 
-                if (hit.distance == 0) {
-					continue;
+				if (!hit.collider.tag.Equals("Rollpin")) {
+					if (hit.distance == 0) {
+						continue;
+					}
+
+					float slopeAngle = Vector2.Angle(hit.normal, Vector2.up);
+
+					if (!hit.collider.tag.Equals("Enemy")) {
+
+						if (i == 0 && slopeAngle <= maxSlopeAngle) {
+							if (collisions.descendingSlope) {
+								collisions.descendingSlope = false;
+								moveAmount = collisions.moveAmountOld;
+							}
+							float distanceToSlopeStart = 0;
+							if (slopeAngle != collisions.slopeAngleOld) {
+								distanceToSlopeStart = hit.distance-skinWidth;
+								moveAmount.x -= distanceToSlopeStart * directionX;
+							}
+							ClimbSlope(ref moveAmount, slopeAngle, hit.normal);
+							moveAmount.x += distanceToSlopeStart * directionX;
+						}
+
+						if (!collisions.climbingSlope || slopeAngle > maxSlopeAngle) {
+							moveAmount.x = (hit.distance - skinWidth) * directionX;
+							rayLength = hit.distance;
+
+							if (collisions.climbingSlope) {
+								moveAmount.y = Mathf.Tan(collisions.slopeAngle * Mathf.Deg2Rad) * Mathf.Abs(moveAmount.x);
+							}
+
+							collisions.left = directionX == -1;
+							collisions.right = directionX == 1;
+						}
+					}
 				}
-
-				float slopeAngle = Vector2.Angle(hit.normal, Vector2.up);
-
-                if (!hit.collider.tag.Equals("Enemy")) {
-
-				    if (i == 0 && slopeAngle <= maxSlopeAngle) {
-					    if (collisions.descendingSlope) {
-						    collisions.descendingSlope = false;
-						    moveAmount = collisions.moveAmountOld;
-					    }
-					    float distanceToSlopeStart = 0;
-					    if (slopeAngle != collisions.slopeAngleOld) {
-						    distanceToSlopeStart = hit.distance-skinWidth;
-						    moveAmount.x -= distanceToSlopeStart * directionX;
-					    }
-					    ClimbSlope(ref moveAmount, slopeAngle, hit.normal);
-					    moveAmount.x += distanceToSlopeStart * directionX;
-				    }
-
-				    if (!collisions.climbingSlope || slopeAngle > maxSlopeAngle) {
-					    moveAmount.x = (hit.distance - skinWidth) * directionX;
-					    rayLength = hit.distance;
-
-					    if (collisions.climbingSlope) {
-						    moveAmount.y = Mathf.Tan(collisions.slopeAngle * Mathf.Deg2Rad) * Mathf.Abs(moveAmount.x);
-					    }
-
-					    collisions.left = directionX == -1;
-					    collisions.right = directionX == 1;
-                    }
-                }
             }
 		}
 	}
@@ -142,14 +144,8 @@ public class LP2DController : LPRaycastController
 
                     if (hit.collider.tag.Equals("RollPin")) {
 
-                        moveAmount.x = moveAmount.x + (hit.collider.GetComponent<LPRollPin>().Torque *-0.01f);
-                        //Move(new Vector2(hit.collider.GetComponent<LPRollPin>().Torque, moveAmount.y), false);
+                        moveAmount.x = Mathf.Lerp(moveAmount.x, -hit.collider.GetComponent<LPRollPin>().Torque, 0.1f);
                     }
-                    
-                    //if (hit.collider.tag.Equals("MovingPlatform")) {
-
-                    //    Move(new Vector2(hit.collider.gameObject.transform.position.x, 0), true);
-                    //}
 
                     moveAmount.y = (hit.distance - skinWidth) * directionY;
                     rayLength = hit.distance;
@@ -199,7 +195,6 @@ public class LP2DController : LPRaycastController
 
 	void DescendSlope(ref Vector2 moveAmount) 
 	{
-
 		RaycastHit2D maxSlopeHitLeft = Physics2D.Raycast (raycastOrigins.bottomLeft, Vector2.down, Mathf.Abs (moveAmount.y) + skinWidth, collisionMask);
 		RaycastHit2D maxSlopeHitRight = Physics2D.Raycast (raycastOrigins.bottomRight, Vector2.down, Mathf.Abs (moveAmount.y) + skinWidth, collisionMask);
 

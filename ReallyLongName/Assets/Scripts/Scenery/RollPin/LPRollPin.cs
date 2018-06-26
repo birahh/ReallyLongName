@@ -6,6 +6,7 @@ public class LPRollPin : LPBaseRollPin
 {
     private Rigidbody2D rigidbody;
     public float Torque;
+    public float xDiff;
 
     private float partialTorque;
 
@@ -13,7 +14,6 @@ public class LPRollPin : LPBaseRollPin
     {
         rigidbody = GetComponent<Rigidbody2D>();
     }
-
 
     void Update()
     {
@@ -24,7 +24,7 @@ public class LPRollPin : LPBaseRollPin
     {
         if (coll.tag.Equals("Player")) {
             
-            Torque = transform.position.x - coll.transform.position.x;
+            Torque = ( transform.position.x - coll.transform.position.x );
         }
     }
 

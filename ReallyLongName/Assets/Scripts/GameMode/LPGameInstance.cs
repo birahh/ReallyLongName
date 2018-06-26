@@ -109,26 +109,8 @@ public static class LPGameInstance
 	{
 		NextLevel = CurrentLevel + 1;
 
-		// if (NextLevel > GameScenes.Length - 1) {
-			// NextLevel = GameScenes.Length - 1;
-		// 	LoadFinalScene();
-		// } else {
-			LoadTransitionScene();			
-		// }
+		LoadTransitionScene();			
 	}
-
-	// public static void LoadScene ()
-    // {	
-        // LevelCoinAmount = 0;
-
-		// CurrentLevel = NextLevel;
-
-        // SceneObjects = new LPBaseObject[0];
-
-        // SceneManager.LoadScene(GetSceneName(NextLevel));
-
-        // SceneObjects = Object.FindObjectsOfType<LPBaseObject>() as LPBaseObject[];
-	// }
 	#endregion
 
 	#region Coins and Checkpoints

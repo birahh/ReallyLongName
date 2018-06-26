@@ -58,5 +58,11 @@ public class LPInputController : MonoBehaviour
 			player.IsRunning = false;
 		}
         #endregion
+
+		#region RestartLevel
+		if (Input.GetKeyUp (KeyCode.R)) {
+			LPGameInstance.LoadTransitionScene();
+		}
+		#endregion
     }
 }

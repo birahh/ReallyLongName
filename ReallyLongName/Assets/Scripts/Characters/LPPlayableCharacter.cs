@@ -6,6 +6,8 @@ public class LPPlayableCharacter : LPBaseCharacter
 {
     #region GroundMovementation
     public bool IsRunning;
+    public bool IsWalking;
+    public bool IsJumping;
     public bool IsFalling;
 	float moveSpeed = 6f;
     float velocityXSmoothing;
@@ -57,13 +59,19 @@ public class LPPlayableCharacter : LPBaseCharacter
     public ParticleSystem JumpUpEmitter;
     public ParticleSystem JumpDownEmitter;
 
+    bool wasJumpUpEmitterOn = false;
+    bool wasJumpDownEmitterOn = false;
 	bool hadCollisionsBelow = false;
 	bool wasFallingDown = false;
     #endregion
 
+    private Animator animator;
+
     void Start() 
 	{
 		base.Start();
+
+        animator = GetComponent<Animator>();
 
         Life = LPDefinitions.Character_MaxLife;
 
@@ -110,6 +118,8 @@ public class LPPlayableCharacter : LPBaseCharacter
 		}
 
         IsFalling = velocity.y < -0.00000001f;
+        IsWalking = (velocity.x > 0.05f)||(velocity.x < -0.05f);
+        IsJumping = (velocity.y > 0.05f)||(velocity.y < -0.05f);
 
         #region ParticleSystemHandle
 		if (IsFalling && !wasFallingDown)
@@ -126,19 +136,23 @@ public class LPPlayableCharacter : LPBaseCharacter
         }
 
         //  JumpUpEmitter
-		if (velocity.y > 0.00000001f && hadCollisionsBelow) {			
+		if (velocity.y > 0.00000001f && hadCollisionsBelow && !wasJumpUpEmitterOn) {
             JumpUpEmitter.Play();
 			hadCollisionsBelow = false;
-        } else {
+            wasJumpUpEmitterOn = true;
+            print("JumpUpEmitterPlay");
+        } else if(wasJumpUpEmitterOn) {
+            wasJumpUpEmitterOn = false;
             JumpUpEmitter.Stop();
         }
 
         //  JumpDownEmitter
-		if (wasFallingDown && collisions.below) {
+		if (wasFallingDown && collisions.below && !wasJumpDownEmitterOn) {
             JumpDownEmitter.Play();
 			wasFallingDown = false;
-        } else {
-            JumpDownEmitter.Stop();
+            wasJumpDownEmitterOn = true;
+        } else if(wasJumpDownEmitterOn) {
+            Invoke("JumpDownEmitterStop", .05f);            
         }
         #endregion
 
@@ -148,6 +162,19 @@ public class LPPlayableCharacter : LPBaseCharacter
                 if(collisions.objectGameObject.GetComponent<LPBasePlatform>())
                     collisions.objectGameObject.GetComponent<LPBasePlatform>().Activate();
         #endregion
+
+        #region Animation Settings
+        animator.SetBool("isWallSliding", wallSliding);
+        animator.SetBool("isWalking", IsWalking);
+        animator.SetBool("isJumping", IsJumping);
+        // print(IsWalking+", "+IsJumping+", "+wallSliding);
+        #endregion
+    }
+
+    void JumpDownEmitterStop()
+    {
+        wasJumpDownEmitterOn = false;
+        JumpDownEmitter.Stop();
     }
 
 	public void SetDirectionalInput (Vector2 input, float motionX)

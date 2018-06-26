@@ -31,7 +31,6 @@ public class LPGameMode : MonoBehaviour
 	
 	void Update()
     {
-		
 	}
 
     public void PlayerDiedWithDelay()
