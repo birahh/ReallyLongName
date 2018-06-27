@@ -319,9 +319,11 @@ MonoBehaviour:
   Life: 10
   CanGetHit: 1
   IsRunning: 0
+  IsWalking: 0
+  IsJumping: 0
   IsFalling: 0
-  WallJumpClimb: {x: 0, y: 0}
-  WallJumpOff: {x: 0, y: 0}
+  WallJumpClimb: {x: 5, y: 8}
+  WallJumpOff: {x: 5, y: 12}
   WallLeap: {x: 0, y: 0}
   CurrentPowerUp: 3
   IsAlive: 1
