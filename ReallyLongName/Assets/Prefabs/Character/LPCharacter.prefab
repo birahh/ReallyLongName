@@ -324,7 +324,7 @@ MonoBehaviour:
   IsFalling: 0
   WallJumpClimb: {x: 5, y: 8}
   WallJumpOff: {x: 5, y: 12}
-  WallLeap: {x: 0, y: 0}
+  WallLeap: {x: 5, y: 12}
   CurrentPowerUp: 3
   IsAlive: 1
   RunEmitter: {fileID: 198961810995750576}
