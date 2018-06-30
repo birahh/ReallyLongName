@@ -9,12 +9,15 @@ public class LPAudioController : MonoBehaviour
     public AudioSource[] Soundtrack;
     public AudioSource[] Soundscape;
 
-	public AudioSource[] EnemyJumpAudioClips;
-	public string[] EnemyJumpAudioNames;
+	public AudioSource[] PlayerAudioClips;
+	public string[] PlayerAudioNames;
+
 	public AudioSource[] EnemyMelee;
+	public string[] EnemyMeleeAudioNames;
     public AudioSource[] EnemySaw;
+	public string[] EnemySawAudioNames;
     public AudioSource[] EnemySmasher;
-    public AudioSource[] EnemyShoot;
+	public string[] EnemySmasherAudioNames;
 
     void Start () 
 	{

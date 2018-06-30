@@ -143,8 +143,7 @@ public class LPPlayableCharacter : LPBaseCharacter
             wasJumpUpEmitterOn = true;
             animator.Play("Jump");
         } else if(wasJumpUpEmitterOn) {
-            wasJumpUpEmitterOn = false;
-            JumpUpEmitter.Stop();
+            Invoke("JumpUpEmitterStop", .5f);     
         }
 
         //  JumpDownEmitter
@@ -183,6 +182,12 @@ public class LPPlayableCharacter : LPBaseCharacter
     {
         wasJumpDownEmitterOn = false;
         JumpDownEmitter.Stop();
+    }
+
+    void JumpUpEmitterStop()
+    {        
+        wasJumpUpEmitterOn = false;
+        JumpUpEmitter.Stop();
     }
 
 	public void SetDirectionalInput (Vector2 input, float motionX)
