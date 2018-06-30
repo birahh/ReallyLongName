@@ -4,20 +4,18 @@ using UnityEngine;
 
 public class LPAudioController : MonoBehaviour
 {
-    public AudioSource[] SFXMenu;
+    public AudioClip[] SFXMenu;
 
-    public AudioSource[] Soundtrack;
-    public AudioSource[] Soundscape;
+	public AudioClip[] SoundtrackLevels;
+	public AudioClip SoundtrackFinalScene;
+	public AudioClip SoundtrackGameOverScene;
+	public AudioClip SoundtrackMenuScene;
+	public AudioClip SoundtrackLevelEndSuccess;
+	public AudioClip SoundtrackLevelEndFail;
 
-	public AudioSource[] PlayerAudioClips;
-	public string[] PlayerAudioNames;
+	public AudioClip[] PlayerAudioClips;
 
-	public AudioSource[] EnemyMelee;
-	public string[] EnemyMeleeAudioNames;
-    public AudioSource[] EnemySaw;
-	public string[] EnemySawAudioNames;
-    public AudioSource[] EnemySmasher;
-	public string[] EnemySmasherAudioNames;
+	public AudioClip[] EnemyAudioClips;
 
     void Start () 
 	{
@@ -27,6 +25,27 @@ public class LPAudioController : MonoBehaviour
 	void Update () 
 	{
 		
+	}
+
+	AudioClip PlaySoundtrack()
+	{
+		switch (LPGameInstance.CurrentLevel) {
+		case -4: 
+			return SoundtrackFinalScene;
+			break; 
+		case -3: 
+			return SoundtrackGameOverScene;
+			break; 
+		case -2: 
+			return null;
+			break; 
+		case -1:
+			return SoundtrackMenuScene;
+			break;
+		default:
+			return SoundtrackLevels[LPGameInstance.CurrentLevel];
+			break;
+		}
 	}
 
 	void PlayEnemyJump(string audioName)
