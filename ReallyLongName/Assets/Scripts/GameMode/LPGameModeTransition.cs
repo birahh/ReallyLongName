@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class LPGameModeTransition : LPGameMode 
 {
-	public float TransitionToNextLevelDelay = LPDefinitions.GameMode_TransitionDelay;
+	public float TransitionToNextLevelDelay = LPDefinitions.GameMode_TransitionDelay / 4;
 
 	void Start () 
 	{
