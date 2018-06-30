@@ -141,7 +141,7 @@ public class LPPlayableCharacter : LPBaseCharacter
             JumpUpEmitter.Play();
 			hadCollisionsBelow = false;
             wasJumpUpEmitterOn = true;
-            print("JumpUpEmitterPlay");
+            animator.Play("Jump");
         } else if(wasJumpUpEmitterOn) {
             wasJumpUpEmitterOn = false;
             JumpUpEmitter.Stop();
@@ -152,6 +152,7 @@ public class LPPlayableCharacter : LPBaseCharacter
             JumpDownEmitter.Play();
 			wasFallingDown = false;
             wasJumpDownEmitterOn = true;
+            animator.Play("Idle");
         } else if(wasJumpDownEmitterOn) {
             Invoke("JumpDownEmitterStop", .05f);            
         }
