@@ -58,6 +58,7 @@ public class LPPlayableCharacter : LPBaseCharacter
     public ParticleSystem RunEmitter;
     public ParticleSystem JumpUpEmitter;
     public ParticleSystem JumpDownEmitter;
+    public ParticleSystem WallSlideEmitter;
 
     bool wasJumpUpEmitterOn = false;
     bool wasJumpDownEmitterOn = false;
@@ -154,6 +155,12 @@ public class LPPlayableCharacter : LPBaseCharacter
         } else if(wasJumpDownEmitterOn) {
             Invoke("JumpDownEmitterStop", .05f);            
         }
+
+        //  WallSlideEmitter
+		if (wallSliding)
+            WallSlideEmitter.Play();
+        else
+            WallSlideEmitter.Stop();
         #endregion
 
         #region Platforms Activate
