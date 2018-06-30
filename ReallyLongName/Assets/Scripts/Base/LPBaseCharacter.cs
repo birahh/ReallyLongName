@@ -13,6 +13,8 @@ public class LPBaseCharacter : LP2DController
     public delegate void CharacterFinishLevel();
     public static event CharacterFinishLevel OnCharacterFinishLevel;
 
+	protected bool IsActive = true;
+
     void Start()
     {
 		base.Start();
@@ -42,15 +44,16 @@ public class LPBaseCharacter : LP2DController
 
     public void Die()
     {
-        if (OnCharacterDie != null) {
+		if (OnCharacterDie != null) {
+			CanGetHit = false;
             OnCharacterDie();
-            CanGetHit = false;
         }        
     }
 
     public void FinishLevel()
     {
         if (OnCharacterFinishLevel != null) {
+			IsActive = false;
             OnCharacterFinishLevel();
         }        
     }

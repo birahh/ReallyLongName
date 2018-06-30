@@ -14,10 +14,12 @@ public class LPGameMode : MonoBehaviour
 	public AudioSource SoundtrackAudioSource;
 	public AudioSource SoundEffectsAudioSource;
 
+	public bool WillChangeSoundtrack = false;
+
     void Start ()
     {
-        LPPlayableCharacter.OnCharacterDie += PlayerDied;
-		LPPlayableCharacter.OnCharacterFinishLevel += LoadNextLevel;
+		LPPlayableCharacter.OnCharacterDie += PlayerDiedWithDelay;
+		LPPlayableCharacter.OnCharacterFinishLevel += LoadNextLevelWithDelay;
 
 		if (LPGameInstance.GameModeInstance == null) {
 			LPGameInstance.SetGameModeInstance (this);
@@ -37,8 +39,9 @@ public class LPGameMode : MonoBehaviour
 	}
 
     public void PlayerDiedWithDelay()
-    {        
-		Invoke("PlayerDied", LPDefinitions.GameMode_TransitionDelay);
+	{
+		WillChangeSoundtrack = true;
+		Invoke("PlayerDied", LPDefinitions.GameMode_TransitionDelay * 0.6f);
     }
 
     public void PlayerDied()
@@ -48,6 +51,7 @@ public class LPGameMode : MonoBehaviour
 
 	public void LoadNextLevelWithDelay() 
 	{
+		WillChangeSoundtrack = true;
 		Invoke("LoadNextLevel", LPDefinitions.GameMode_TransitionDelay);
 	}
 

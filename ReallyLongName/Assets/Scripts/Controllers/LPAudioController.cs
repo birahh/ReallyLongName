@@ -14,17 +14,58 @@ public class LPAudioController : MonoBehaviour
 	public AudioClip SoundtrackLevelEndFail;
 
 	public AudioClip[] PlayerAudioClips;
-
 	public AudioClip[] EnemyAudioClips;
+
+
+	private LPGameMode gameModeReference;
+
+	private bool playSuccess = true;
+	private bool played = false;
 
     void Start () 
 	{
-		
+
+		LPBaseCharacter.OnCharacterDie += FailEnd;
+		LPBaseCharacter.OnCharacterFinishLevel += SuccessEnd;
+
+		gameModeReference = GameObject.FindObjectOfType<LPGameMode>();
+
+		gameModeReference.SoundtrackAudioSource.clip = PlaySoundtrack();
+		gameModeReference.SoundtrackAudioSource.Play();
 	}
     
 	void Update () 
 	{
-		
+		if (gameModeReference.WillChangeSoundtrack) {
+
+			if (gameModeReference.SoundtrackAudioSource.volume <= 0.1f && !played) {
+			
+				gameModeReference.SoundtrackAudioSource.Stop();
+			
+				if (playSuccess)
+					gameModeReference.SoundtrackAudioSource.clip = SoundtrackLevelEndSuccess;
+				else
+					gameModeReference.SoundtrackAudioSource.clip = SoundtrackLevelEndFail;				
+			
+				played = true;
+				gameModeReference.SoundtrackAudioSource.Play();
+
+			} else if (!played) {
+				gameModeReference.SoundtrackAudioSource.volume = Mathf.Lerp(gameModeReference.SoundtrackAudioSource.volume, 0.0f, 0.1f);
+			} else {
+				gameModeReference.SoundtrackAudioSource.volume = Mathf.Lerp(gameModeReference.SoundtrackAudioSource.volume, 1.0f, 0.008f);
+			}
+		}
+	}
+
+	void SuccessEnd()
+	{
+		playSuccess = true;
+	}
+
+	void FailEnd()
+	{
+		playSuccess = false;
 	}
 
 	AudioClip PlaySoundtrack()
