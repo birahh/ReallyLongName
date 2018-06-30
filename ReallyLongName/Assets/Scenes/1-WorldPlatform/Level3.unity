@@ -15224,55 +15224,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 114963168152132324, guid: fb615ea7462284d64b2225a526891a2c,
-        type: 2}
-      propertyPath: CurrentPowerUp
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 114963168152132324, guid: fb615ea7462284d64b2225a526891a2c,
-        type: 2}
-      propertyPath: IsAlive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114963168152132324, guid: fb615ea7462284d64b2225a526891a2c,
-        type: 2}
-      propertyPath: IsFalling
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 114963168152132324, guid: fb615ea7462284d64b2225a526891a2c,
-        type: 2}
-      propertyPath: WallJumpClimb.x
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 114963168152132324, guid: fb615ea7462284d64b2225a526891a2c,
-        type: 2}
-      propertyPath: WallJumpClimb.y
-      value: 12
-      objectReference: {fileID: 0}
-    - target: {fileID: 114963168152132324, guid: fb615ea7462284d64b2225a526891a2c,
-        type: 2}
-      propertyPath: WallJumpOff.x
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 114963168152132324, guid: fb615ea7462284d64b2225a526891a2c,
-        type: 2}
-      propertyPath: WallJumpOff.y
-      value: 12
-      objectReference: {fileID: 0}
-    - target: {fileID: 114963168152132324, guid: fb615ea7462284d64b2225a526891a2c,
-        type: 2}
-      propertyPath: WallLeap.x
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 114963168152132324, guid: fb615ea7462284d64b2225a526891a2c,
-        type: 2}
-      propertyPath: WallLeap.y
-      value: 12
-      objectReference: {fileID: 0}
-    - target: {fileID: 1854245786523624, guid: fb615ea7462284d64b2225a526891a2c, type: 2}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fb615ea7462284d64b2225a526891a2c, type: 2}
   m_IsPrefabParent: 0
