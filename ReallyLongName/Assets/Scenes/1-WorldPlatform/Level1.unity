@@ -2303,7 +2303,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4899842369311480, guid: ba1f2514a22c542c6b3c4de0ea84e15d, type: 2}
       propertyPath: m_LocalPosition.y
-      value: -346.76752
+      value: -346.46
       objectReference: {fileID: 0}
     - target: {fileID: 4899842369311480, guid: ba1f2514a22c542c6b3c4de0ea84e15d, type: 2}
       propertyPath: m_LocalPosition.z
@@ -2328,16 +2328,6 @@ Prefab:
     - target: {fileID: 4899842369311480, guid: ba1f2514a22c542c6b3c4de0ea84e15d, type: 2}
       propertyPath: m_RootOrder
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 114612914932579392, guid: ba1f2514a22c542c6b3c4de0ea84e15d,
-        type: 2}
-      propertyPath: LocalWaypoints.Array.data[0].x
-      value: -1.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 114612914932579392, guid: ba1f2514a22c542c6b3c4de0ea84e15d,
-        type: 2}
-      propertyPath: LocalWaypoints.Array.data[1].x
-      value: 1.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ba1f2514a22c542c6b3c4de0ea84e15d, type: 2}
@@ -8413,7 +8403,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4899842369311480, guid: ba1f2514a22c542c6b3c4de0ea84e15d, type: 2}
       propertyPath: m_LocalPosition.y
-      value: -353.74
+      value: -353.51
       objectReference: {fileID: 0}
     - target: {fileID: 4899842369311480, guid: ba1f2514a22c542c6b3c4de0ea84e15d, type: 2}
       propertyPath: m_LocalPosition.z
@@ -8439,25 +8429,10 @@ Prefab:
       propertyPath: m_RootOrder
       value: 2
       objectReference: {fileID: 0}
-    - target: {fileID: 114612914932579392, guid: ba1f2514a22c542c6b3c4de0ea84e15d,
-        type: 2}
-      propertyPath: LocalWaypoints.Array.data[0].x
-      value: -2
-      objectReference: {fileID: 0}
-    - target: {fileID: 114612914932579392, guid: ba1f2514a22c542c6b3c4de0ea84e15d,
-        type: 2}
-      propertyPath: LocalWaypoints.Array.data[1].x
-      value: 2
-      objectReference: {fileID: 0}
     - target: {fileID: 1331482524646406, guid: ba1f2514a22c542c6b3c4de0ea84e15d, type: 2}
       propertyPath: m_Name
       value: LPEnemyMelee (2)
       objectReference: {fileID: 0}
-    - target: {fileID: 95335808585360484, guid: ba1f2514a22c542c6b3c4de0ea84e15d,
-        type: 2}
-      propertyPath: m_Controller
-      value: 
-      objectReference: {fileID: 9100000, guid: 2ef165323a69b49e0864a94f0b1c53cf, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ba1f2514a22c542c6b3c4de0ea84e15d, type: 2}
   m_IsPrefabParent: 0
