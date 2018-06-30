@@ -19,7 +19,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4830300089027386}
-  - component: {fileID: 114280487578796972}
+  - component: {fileID: 114051467646728776}
   m_Layer: 0
   m_Name: LPAudioController
   m_TagString: Untagged
@@ -40,7 +40,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &114280487578796972
+--- !u!114 &114051467646728776
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -51,5 +51,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0dafab220ee9b433fb283419ec7984b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  EnemyShoot: []
-  EnemySmasher: []
+  SFXMenu:
+  - {fileID: 8300000, guid: 5f7f8f245a95ec94baee9b89dda901ba, type: 3}
+  - {fileID: 8300000, guid: aaa982264f3b771419c939e405c58fab, type: 3}
+  SoundtrackLevels:
+  - {fileID: 8300000, guid: 432a6ed89a7464f4191371c447bffa40, type: 3}
+  - {fileID: 8300000, guid: 9e16a4dc8af5dd943b463cd8dfd95cb0, type: 3}
+  - {fileID: 8300000, guid: 68e74e43327dd9643a356dbeb80a3fac, type: 3}
+  - {fileID: 8300000, guid: 4ce1630fca9d7f94182f63c72db30c5b, type: 3}
+  SoundtrackFinalScene: {fileID: 8300000, guid: a55d6ad06d60a6f49b0384d9c3b12aad,
+    type: 3}
+  SoundtrackGameOverScene: {fileID: 8300000, guid: 5aad71e520b72384e8aff23cc8e0fd9d,
+    type: 3}
+  SoundtrackMenuScene: {fileID: 8300000, guid: a55d6ad06d60a6f49b0384d9c3b12aad, type: 3}
+  SoundtrackLevelEndSuccess: {fileID: 8300000, guid: 4e052f3d99f51244ca064f97c86f4e34,
+    type: 3}
+  SoundtrackLevelEndFail: {fileID: 8300000, guid: 7979d10094750684e929f99e6d72fea2,
+    type: 3}
+  PlayerAudioClips:
+  - {fileID: 8300000, guid: b1a3cc3b7f0578d42a074993e46c7967, type: 3}
+  - {fileID: 8300000, guid: a0a5847bc49acfc4c8388f8aa821f2ed, type: 3}
+  - {fileID: 8300000, guid: 500556b1420e2494687cad33dd38981b, type: 3}
+  EnemyAudioClips:
+  - {fileID: 8300000, guid: 1b1d4905040caa446aee720d6391f828, type: 3}
+  - {fileID: 8300000, guid: 20ff8eef54c9f15488736dfa1ccb9075, type: 3}

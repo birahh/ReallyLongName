@@ -11,6 +11,9 @@ public class LPGameMode : MonoBehaviour
     public string MenuScene;        //  As Default -1 in CurrentScene
     public string[] GameScenes;     //  As Default it's index in CurrentScene
 
+	public AudioSource SoundtrackAudioSource;
+	public AudioSource SoundEffectsAudioSource;
+
     void Start ()
     {
         LPPlayableCharacter.OnCharacterDie += PlayerDied;
