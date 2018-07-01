@@ -35,6 +35,7 @@ public class LPGameMode : MonoBehaviour
 	
 	void Update()
     {
+		print(Mathf.FloorToInt(LPGameInstance.LevelCoinAmount / LPGameInstance.CoinToContinueAmount) >= LPGameInstance);
 	}
 
     public void PlayerDiedWithDelay()
@@ -60,6 +61,11 @@ public class LPGameMode : MonoBehaviour
 	{
 		LPPlayableCharacter.OnCharacterDie -= PlayerDiedWithDelay;
 		LPPlayableCharacter.OnCharacterFinishLevel -= LoadNextLevelWithDelay;	
+	}
+
+	void OnDestroy()
+	{
+		RemoveDelegates();
 	}
 
 	public void LoadNextLevel() 

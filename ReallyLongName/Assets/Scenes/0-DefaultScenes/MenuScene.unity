@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481694, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -187,7 +187,7 @@ GameObject:
   - component: {fileID: 105494810}
   - component: {fileID: 105494809}
   m_Layer: 5
-  m_Name: Button01
+  m_Name: ButtonStartGame
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -251,17 +251,17 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 11500000, guid: 8c0d7901814a180478d40b5612e38b27, type: 3}
-        m_MethodName: set_name
-        m_Mode: 5
+      - m_Target: {fileID: 1017875045}
+        m_MethodName: LoadNextLevel
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: LoadNextScene()
+          m_StringArgument: LPGameInstance.LoadNextScene()
           m_BoolArgument: 0
-        m_CallState: 2
+        m_CallState: 1
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &105494810
@@ -680,7 +680,7 @@ GameObject:
   - component: {fileID: 757662373}
   - component: {fileID: 757662372}
   m_Layer: 5
-  m_Name: Button04
+  m_Name: ButtonQuit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -754,7 +754,7 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
-        m_CallState: 2
+        m_CallState: 1
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &757662373
@@ -894,6 +894,12 @@ Transform:
   m_PrefabParentObject: {fileID: 4352111407940858, guid: 23aa3b166b940fa4792cea9d9cc47ab6,
     type: 2}
   m_PrefabInternal: {fileID: 990999919}
+--- !u!114 &1017875045 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114886484390243708, guid: 23aa3b166b940fa4792cea9d9cc47ab6,
+    type: 2}
+  m_PrefabInternal: {fileID: 990999919}
+  m_Script: {fileID: 11500000, guid: 99b3c401820a45340a72a211c147ed08, type: 3}
 --- !u!1 &1192891277
 GameObject:
   m_ObjectHideFlags: 0
@@ -905,7 +911,7 @@ GameObject:
   - component: {fileID: 1192891280}
   - component: {fileID: 1192891279}
   m_Layer: 5
-  m_Name: Credits (1)
+  m_Name: Credits
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1084,7 +1090,7 @@ GameObject:
   - component: {fileID: 1299442521}
   - component: {fileID: 1299442520}
   m_Layer: 0
-  m_Name: ew
+  m_Name: Main Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1354,7 +1360,7 @@ GameObject:
   - component: {fileID: 1680591314}
   - component: {fileID: 1680591313}
   m_Layer: 5
-  m_Name: Credits (2)
+  m_Name: Level Name
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1673,7 +1679,7 @@ GameObject:
   - component: {fileID: 1792334441}
   - component: {fileID: 1792334443}
   m_Layer: 5
-  m_Name: Image (1)
+  m_Name: Logo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1889,7 +1895,7 @@ GameObject:
   - component: {fileID: 1996758592}
   - component: {fileID: 1996758591}
   m_Layer: 5
-  m_Name: Button02
+  m_Name: ButtonSettings
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
