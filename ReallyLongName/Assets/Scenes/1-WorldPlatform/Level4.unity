@@ -23048,6 +23048,16 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 802992375}
     m_Modifications:
+    - target: {fileID: 114051467646728776, guid: 8fed519331be3401b9cad4e9185bdb74,
+        type: 2}
+      propertyPath: EnemyAudioClipsVolume.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114051467646728776, guid: 8fed519331be3401b9cad4e9185bdb74,
+        type: 2}
+      propertyPath: PlayerAudioClipsVolume.Array.size
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 4830300089027386, guid: 8fed519331be3401b9cad4e9185bdb74, type: 2}
       propertyPath: m_LocalPosition.x
       value: 0
