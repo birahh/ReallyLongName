@@ -12,7 +12,7 @@ public class LPHUDController : MonoBehaviour
     int coinAmount = 0;
     int continueAmount = 2;
 
-	float initialTime = 10.0f;
+	float initialTime = 300.0f;
 	bool isFinished = false;
 
 	LPPlayableCharacter playerReference;
