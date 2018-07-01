@@ -73,7 +73,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: a0a5847bc49acfc4c8388f8aa821f2ed, type: 3}
   - {fileID: 8300000, guid: 500556b1420e2494687cad33dd38981b, type: 3}
   EnemyAudioClips:
-  - {fileID: 8300000, guid: 1b1d4905040caa446aee720d6391f828, type: 3}
+  - {fileID: 8300000, guid: 20ff8eef54c9f15488736dfa1ccb9075, type: 3}
   - {fileID: 8300000, guid: 20ff8eef54c9f15488736dfa1ccb9075, type: 3}
   PlayerAudioClipsVolume:
   - 0
