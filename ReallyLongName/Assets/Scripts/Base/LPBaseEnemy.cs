@@ -169,7 +169,7 @@ public class LPBaseEnemy : LPBaseObject
 
 	void HitGround()
 	{
-		foreach (var particle in OnHitFloorParticles) {
+		foreach (ParticleSystem particle in OnHitFloorParticles) {
 			particle.Play();
 		}
 
@@ -181,7 +181,7 @@ public class LPBaseEnemy : LPBaseObject
 
 	void GotHit()
 	{
-		foreach (var particle in OnDieParticles) {
+		foreach (ParticleSystem particle in OnDieParticles) {
 			particle.Play();
 		}
 
@@ -206,11 +206,13 @@ public class LPBaseEnemy : LPBaseObject
 
                 float heightDiff = player.transform.position.y - transform.position.y;
 
-                if (player.IsFalling && CanDie && ( heightDiff >= 0.5f)) {
-
+                if (player.IsFalling && CanDie && ( heightDiff >= 0.08f)) {
+					
 					GotHit();
 					player.AddImpulseUp();
-					GameObject.Destroy(gameObject);
+					GetComponent<Renderer>().enabled = false;
+					GetComponent<Collider2D>().enabled = false;
+					Invoke("DestroySelf", 1.0f);
                     
                 } else {
 
@@ -222,6 +224,11 @@ public class LPBaseEnemy : LPBaseObject
         }
     }
     #endregion
+
+	void DestroySelf()
+	{
+		GameObject.Destroy(gameObject);
+	}
 
     #region UI On Editor
     void OnDrawGizmos() 
