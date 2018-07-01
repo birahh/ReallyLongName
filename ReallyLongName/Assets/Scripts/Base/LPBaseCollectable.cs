@@ -107,6 +107,7 @@ public class LPBaseCollectable : LPBaseObject
 		Invoke("SelfDestroyWithDelay", 1.5f);
     }
 
+
 	void SelfDestroyWithDelay()
 	{
 		GameObject.Destroy(gameObject);
