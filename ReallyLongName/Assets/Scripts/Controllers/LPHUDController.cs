@@ -12,7 +12,11 @@ public class LPHUDController : MonoBehaviour
     int coinAmount = 0;
     int continueAmount = 2;
 
-	float initialTime = 300.0f;
+	float initialTime = 10.0f;
+	bool isFinished = false;
+
+	LPPlayableCharacter playerReference;
+
 
 	// Use this for initialization
 	void Start () 
@@ -22,17 +26,35 @@ public class LPHUDController : MonoBehaviour
         LPBaseCharacter.OnCharacterDie += LPGameInstance.RemoveContinue;
 
         continueAmount = LPGameInstance.ContinueAmount;
+
+		playerReference = GameObject.FindObjectOfType<LPPlayableCharacter>();
 	}
 
 	// Update is called once per frame
 	void Update () 
 	{
-		initialTime = initialTime - Time.deltaTime;
+		if (!isFinished) {
+			
+			if (initialTime > 0) {
+					
+				initialTime = initialTime - Time.deltaTime;
 
-        coinAmount = LPGameInstance.LevelCoinAmount;
-        continueAmount = LPGameInstance.ContinueAmount;
+		        coinAmount = LPGameInstance.LevelCoinAmount;
+		        continueAmount = LPGameInstance.ContinueAmount;
 
-        UpdateHUDText();
+				UpdateHUDText();
+
+			} else {
+
+				isFinished = true;
+
+				initialTime = 0;
+				UpdateHUDText();
+
+				if (playerReference)
+					playerReference.Hit();
+			}
+		}
     }
 
     void UpdateHUDText()
