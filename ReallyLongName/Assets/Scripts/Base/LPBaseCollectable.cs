@@ -93,7 +93,8 @@ public class LPBaseCollectable : LPBaseObject
 
     void SelfDestroy()
     {
-		CollectableParticle.Play();
+		if (CollectableParticle)
+			CollectableParticle.Play();
 		
         if(OnCollectedCoin != null)
             if(this.GetType() == typeof(LPCollectableCoin))
