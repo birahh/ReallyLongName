@@ -13,8 +13,8 @@ public static class LPGameInstance
 	public static string GameOverScene;
 	public static string FinalScene;
 
-	public static int CurrentLevel = 0;
-	public static int NextLevel = 0;
+	public static int CurrentLevel = -1;
+	public static int NextLevel = -1;
 
     public static int TotalCoinAmount = 0;
     public static int LevelCoinAmount = 0;
@@ -132,9 +132,8 @@ public static class LPGameInstance
     {
         TotalCoinAmount += LevelCoinAmount += coinAmount;
 
-		if (LevelCoinAmount / CoinToContinueAmount > lastContinueUpdate) {
+		if (Mathf.FloorToInt(LevelCoinAmount / CoinToContinueAmount) >= lastContinueUpdate) {
 			lastContinueUpdate++;
-
 			ContinueAmount++;
 		}
     }

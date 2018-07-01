@@ -121,6 +121,11 @@ public class LPAudioController : MonoBehaviour
 		LPBaseEnemy.OnEnemyHitFloor -= PlayEnemyHitFloorAudio;
 	}
 
+	void OnDestroy()
+	{
+		RemoveDelegates();
+	}
+
 	AudioClip PlaySoundtrack()
 	{
 		switch (LPGameInstance.CurrentLevel) {
@@ -141,16 +146,4 @@ public class LPAudioController : MonoBehaviour
 			break;
 		}
 	}
-
-	void PlayEnemyJump(string audioName)
-	{
-		if (audioName.Equals("Jump")) {
-			//EnemyJump[0] as Play
-		}
-
-		if (audioName.Equals("Shoot")) {
-			//EnemyJump[1] as Play
-		}
-	}
-
 }
