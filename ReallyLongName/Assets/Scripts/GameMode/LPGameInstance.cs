@@ -59,20 +59,6 @@ public static class LPGameInstance
 		}
 	}	
 
-    public static void ReloadCurrentScene()
-    {		
-		LoadTransitionScene ();
-    }
-
-	public static void LoadTransitionScene()
-	{
-		LevelCoinAmount = 0;
-
-		SceneObjects = new LPBaseObject[0];
-
-		SceneManager.LoadScene(GetSceneName(-2));
-	}
-
 	public static void LoadSceneAfterTransition()
 	{
 		CurrentLevel = NextLevel;
@@ -83,6 +69,20 @@ public static class LPGameInstance
 			SceneManager.LoadScene(GetSceneName(CurrentLevel));
 		}
 	}
+
+	public static void LoadTransitionScene()
+	{
+		LevelCoinAmount = 0;
+
+		SceneObjects = new LPBaseObject[0];
+
+		SceneManager.LoadScene(GetSceneName(-2));
+	}
+
+    public static void ReloadCurrentScene()
+    {		
+		LoadTransitionScene ();
+    }
 
 	public static void LoadGameOverScene()
 	{
