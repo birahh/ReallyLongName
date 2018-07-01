@@ -208,6 +208,9 @@ public class LPPlayableCharacter : LPBaseCharacter
 	public void OnJumpInputDown() 
 	{
         if (IsAlive) {
+
+			Jump();
+
             if (wallSliding) {
                 if (wallDirX == directionalInput.x) {
                     velocity.x = -wallDirX * WallJumpClimb.x;
@@ -322,6 +325,7 @@ public class LPPlayableCharacter : LPBaseCharacter
     public void PlayerDied()
     {
         if (IsAlive) {
+			RemoveDelegates();
 			
 			animator.Play("Dying");
 			base.TurnOffCollisions();
@@ -336,6 +340,15 @@ public class LPPlayableCharacter : LPBaseCharacter
 
     public void FinishPose()
     {
+		RemoveDelegates();
 		animator.Play("Victory");
     }
+
+	void RemoveDelegates()
+	{
+		OnCharacterDie -= PlayerDied;
+		OnCharacterFinishLevel -= FinishPose;
+
+		LPBaseCollectable.OnCollectedSpecial -= ReceivePowerUp;
+	}
 }

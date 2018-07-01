@@ -24,9 +24,13 @@ public class LPAudioController : MonoBehaviour
 
     void Start () 
 	{
-
 		LPBaseCharacter.OnCharacterDie += FailEnd;
 		LPBaseCharacter.OnCharacterFinishLevel += SuccessEnd;
+		LPBaseCharacter.OnCharacterJump += PlayJumpAudio;
+		LPBaseCollectable.OnCollectedSpecial += PlayItemCollectAudio;
+		LPBaseCollectable.OnCollectedCoin += PlayCoinCollectAudio;
+		LPBaseEnemy.OnEnemyGotHit += PlayEnemyHitAudio;
+		LPBaseEnemy.OnEnemyHitFloor += PlayEnemyHitFloorAudio;
 
 		gameModeReference = GameObject.FindObjectOfType<LPGameMode>();
 
@@ -61,11 +65,51 @@ public class LPAudioController : MonoBehaviour
 	void SuccessEnd()
 	{
 		playSuccess = true;
+		RemoveDelegates();
 	}
 
 	void FailEnd()
 	{
 		playSuccess = false;
+		RemoveDelegates();
+	}
+
+	void PlayItemCollectAudio(PowerUp powerUp)
+	{
+		gameModeReference.SoundEffectsAudioSource.PlayOneShot(PlayerAudioClips[2]);
+	}
+
+	void PlayCoinCollectAudio(int value)
+	{
+		gameModeReference.SoundEffectsAudioSource.PlayOneShot(PlayerAudioClips[1]);
+	}
+
+	void PlayJumpAudio()
+	{
+		gameModeReference.SoundEffectsAudioSource.PlayOneShot(PlayerAudioClips[0]);
+	}
+
+
+	void PlayEnemyHitAudio()
+	{
+		gameModeReference.SoundEffectsAudioSource.PlayOneShot(EnemyAudioClips[0]);
+	}
+
+
+	void PlayEnemyHitFloorAudio()
+	{
+		gameModeReference.SoundEffectsAudioSource.PlayOneShot(EnemyAudioClips[1]);
+	}
+
+	void RemoveDelegates()
+	{
+		LPBaseCharacter.OnCharacterDie -= FailEnd;
+		LPBaseCharacter.OnCharacterFinishLevel -= SuccessEnd;
+		LPBaseCharacter.OnCharacterJump -= PlayJumpAudio;
+		LPBaseCollectable.OnCollectedSpecial -= PlayItemCollectAudio;
+		LPBaseCollectable.OnCollectedCoin -= PlayCoinCollectAudio;
+		LPBaseEnemy.OnEnemyGotHit -= PlayEnemyHitAudio;
+		LPBaseEnemy.OnEnemyHitFloor -= PlayEnemyHitFloorAudio;
 	}
 
 	AudioClip PlaySoundtrack()

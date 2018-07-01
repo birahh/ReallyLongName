@@ -13,6 +13,9 @@ public class LPBaseCharacter : LP2DController
     public delegate void CharacterFinishLevel();
     public static event CharacterFinishLevel OnCharacterFinishLevel;
 
+	public delegate void CharacterJump();
+	public static event CharacterJump OnCharacterJump;
+
 	protected bool IsActive = true;
 
     void Start()
@@ -57,4 +60,11 @@ public class LPBaseCharacter : LP2DController
             OnCharacterFinishLevel();
         }        
     }
+
+	protected void Jump()
+	{
+		if (OnCharacterJump != null) {
+			OnCharacterJump();
+		}
+	}
 }

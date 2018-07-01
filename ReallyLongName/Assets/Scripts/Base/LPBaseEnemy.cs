@@ -25,6 +25,17 @@ public class LPBaseEnemy : LPBaseObject
     protected bool dontComeBack;
     private Vector3 initialPosition;
     private int lenght = 0;
+	private bool isPlayerActivated = false;
+
+	public delegate void EnemyGotHit();
+	public static event EnemyGotHit OnEnemyGotHit;
+
+	public delegate void EnemyHitFloor();
+	public static event EnemyHitFloor OnEnemyHitFloor;
+
+	public ParticleSystem[] OnDieParticles;
+	public ParticleSystem[] OnHitFloorParticles;
+	public TrailRenderer Trail;
 
     public void Start ()
     {
@@ -77,6 +88,7 @@ public class LPBaseEnemy : LPBaseObject
 
     public void Activate(float delay)
     {
+		isPlayerActivated = true;
         Invoke("Activate", delay);
     }
 
@@ -137,6 +149,12 @@ public class LPBaseEnemy : LPBaseObject
 					fromWaypointIndex = 0;
 					System.Array.Reverse(globalWaypoints);
 
+					if (isPlayerActivated && cycleIteration% 2 != 0)
+						HitGround();
+					else 
+						Trail.GetComponent<Renderer>().enabled = true;
+						
+
                     cycleIteration++;
 				}
 			}
@@ -147,6 +165,32 @@ public class LPBaseEnemy : LPBaseObject
 		return newPos - transform.position;
 	}
     #endregion
+
+	void HitGround()
+	{
+		if (OnEnemyHitFloor != null) {
+
+			foreach (var particle in OnHitFloorParticles) {
+				particle.Play();
+			}
+
+			OnEnemyHitFloor();
+		}
+	}
+
+	void GotHit()
+	{
+		if (OnEnemyGotHit != null) {
+
+			foreach (var particle in OnDieParticles) {
+				particle.Play();
+			}
+
+			Trail.GetComponent<Renderer>().enabled = false;
+
+			OnEnemyGotHit();
+		}
+	}
 
     #region Collisions
     void OnTriggerEnter2D(Collider2D coll)
@@ -161,6 +205,7 @@ public class LPBaseEnemy : LPBaseObject
 
                 if (player.IsFalling && CanDie && ( heightDiff >= 0.5f)) {
 
+					GotHit();
                     player.AddImpulseUp();
                     GameObject.Destroy(gameObject);
                     
