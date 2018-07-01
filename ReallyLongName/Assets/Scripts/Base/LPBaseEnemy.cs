@@ -37,6 +37,10 @@ public class LPBaseEnemy : LPBaseObject
 	public ParticleSystem[] OnHitFloorParticles;
 	public TrailRenderer Trail;
 
+	public Animator animator;
+	public GameObject body;
+	protected bool ShouldRotate = false;
+
     public void Start ()
     {
         initialPosition = transform.position;
@@ -139,8 +143,15 @@ public class LPBaseEnemy : LPBaseObject
         
 		Vector3 newPos = Vector3.Lerp (globalWaypoints [fromWaypointIndex], globalWaypoints [toWaypointIndex], easedPercentBetweenWaypoints);
 
-		if (percentBetweenWaypoints >= 1) {
+		if (percentBetweenWaypoints > 0.9f) {
+			ShouldRotate = true;
+		} else {
+			ShouldRotate = false;
+		}
 
+
+		if (percentBetweenWaypoints >= 1) {
+			
 			percentBetweenWaypoints = 0;
 			fromWaypointIndex ++;
 
@@ -153,12 +164,12 @@ public class LPBaseEnemy : LPBaseObject
 						HitGround();
 					else 
 						if (Trail != null)
-							Trail.GetComponent<Renderer>().enabled = false;
+							Trail.GetComponent<Renderer>().enabled = true;
 						
 
                     cycleIteration++;
 				}
-			}
+			} 
 
 			nextMoveTime = Time.time + WaitTime;
 		}
@@ -173,9 +184,6 @@ public class LPBaseEnemy : LPBaseObject
 			particle.Play();
 		}
 
-		if (Trail != null)
-			Trail.GetComponent<Renderer>().enabled = true;
-		
 		if (OnEnemyHitFloor != null) {
 
 			OnEnemyHitFloor();
@@ -188,6 +196,8 @@ public class LPBaseEnemy : LPBaseObject
 			particle.Play();
 		}
 
+		if (Trail != null)
+			Trail.GetComponent<Renderer>().enabled = false;
 
 		if (OnEnemyGotHit != null) {
 			
@@ -209,9 +219,15 @@ public class LPBaseEnemy : LPBaseObject
                 if (player.IsFalling && CanDie && ( heightDiff >= 0.08f)) {
 					
 					GotHit();
+					shouldPlay = false;
 					player.AddImpulseUp();
-					GetComponent<Renderer>().enabled = false;
 					GetComponent<Collider2D>().enabled = false;
+
+					if (body.GetComponent<Renderer>())
+						body.GetComponent<Renderer>().enabled = false;
+
+					if (GetComponent<Renderer>())
+						GetComponent<Renderer>().enabled = false;
 					Invoke("DestroySelf", 1.0f);
                     
                 } else {
