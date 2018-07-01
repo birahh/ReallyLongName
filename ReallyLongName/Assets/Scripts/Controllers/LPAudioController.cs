@@ -16,6 +16,10 @@ public class LPAudioController : MonoBehaviour
 	public AudioClip[] PlayerAudioClips;
 	public AudioClip[] EnemyAudioClips;
 
+	[Range(0.0f, 1.0f)]
+	public float[] PlayerAudioClipsVolume;
+	[Range(0.0f, 1.0f)]
+	public float[] EnemyAudioClipsVolume;
 
 	private LPGameMode gameModeReference;
 
@@ -76,28 +80,33 @@ public class LPAudioController : MonoBehaviour
 
 	void PlayItemCollectAudio(PowerUp powerUp)
 	{
+		gameModeReference.SoundEffectsAudioSource.volume = PlayerAudioClipsVolume[2];
 		gameModeReference.SoundEffectsAudioSource.PlayOneShot(PlayerAudioClips[2]);
 	}
 
 	void PlayCoinCollectAudio(int value)
 	{
+		gameModeReference.SoundEffectsAudioSource.volume = PlayerAudioClipsVolume[1];
 		gameModeReference.SoundEffectsAudioSource.PlayOneShot(PlayerAudioClips[1]);
 	}
 
 	void PlayJumpAudio()
 	{
+		gameModeReference.SoundEffectsAudioSource.volume = PlayerAudioClipsVolume[0];
 		gameModeReference.SoundEffectsAudioSource.PlayOneShot(PlayerAudioClips[0]);
 	}
 
 
 	void PlayEnemyHitAudio()
 	{
+		gameModeReference.SoundEffectsAudioSource.volume = EnemyAudioClipsVolume[0];
 		gameModeReference.SoundEffectsAudioSource.PlayOneShot(EnemyAudioClips[0]);
 	}
 
 
 	void PlayEnemyHitFloorAudio()
 	{
+		gameModeReference.SoundEffectsAudioSource.volume = EnemyAudioClipsVolume[1];
 		gameModeReference.SoundEffectsAudioSource.PlayOneShot(EnemyAudioClips[1]);
 	}
 

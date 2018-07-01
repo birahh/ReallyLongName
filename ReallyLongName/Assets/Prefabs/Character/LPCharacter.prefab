@@ -384,7 +384,7 @@ MonoBehaviour:
   IsWalking: 0
   IsJumping: 0
   IsFalling: 0
-  WallJumpClimb: {x: 5, y: 12}
+  WallJumpClimb: {x: 5, y: 8}
   WallJumpOff: {x: 5, y: 12}
   WallLeap: {x: 5, y: 12}
   CurrentPowerUp: 3
