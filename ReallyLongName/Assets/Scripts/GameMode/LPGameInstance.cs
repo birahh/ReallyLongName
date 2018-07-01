@@ -20,6 +20,9 @@ public static class LPGameInstance
     public static int LevelCoinAmount = 0;
     public static int ContinueAmount = 5;
 
+	public static int CoinToContinueAmount = 350;
+	private static int lastContinueUpdate = 1;
+
 	#region Game Mode
 	public static void SetGameModeInstance (LPGameMode newInstance)
 	{
@@ -128,6 +131,12 @@ public static class LPGameInstance
     public static void AddCoin(int coinAmount)
     {
         TotalCoinAmount += LevelCoinAmount += coinAmount;
+
+		if (LevelCoinAmount / CoinToContinueAmount > lastContinueUpdate) {
+			lastContinueUpdate++;
+
+			ContinueAmount++;
+		}
     }
 
     public static void AddContinue(PowerUp powerUp)
