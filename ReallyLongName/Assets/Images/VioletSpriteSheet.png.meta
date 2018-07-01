@@ -21,6 +21,15 @@ TextureImporter:
     21300028: VioletSpriteSheet_14
     21300030: VioletSpriteSheet_15
     21300032: VioletSpriteSheet_16
+    21300034: VioletSpriteSheet_17
+    21300036: VioletSpriteSheet_18
+    21300038: VioletSpriteSheet_19
+    21300040: VioletSpriteSheet_20
+    21300042: VioletSpriteSheet_21
+    21300044: VioletSpriteSheet_22
+    21300046: VioletSpriteSheet_23
+    21300048: VioletSpriteSheet_24
+    21300050: VioletSpriteSheet_25
   externalObjects: {}
   serializedVersion: 4
   mipmaps:
@@ -141,11 +150,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 1500
+        y: 3000
         width: 1500
         height: 1500
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -155,11 +164,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 1500
-        y: 1500
+        y: 3000
         width: 1500
         height: 1500
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -169,11 +178,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 3000
-        y: 1500
+        y: 3000
         width: 1500
         height: 1500
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -183,11 +192,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 4500
-        y: 1500
+        y: 3000
         width: 1500
         height: 1500
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -197,11 +206,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 6000
-        y: 1500
+        y: 3000
         width: 1500
         height: 1500
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -211,11 +220,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 7500
-        y: 1500
+        y: 3000
         width: 1500
         height: 1500
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -225,11 +234,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 9000
-        y: 1500
+        y: 3000
         width: 1500
         height: 1500
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -239,11 +248,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 10500
-        y: 1500
+        y: 3000
         width: 1500
         height: 1500
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -253,11 +262,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 12000
-        y: 1500
+        y: 3000
         width: 1500
         height: 1500
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -267,11 +276,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 0
+        y: 1500
         width: 1500
         height: 1500
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -281,11 +290,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 1500
-        y: 0
+        y: 1500
         width: 1500
         height: 1500
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -295,11 +304,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 3000
-        y: 0
+        y: 1500
         width: 1500
         height: 1500
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -309,11 +318,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 4500
-        y: 0
+        y: 1500
         width: 1500
         height: 1500
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -323,11 +332,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 6000
-        y: 0
+        y: 1500
         width: 1500
         height: 1500
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -337,11 +346,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 7500
-        y: 0
+        y: 1500
         width: 1500
         height: 1500
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -351,11 +360,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 9000
-        y: 0
+        y: 1500
         width: 1500
         height: 1500
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -365,11 +374,137 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 10500
+        y: 1500
+        width: 1500
+        height: 1500
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: VioletSpriteSheet_17
+      rect:
+        serializedVersion: 2
+        x: 12000
+        y: 1500
+        width: 1500
+        height: 1500
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: VioletSpriteSheet_18
+      rect:
+        serializedVersion: 2
+        x: 0
         y: 0
         width: 1500
         height: 1500
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: VioletSpriteSheet_19
+      rect:
+        serializedVersion: 2
+        x: 1500
+        y: 0
+        width: 1500
+        height: 1500
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: VioletSpriteSheet_20
+      rect:
+        serializedVersion: 2
+        x: 3000
+        y: 0
+        width: 1500
+        height: 1500
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: VioletSpriteSheet_21
+      rect:
+        serializedVersion: 2
+        x: 4500
+        y: 0
+        width: 1500
+        height: 1500
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: VioletSpriteSheet_22
+      rect:
+        serializedVersion: 2
+        x: 6000
+        y: 0
+        width: 1500
+        height: 1500
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: VioletSpriteSheet_23
+      rect:
+        serializedVersion: 2
+        x: 9000
+        y: 0
+        width: 1500
+        height: 1500
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: VioletSpriteSheet_24
+      rect:
+        serializedVersion: 2
+        x: 10500
+        y: 0
+        width: 1500
+        height: 1500
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: VioletSpriteSheet_25
+      rect:
+        serializedVersion: 2
+        x: 12000
+        y: 0
+        width: 1500
+        height: 1500
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
