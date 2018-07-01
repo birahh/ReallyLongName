@@ -4467,15 +4467,21 @@ ParticleSystem:
         m_Curve:
         - serializedVersion: 2
           time: 0
-          value: 0.345047
-          inSlope: 0.4327908
-          outSlope: 0.4327908
+          value: 0
+          inSlope: 21.417912
+          outSlope: 21.417912
+          tangentMode: 0
+        - serializedVersion: 2
+          time: 0.052696675
+          value: 0.57033956
+          inSlope: 1.4114935
+          outSlope: 1.4114935
           tangentMode: 0
         - serializedVersion: 2
           time: 1
           value: 0
-          inSlope: -1.1559654
-          outSlope: -1.1559654
+          inSlope: -1.5638473
+          outSlope: -1.5638473
           tangentMode: 0
         m_PreInfinity: 2
         m_PostInfinity: 2
@@ -13903,7 +13909,7 @@ ParticleSystem:
   moveWithTransform: 1
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: 285620814
+  randomSeed: 426521959
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -14556,15 +14562,21 @@ ParticleSystem:
         m_Curve:
         - serializedVersion: 2
           time: 0
-          value: 0.345047
-          inSlope: 0.4327908
-          outSlope: 0.4327908
+          value: 0
+          inSlope: 7.649254
+          outSlope: 7.649254
+          tangentMode: 0
+        - serializedVersion: 2
+          time: 0.061818406
+          value: 0.3582073
+          inSlope: 1.4650544
+          outSlope: 1.4650544
           tangentMode: 0
         - serializedVersion: 2
           time: 1
           value: 0
-          inSlope: -1.1559654
-          outSlope: -1.1559654
+          inSlope: -1.5638473
+          outSlope: -1.5638473
           tangentMode: 0
         m_PreInfinity: 2
         m_PostInfinity: 2

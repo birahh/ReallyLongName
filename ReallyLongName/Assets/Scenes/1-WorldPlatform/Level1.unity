@@ -671,6 +671,26 @@ Prefab:
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 198961810995750576, guid: fb615ea7462284d64b2225a526891a2c,
+        type: 2}
+      propertyPath: InitialModule.size3D
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 198961810995750576, guid: fb615ea7462284d64b2225a526891a2c,
+        type: 2}
+      propertyPath: randomSeed
+      value: 426521959
+      objectReference: {fileID: 0}
+    - target: {fileID: 198961810995750576, guid: fb615ea7462284d64b2225a526891a2c,
+        type: 2}
+      propertyPath: InitialModule.startSize.scalar
+      value: 0.06
+      objectReference: {fileID: 0}
+    - target: {fileID: 198961810995750576, guid: fb615ea7462284d64b2225a526891a2c,
+        type: 2}
+      propertyPath: InitialModule.startLifetime.scalar
+      value: 0.2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fb615ea7462284d64b2225a526891a2c, type: 2}
   m_IsPrefabParent: 0
