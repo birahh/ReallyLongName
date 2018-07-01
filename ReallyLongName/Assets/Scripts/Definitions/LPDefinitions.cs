@@ -5,7 +5,7 @@ using UnityEngine;
 public static class LPDefinitions 
 {
 	//	GameMode Settings
-	public static float GameMode_TransitionDelay = 2.0f;
+	public static float GameMode_TransitionDelay = 6.8f;
 
 	//	Character Settings
 	public static float Character_Speed = 4.0f;

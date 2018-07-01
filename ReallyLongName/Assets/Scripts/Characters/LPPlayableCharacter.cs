@@ -90,92 +90,95 @@ public class LPPlayableCharacter : LPBaseCharacter
 
 	void Update() 
 	{
-        base.Update();
+		if (IsActive) {
+			
+	        base.Update();
 
-		gravity = -(2 * maxJumpHeight) / Mathf.Pow (timeToJumpApex, 2) + Mathf.Clamp(LPDefinitions.World_Gravity, 1, 100);  //	WorldGravity Attenuation
+			gravity = -(2 * maxJumpHeight) / Mathf.Pow (timeToJumpApex, 2) + Mathf.Clamp(LPDefinitions.World_Gravity, 1, 100);  //	WorldGravity Attenuation
 
-        maxJumpHeight = Mathf.Clamp(LPDefinitions.Character_MaxJumpHeight, 4, 10);
-		minJumpHeight = Mathf.Clamp(LPDefinitions.Character_MinJumpHeight, 1, 5);
+	        maxJumpHeight = Mathf.Clamp(LPDefinitions.Character_MaxJumpHeight, 4, 10);
+			minJumpHeight = Mathf.Clamp(LPDefinitions.Character_MinJumpHeight, 1, 5);
 
-		wallSlideSpeedMax = Mathf.Clamp(LPDefinitions.Character_WallSlideSpeed, 1, 10);
-		wallStickTime = Mathf.Clamp(LPDefinitions.Character_WallStickTime, 0, 5);
+			wallSlideSpeedMax = Mathf.Clamp(LPDefinitions.Character_WallSlideSpeed, 1, 10);
+			wallStickTime = Mathf.Clamp(LPDefinitions.Character_WallStickTime, 0, 5);
 
-		if (IsRunning)
-			moveSpeed = Mathf.Clamp(LPDefinitions.Character_Speed, 1, 20) * 2;
-		else 
-			moveSpeed = Mathf.Clamp(LPDefinitions.Character_Speed, 1, 20);
+			if (IsRunning)
+				moveSpeed = Mathf.Clamp(LPDefinitions.Character_Speed, 1, 20) * 2;
+			else 
+				moveSpeed = Mathf.Clamp(LPDefinitions.Character_Speed, 1, 20);
 
-		CalculateVelocity ();
-		HandleWallSliding ();
+			CalculateVelocity ();
+			HandleWallSliding ();
 
-        Move(velocity * Time.deltaTime, directionalInput);
-            
-		if (collisions.above || collisions.below) {
-			if (collisions.slidingDownMaxSlope) {
-				velocity.y += collisions.slopeNormal.y * - gravity * Time.deltaTime;
-			} else {
-				velocity.y = 0;
+	        Move(velocity * Time.deltaTime, directionalInput);
+	            
+			if (collisions.above || collisions.below) {
+				if (collisions.slidingDownMaxSlope) {
+					velocity.y += collisions.slopeNormal.y * - gravity * Time.deltaTime;
+				} else {
+					velocity.y = 0;
+				}
 			}
+
+	        IsFalling = velocity.y < -0.00000001f;
+	        IsWalking = (velocity.x > 0.05f)||(velocity.x < -0.05f);
+	        IsJumping = (velocity.y > 0.05f)||(velocity.y < -0.05f);
+
+	        #region ParticleSystemHandle
+			if (IsFalling && !wasFallingDown)
+				wasFallingDown = true;
+
+			if (collisions.below && !hadCollisionsBelow)
+				hadCollisionsBelow = true;
+
+	        //  RunEmitter
+	        if (Mathf.Abs(velocity.x) > 0.5f && collisions.below) {
+	            RunEmitter.Play();
+	        } else {
+	            RunEmitter.Stop();
+	        }
+
+	        //  JumpUpEmitter
+			if (velocity.y > 0.00000001f && hadCollisionsBelow && !wasJumpUpEmitterOn) {
+	            JumpUpEmitter.Play();
+				hadCollisionsBelow = false;
+	            wasJumpUpEmitterOn = true;
+	            animator.Play("Jump");
+	        } else if(wasJumpUpEmitterOn) {
+	            Invoke("JumpUpEmitterStop", .5f);     
+	        }
+
+	        //  JumpDownEmitter
+			if (wasFallingDown && collisions.below && !wasJumpDownEmitterOn) {
+	            JumpDownEmitter.Play();
+				wasFallingDown = false;
+	            wasJumpDownEmitterOn = true;
+	            animator.Play("Idle");
+	        } else if(wasJumpDownEmitterOn) {
+	            Invoke("JumpDownEmitterStop", .05f);            
+	        }
+
+	        //  WallSlideEmitter
+			if (wallSliding)
+	            WallSlideEmitter.Play();
+	        else
+	            WallSlideEmitter.Stop();
+	        #endregion
+
+	        #region Platforms Activate
+	        if(collisions.below)
+	            if(collisions.objectTag.Equals("Platform"))
+	                if(collisions.objectGameObject.GetComponent<LPBasePlatform>())
+	                    collisions.objectGameObject.GetComponent<LPBasePlatform>().Activate();
+	        #endregion
+
+	        #region Animation Settings
+	        animator.SetBool("isWallSliding", wallSliding);
+	        animator.SetBool("isWalking", IsWalking);
+	        animator.SetBool("isJumping", IsJumping);
+	        // print(IsWalking+", "+IsJumping+", "+wallSliding);
+	        #endregion
 		}
-
-        IsFalling = velocity.y < -0.00000001f;
-        IsWalking = (velocity.x > 0.05f)||(velocity.x < -0.05f);
-        IsJumping = (velocity.y > 0.05f)||(velocity.y < -0.05f);
-
-        #region ParticleSystemHandle
-		if (IsFalling && !wasFallingDown)
-			wasFallingDown = true;
-
-		if (collisions.below && !hadCollisionsBelow)
-			hadCollisionsBelow = true;
-
-        //  RunEmitter
-        if (Mathf.Abs(velocity.x) > 0.5f && collisions.below) {
-            RunEmitter.Play();
-        } else {
-            RunEmitter.Stop();
-        }
-
-        //  JumpUpEmitter
-		if (velocity.y > 0.00000001f && hadCollisionsBelow && !wasJumpUpEmitterOn) {
-            JumpUpEmitter.Play();
-			hadCollisionsBelow = false;
-            wasJumpUpEmitterOn = true;
-            animator.Play("Jump");
-        } else if(wasJumpUpEmitterOn) {
-            Invoke("JumpUpEmitterStop", .5f);     
-        }
-
-        //  JumpDownEmitter
-		if (wasFallingDown && collisions.below && !wasJumpDownEmitterOn) {
-            JumpDownEmitter.Play();
-			wasFallingDown = false;
-            wasJumpDownEmitterOn = true;
-            animator.Play("Idle");
-        } else if(wasJumpDownEmitterOn) {
-            Invoke("JumpDownEmitterStop", .05f);            
-        }
-
-        //  WallSlideEmitter
-		if (wallSliding)
-            WallSlideEmitter.Play();
-        else
-            WallSlideEmitter.Stop();
-        #endregion
-
-        #region Platforms Activate
-        if(collisions.below)
-            if(collisions.objectTag.Equals("Platform"))
-                if(collisions.objectGameObject.GetComponent<LPBasePlatform>())
-                    collisions.objectGameObject.GetComponent<LPBasePlatform>().Activate();
-        #endregion
-
-        #region Animation Settings
-        animator.SetBool("isWallSliding", wallSliding);
-        animator.SetBool("isWalking", IsWalking);
-        animator.SetBool("isJumping", IsJumping);
-        // print(IsWalking+", "+IsJumping+", "+wallSliding);
-        #endregion
     }
 
     void JumpDownEmitterStop()
@@ -205,6 +208,9 @@ public class LPPlayableCharacter : LPBaseCharacter
 	public void OnJumpInputDown() 
 	{
         if (IsAlive) {
+
+			Jump();
+
             if (wallSliding) {
                 if (wallDirX == directionalInput.x) {
                     velocity.x = -wallDirX * WallJumpClimb.x;
@@ -319,7 +325,9 @@ public class LPPlayableCharacter : LPBaseCharacter
     public void PlayerDied()
     {
         if (IsAlive) {
-
+			RemoveDelegates();
+			
+			animator.Play("Dying");
 			base.TurnOffCollisions();
 
             IsAlive = false;
@@ -332,7 +340,15 @@ public class LPPlayableCharacter : LPBaseCharacter
 
     public void FinishPose()
     {
-        if (IsAlive)
-            IsAlive = false;        
+		RemoveDelegates();
+		animator.Play("Victory");
     }
+
+	void RemoveDelegates()
+	{
+		OnCharacterDie -= PlayerDied;
+		OnCharacterFinishLevel -= FinishPose;
+
+		LPBaseCollectable.OnCollectedSpecial -= ReceivePowerUp;
+	}
 }

@@ -14,16 +14,17 @@ public class LPGameMode : MonoBehaviour
 	public AudioSource SoundtrackAudioSource;
 	public AudioSource SoundEffectsAudioSource;
 
+	public bool WillChangeSoundtrack = false;
+
     void Start ()
     {
-        LPPlayableCharacter.OnCharacterDie += PlayerDied;
-		LPPlayableCharacter.OnCharacterFinishLevel += LoadNextLevel;
-
 		if (LPGameInstance.GameModeInstance == null) {
 			LPGameInstance.SetGameModeInstance (this);
 		}
 
-		if (LPGameInstance.GameModeInstance == this) {			
+		if (LPGameInstance.GameModeInstance == this) {		
+			LPPlayableCharacter.OnCharacterDie += PlayerDiedWithDelay;
+			LPPlayableCharacter.OnCharacterFinishLevel += LoadNextLevelWithDelay;	
 			LPGameInstance.TransitionScene = TransitionScene;
 			LPGameInstance.MenuScene = MenuScene;
 			LPGameInstance.GameScenes = GameScenes;
@@ -37,8 +38,10 @@ public class LPGameMode : MonoBehaviour
 	}
 
     public void PlayerDiedWithDelay()
-    {        
-		Invoke("PlayerDied", LPDefinitions.GameMode_TransitionDelay);
+	{
+		RemoveDelegates();
+		WillChangeSoundtrack = true;
+		Invoke("PlayerDied", LPDefinitions.GameMode_TransitionDelay * 0.6f);
     }
 
     public void PlayerDied()
@@ -48,7 +51,15 @@ public class LPGameMode : MonoBehaviour
 
 	public void LoadNextLevelWithDelay() 
 	{
+		RemoveDelegates();
+		WillChangeSoundtrack = true;
 		Invoke("LoadNextLevel", LPDefinitions.GameMode_TransitionDelay);
+	}
+
+	void RemoveDelegates()
+	{
+		LPPlayableCharacter.OnCharacterDie -= PlayerDiedWithDelay;
+		LPPlayableCharacter.OnCharacterFinishLevel -= LoadNextLevelWithDelay;	
 	}
 
 	public void LoadNextLevel() 
