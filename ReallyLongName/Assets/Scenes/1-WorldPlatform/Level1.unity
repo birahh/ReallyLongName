@@ -641,11 +641,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4693214858190790, guid: fb615ea7462284d64b2225a526891a2c, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -43.65
+      value: -52.65
       objectReference: {fileID: 0}
     - target: {fileID: 4693214858190790, guid: fb615ea7462284d64b2225a526891a2c, type: 2}
       propertyPath: m_LocalPosition.y
-      value: -7.35
+      value: -9.35
       objectReference: {fileID: 0}
     - target: {fileID: 4693214858190790, guid: fb615ea7462284d64b2225a526891a2c, type: 2}
       propertyPath: m_LocalPosition.z
@@ -823,6 +823,21 @@ Prefab:
         type: 2}
       propertyPath: m_Size.x
       value: 0.45
+      objectReference: {fileID: 0}
+    - target: {fileID: 198830187755057996, guid: fb615ea7462284d64b2225a526891a2c,
+        type: 2}
+      propertyPath: ShapeModule.radiusThickness
+      value: 1.0000
+      objectReference: {fileID: 0}
+    - target: {fileID: 198830187755057996, guid: fb615ea7462284d64b2225a526891a2c,
+        type: 2}
+      propertyPath: ShapeModule.radiusThickness
+      value: 1.0000
+      objectReference: {fileID: 0}
+    - target: {fileID: 198830187755057996, guid: fb615ea7462284d64b2225a526891a2c,
+        type: 2}
+      propertyPath: ShapeModule.radiusThickness
+      value: 1.0000
       objectReference: {fileID: 0}
     - target: {fileID: 198830187755057996, guid: fb615ea7462284d64b2225a526891a2c,
         type: 2}
