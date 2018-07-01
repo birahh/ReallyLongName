@@ -152,7 +152,8 @@ public class LPBaseEnemy : LPBaseObject
 					if (isPlayerActivated && cycleIteration% 2 != 0)
 						HitGround();
 					else 
-						Trail.GetComponent<Renderer>().enabled = true;
+						if (Trail != null)
+							Trail.GetComponent<Renderer>().enabled = true;
 						
 
                     cycleIteration++;
@@ -168,11 +169,11 @@ public class LPBaseEnemy : LPBaseObject
 
 	void HitGround()
 	{
-		if (OnEnemyHitFloor != null) {
+		foreach (var particle in OnHitFloorParticles) {
+			particle.Play();
+		}
 
-			foreach (var particle in OnHitFloorParticles) {
-				particle.Play();
-			}
+		if (OnEnemyHitFloor != null) {
 
 			OnEnemyHitFloor();
 		}
@@ -180,14 +181,16 @@ public class LPBaseEnemy : LPBaseObject
 
 	void GotHit()
 	{
-		if (OnEnemyGotHit != null) {
+		foreach (var particle in OnDieParticles) {
+			particle.Play();
+		}
 
-			foreach (var particle in OnDieParticles) {
-				particle.Play();
-			}
-
+		if (Trail != null)
 			Trail.GetComponent<Renderer>().enabled = false;
 
+
+		if (OnEnemyGotHit != null) {
+			
 			OnEnemyGotHit();
 		}
 	}
@@ -206,8 +209,8 @@ public class LPBaseEnemy : LPBaseObject
                 if (player.IsFalling && CanDie && ( heightDiff >= 0.5f)) {
 
 					GotHit();
-                    player.AddImpulseUp();
-                    GameObject.Destroy(gameObject);
+					player.AddImpulseUp();
+					GameObject.Destroy(gameObject);
                     
                 } else {
 
