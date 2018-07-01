@@ -221,7 +221,6 @@ public class LPBaseEnemy : LPBaseObject
 					GotHit();
 					shouldPlay = false;
 					player.AddImpulseUp();
-
 					GetComponent<Collider2D>().enabled = false;
 
 					if (body.GetComponent<Renderer>())
