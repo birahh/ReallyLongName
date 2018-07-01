@@ -153,7 +153,7 @@ public class LPBaseEnemy : LPBaseObject
 						HitGround();
 					else 
 						if (Trail != null)
-							Trail.GetComponent<Renderer>().enabled = true;
+							Trail.GetComponent<Renderer>().enabled = false;
 						
 
                     cycleIteration++;
@@ -173,6 +173,9 @@ public class LPBaseEnemy : LPBaseObject
 			particle.Play();
 		}
 
+		if (Trail != null)
+			Trail.GetComponent<Renderer>().enabled = true;
+		
 		if (OnEnemyHitFloor != null) {
 
 			OnEnemyHitFloor();
@@ -184,9 +187,6 @@ public class LPBaseEnemy : LPBaseObject
 		foreach (ParticleSystem particle in OnDieParticles) {
 			particle.Play();
 		}
-
-		if (Trail != null)
-			Trail.GetComponent<Renderer>().enabled = false;
 
 
 		if (OnEnemyGotHit != null) {
