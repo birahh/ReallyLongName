@@ -286,6 +286,7 @@ MonoBehaviour:
   CanDie: 0
   ShouldRespawn: 0
   Speed: 1.5
+  CollectableParticle: {fileID: 198481472654715468}
   CoinValue: 10
 --- !u!198 &198481472654715468
 ParticleSystem:

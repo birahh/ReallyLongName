@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class LPBaseCollectable : LPBaseObject
 {
+	public ParticleSystem CollectableParticle;
+
     public delegate void CollectedCoin(int value);
     public delegate void CollectedSpecial(PowerUp powerUp);
     public static event CollectedCoin OnCollectedCoin;
@@ -44,7 +46,8 @@ public class LPBaseCollectable : LPBaseObject
             LPPlayableCharacter player = coll.transform.parent.GetComponent<LPPlayableCharacter>();
             
             if (player.CurrentPowerUp == PowerUp.Magnet) {
-                
+
+				TurnOffCollider();
                 targetToFollow = player.transform;
                 shouldFollow = true;
             }
@@ -52,6 +55,8 @@ public class LPBaseCollectable : LPBaseObject
 
         if (coll.tag.Equals("Player")) {
 
+			TurnOffCollider();
+			TurnOffRenderer();
             shouldFollow = false;
             SelfDestroy();
         }
@@ -70,16 +75,26 @@ public class LPBaseCollectable : LPBaseObject
             }
         }
 
-        if (coll.tag.Equals("Player"))
-        {
+        if (coll.tag.Equals("Player")) {
             shouldFollow = false;
             SelfDestroy();
         }
     }
 
+	void TurnOffCollider()
+	{
+		GetComponent<Collider2D>().enabled = false;
+	}
+
+	void TurnOffRenderer()
+	{
+		GetComponent<Renderer>().enabled = false;
+	}
 
     void SelfDestroy()
     {
+		CollectableParticle.Play();
+		
         if(OnCollectedCoin != null)
             if(this.GetType() == typeof(LPCollectableCoin))
                 OnCollectedCoin(value);
@@ -88,6 +103,11 @@ public class LPBaseCollectable : LPBaseObject
             if (this.GetType() == typeof(LPCollectableSpecial))
                 OnCollectedSpecial(powerUp);
 
-        GameObject.Destroy(gameObject);
+		Invoke("SelfDestroyWithDelay", 1.5f);
     }
+
+	void SelfDestroyWithDelay()
+	{
+		GameObject.Destroy(gameObject);
+	}
 }

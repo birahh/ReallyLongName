@@ -23,7 +23,7 @@ public class LPInputController : MonoBehaviour
 
 		motionX = (Input.GetAxisRaw("Horizontal")>LPDefinitions.Character_MotionThreshold)?1:(Input.GetAxisRaw("Horizontal")<-LPDefinitions.Character_MotionThreshold) ?-1:motionX;
 
-		player.SetDirectionalInput (directionalInput, motionX);
+		player.SetDirectionalInput (directionalInput, motionX);		
 
         #region JumpKeys
         if (directionalInput.y > 0) 

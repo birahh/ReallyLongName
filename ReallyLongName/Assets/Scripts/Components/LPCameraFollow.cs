@@ -20,6 +20,10 @@ public class LPCameraFollow : MonoBehaviour {
 
 	bool lookAheadStopped;
 
+	bool cameraShake = false;
+	Vector3 originalCameraPosition;
+	public float multiplier = 1f;
+
 	void Start() 
 	{
 		focusArea = new FocusArea (target.collider.bounds, focusAreaSize);
@@ -49,9 +53,26 @@ public class LPCameraFollow : MonoBehaviour {
 
 			currentLookAheadX = Mathf.SmoothDamp (currentLookAheadX, targetLookAheadX, ref smoothLookVelocityX, lookSmoothTimeX);
 
-			focusPosition.y = Mathf.SmoothDamp (transform.position.y, focusPosition.y, ref smoothVelocityY, verticalSmoothTime);
-			focusPosition += Vector2.right * currentLookAheadX;
+			if (cameraShake)
+				focusPosition = new Vector2(
+					focusPosition.x+Mathf.PerlinNoise((float)Random.Range(-1*multiplier, 1*multiplier), (float)Random.Range(-1*multiplier, 1*multiplier)),
+					focusPosition.y+Mathf.PerlinNoise((float)Random.Range(-1*multiplier, 1*multiplier), (float)Random.Range(-1*multiplier, 1*multiplier)));
+			else
+				focusPosition += Vector2.right * currentLookAheadX;
+
+			focusPosition.y = Mathf.SmoothDamp (transform.position.y, focusPosition.y, ref smoothVelocityY, verticalSmoothTime);				
 			transform.position = (Vector3)focusPosition + Vector3.forward * -6;
+		}
+	}
+
+	void Update()
+	{
+
+		if (Input.GetKeyDown(KeyCode.U)) {
+			if (cameraShake)
+				cameraShake = false;
+			else 
+				cameraShake = true;
 		}
 	}
 
