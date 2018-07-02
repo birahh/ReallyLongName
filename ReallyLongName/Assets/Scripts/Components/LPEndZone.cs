@@ -14,6 +14,6 @@ public class LPEndZone : MonoBehaviour
     {
         if (coll.tag.Equals("Player"))
             if (coll.GetComponent<LPPlayableCharacter>().IsAlive)
-                coll.GetComponent<LPPlayableCharacter>().FinishLevel();
+				coll.GetComponent<LPPlayableCharacter>().FinishLevel(transform.position);
     }
 }

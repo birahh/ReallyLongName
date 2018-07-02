@@ -17,6 +17,7 @@ public class LPBaseCharacter : LP2DController
 	public static event CharacterJump OnCharacterJump;
 
 	protected bool IsActive = true;
+	protected Vector3 endZonePosition;
 
     void Start()
     {
@@ -53,8 +54,10 @@ public class LPBaseCharacter : LP2DController
         }        
     }
 
-    public void FinishLevel()
+	public void FinishLevel(Vector3 newPosition)
     {
+		endZonePosition = newPosition;
+
         if (OnCharacterFinishLevel != null) {
 			IsActive = false;
             OnCharacterFinishLevel();

@@ -47,6 +47,7 @@ public class LPPlayableCharacter : LPBaseCharacter
 
 	#region AliveSettings
 	public bool IsAlive = true;
+	bool finishPose = false;
     #endregion
 
     #region DirectionalSettings
@@ -178,7 +179,11 @@ public class LPPlayableCharacter : LPBaseCharacter
 	        animator.SetBool("isJumping", IsJumping);
 	        // print(IsWalking+", "+IsJumping+", "+wallSliding);
 	        #endregion
-		} 
+		} else if (finishPose) {
+
+			transform.position = Mathf.Lerp(transform.position, endZonePosition, 0.5f);
+			animator.speed = Mathf.Lerp(animator.speed, 3.0f);
+		}
     }
 
     void JumpDownEmitterStop()
@@ -327,6 +332,7 @@ public class LPPlayableCharacter : LPBaseCharacter
 		if (IsAlive) {
 			base.TurnOffCollisions();
 
+			velocity = Vector3.zero;
 			IsAlive = false;
 			IsActive = false;
 
@@ -346,8 +352,11 @@ public class LPPlayableCharacter : LPBaseCharacter
 	}
 
     public void FinishPose()
-    {
+	{
+		IsActive = false;
+		finishPose = true;
 		RemoveDelegates();
+		animator.SetBool("finishPose", true);
     }
 
 	void RemoveDelegates()
