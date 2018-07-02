@@ -20,9 +20,19 @@ public class LPGameMode : MonoBehaviour
     {
 		if (LPGameInstance.GameModeInstance == null) {
 			LPGameInstance.SetGameModeInstance (this);
-		}
+        }
 
-		if (LPGameInstance.GameModeInstance == this) {		
+        if (LPGameInstance.IsEffectsOn)
+            TurnEffectsOn();
+        else
+            TurnEffectsOff();
+        
+        if (LPGameInstance.IsMusicOn)
+            TurnMusicOn();
+        else
+            TurnMusicOff();
+
+        if (LPGameInstance.GameModeInstance == this) {		
 			LPPlayableCharacter.OnCharacterDie += PlayerDiedWithDelay;
 			LPPlayableCharacter.OnCharacterFinishLevel += LoadNextLevelWithDelay;
             LPBaseCollectable.OnCollectedSpecial += LPGameInstance.AddContinue;
@@ -42,7 +52,38 @@ public class LPGameMode : MonoBehaviour
 	
 	void Update()
     {
-	}
+    }
+
+    #region Menu Methods
+    public void TurnMusicOff()
+    {
+        LPGameInstance.IsMusicOn = false;
+        SoundtrackAudioSource.mute = true;
+    }
+
+    public void TurnMusicOn()
+    {
+        LPGameInstance.IsMusicOn = true;
+        SoundtrackAudioSource.mute = false;
+    }
+
+    public void TurnEffectsOff()
+    {
+        LPGameInstance.IsEffectsOn = false;
+        SoundEffectsAudioSource.mute = true;
+    }
+
+    public void TurnEffectsOn()
+    {
+        LPGameInstance.IsEffectsOn = true;
+        SoundEffectsAudioSource.mute = false;
+    }
+
+    public void QuitGame()
+    {
+        Application.Quit();
+    }
+    #endregion
 
     public void PlayerDiedWithDelay()
 	{

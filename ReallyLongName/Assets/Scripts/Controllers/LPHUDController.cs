@@ -16,9 +16,7 @@ public class LPHUDController : MonoBehaviour
 	bool isFinished = false;
 
 	LPPlayableCharacter playerReference;
-
-
-	// Use this for initialization
+    	
 	void Start () 
 	{
         continueAmount = LPGameInstance.ContinueAmount;
@@ -26,9 +24,10 @@ public class LPHUDController : MonoBehaviour
 		playerReference = GameObject.FindObjectOfType<LPPlayableCharacter>();
 	}
 
-	// Update is called once per frame
-	void Update () 
-	{
+	void Update ()
+    {
+        UpdateHUDText();
+
         if (playerReference) {
 
 		    if (!isFinished && playerReference.IsActive && playerReference.IsAlive) {

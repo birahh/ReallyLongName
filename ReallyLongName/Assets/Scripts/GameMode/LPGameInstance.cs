@@ -23,8 +23,11 @@ public static class LPGameInstance
 	public static int CoinToContinueAmount = 350;
 	private static int lastContinueUpdate = 1;
 
-	#region Game Mode
-	public static void SetGameModeInstance (LPGameMode newInstance)
+    public static bool IsMusicOn = true;
+    public static bool IsEffectsOn = true;
+
+    #region Game Mode
+    public static void SetGameModeInstance (LPGameMode newInstance)
 	{
 		GameModeInstance = newInstance;
 	}
