@@ -29,7 +29,7 @@ public class LPHUDController : MonoBehaviour
 	// Update is called once per frame
 	void Update () 
 	{
-		if (!isFinished) {
+		if (!isFinished && playerReference.IsActive) {
 			
 			if (initialTime > 0) {
 					
