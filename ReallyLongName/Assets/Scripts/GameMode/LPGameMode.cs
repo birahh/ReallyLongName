@@ -28,12 +28,16 @@ public class LPGameMode : MonoBehaviour
             LPBaseCollectable.OnCollectedSpecial += LPGameInstance.AddContinue;
             LPBaseCollectable.OnCollectedCoin += LPGameInstance.AddCoin;
             LPBaseCharacter.OnCharacterDie += LPGameInstance.RemoveContinue;
+
             LPGameInstance.TransitionScene = TransitionScene;
 			LPGameInstance.MenuScene = MenuScene;
 			LPGameInstance.GameScenes = GameScenes;
 			LPGameInstance.GameOverScene = GameOverScene;
 			LPGameInstance.FinalScene = FinalScene;
 		} 
+
+		if (LPGameInstance.CurrentLevel == -3)
+			SoundtrackAudioSource.loop = false;
 	}
 	
 	void Update()
@@ -67,6 +71,11 @@ public class LPGameMode : MonoBehaviour
         LPBaseCollectable.OnCollectedCoin -= LPGameInstance.AddCoin;
         LPBaseCharacter.OnCharacterDie -= LPGameInstance.RemoveContinue;
     }
+
+	public void MainMenu()
+	{
+		LPGameInstance.LoadMenuScene();
+	}
 
 	void OnDestroy()
 	{
