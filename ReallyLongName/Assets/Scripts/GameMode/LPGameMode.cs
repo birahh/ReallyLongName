@@ -35,7 +35,6 @@ public class LPGameMode : MonoBehaviour
 	
 	void Update()
     {
-		print(Mathf.FloorToInt(LPGameInstance.LevelCoinAmount / LPGameInstance.CoinToContinueAmount));
 	}
 
     public void PlayerDiedWithDelay()

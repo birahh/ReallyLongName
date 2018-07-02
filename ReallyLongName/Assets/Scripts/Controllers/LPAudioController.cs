@@ -38,6 +38,7 @@ public class LPAudioController : MonoBehaviour
 
 		gameModeReference = GameObject.FindObjectOfType<LPGameMode>();
 
+		gameModeReference.SoundtrackAudioSource.loop = true;
 		gameModeReference.SoundtrackAudioSource.clip = PlaySoundtrack();
 		gameModeReference.SoundtrackAudioSource.Play();
 	}

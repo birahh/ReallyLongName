@@ -178,7 +178,7 @@ public class LPPlayableCharacter : LPBaseCharacter
 	        animator.SetBool("isJumping", IsJumping);
 	        // print(IsWalking+", "+IsJumping+", "+wallSliding);
 	        #endregion
-		}
+		} 
     }
 
     void JumpDownEmitterStop()
@@ -324,24 +324,30 @@ public class LPPlayableCharacter : LPBaseCharacter
 
     public void PlayerDied()
     {
-        if (IsAlive) {
-			RemoveDelegates();
-			
-			animator.Play("Dying");
+		if (IsAlive) {
 			base.TurnOffCollisions();
 
-            IsAlive = false;
+			IsAlive = false;
+			IsActive = false;
 
-			AddIpulseTowardsCamera();
-			AddImpulseBack();
-            AddImpulseUp();
+			animator.SetBool("isDead", true);
+
+			Invoke("AddImpulses", 0.5f);
         }
     }
+
+	void AddImpulses()
+	{
+		IsActive = true;
+		RemoveDelegates();
+		AddImpulseUp();
+		AddIpulseTowardsCamera();
+		AddImpulseBack();
+	}
 
     public void FinishPose()
     {
 		RemoveDelegates();
-		animator.Play("Victory");
     }
 
 	void RemoveDelegates()
