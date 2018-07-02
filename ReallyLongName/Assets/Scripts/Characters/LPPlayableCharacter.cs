@@ -222,9 +222,7 @@ public class LPPlayableCharacter : LPBaseCharacter
 	public void OnJumpInputDown() 
 	{
         if (IsAlive) {
-
-			Jump();
-
+			
             if (wallSliding) {
                 if (wallDirX == directionalInput.x) {
                     velocity.x = -wallDirX * WallJumpClimb.x;
@@ -239,7 +237,8 @@ public class LPPlayableCharacter : LPBaseCharacter
             }
 
             if (collisions.below || jumpCount > 1) {
-
+				
+				Jump();	
                 jumpCount--;
 
                 if (collisions.below) {
@@ -343,11 +342,8 @@ public class LPPlayableCharacter : LPBaseCharacter
         foreach (Collider2D coll in colliders) {
             coll.enabled = false;
         }
-
-        print("Before");
-
+                
 		if (IsAlive) {
-            print("ONCE");
             base.TurnOffCollisions();
 
 			velocity = Vector3.zero;

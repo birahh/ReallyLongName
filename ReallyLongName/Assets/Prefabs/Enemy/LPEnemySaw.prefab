@@ -40,7 +40,7 @@ GameObject:
   - component: {fileID: 33838316771860446}
   - component: {fileID: 95221938676322812}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: Body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -72,9 +72,9 @@ GameObject:
   - component: {fileID: 4694117074562342}
   - component: {fileID: 61434805306541986}
   - component: {fileID: 114211614169183512}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: LPEnemySaw
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -114,7 +114,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1616433378063754}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -17.874653, y: 6.776598, z: 0.43125}
+  m_LocalPosition: {x: -52.71348, y: 1.0982959, z: 20.137499}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4502125758479088}
@@ -338,8 +338,8 @@ MonoBehaviour:
   OnDieParticles: []
   OnHitFloorParticles: []
   Trail: {fileID: 0}
-  animator: {fileID: 0}
-  body: {fileID: 0}
+  animator: {fileID: 95221938676322812}
+  body: {fileID: 1379900569049972}
 --- !u!198 &198770600996539396
 ParticleSystem:
   m_ObjectHideFlags: 1

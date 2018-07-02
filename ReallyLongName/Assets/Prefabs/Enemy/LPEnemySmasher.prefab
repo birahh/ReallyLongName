@@ -218,7 +218,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1311848807251354}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 51, y: 14.5, z: 0.53125}
+  m_LocalPosition: {x: -55.49348, y: 2.37, z: 20.137499}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4524027781386778}
@@ -424,6 +424,8 @@ MonoBehaviour:
   - {fileID: 198364239947773048}
   - {fileID: 198351442307856842}
   Trail: {fileID: 96829728460542848}
+  animator: {fileID: 95189231232903882}
+  body: {fileID: 1749510772297610}
   WaitTimeBeforeFall: 0.5
 --- !u!198 &198137967203871964
 ParticleSystem:

@@ -23,7 +23,9 @@ public class LPEnemyMelee : LPBaseEnemy
 
 		if (ShouldRotate) {
 
-			animator.SetBool("isWalking", false);
+			if (animator) {
+				animator.SetBool("isWalking", false);
+			}
 			
 			nextAngleChanged = false;
 

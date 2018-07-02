@@ -47,6 +47,13 @@ public class LPBaseEnemy : LPBaseObject
 
 		base.Start();
 
+		if (animator) {
+			if (GetComponent<Animator>())
+				animator = GetComponent<Animator>();
+			else 
+				animator = body.GetComponent<Animator>();
+		}
+
         cycleLimit = int.MaxValue;
         cycleIteration = 0;
 
@@ -91,7 +98,7 @@ public class LPBaseEnemy : LPBaseObject
     }
 
     public void Activate(float delay)
-    {
+    {	
 		isPlayerActivated = true;
         Invoke("Activate", delay);
     }

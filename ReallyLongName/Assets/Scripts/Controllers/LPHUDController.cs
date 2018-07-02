@@ -29,28 +29,31 @@ public class LPHUDController : MonoBehaviour
 	// Update is called once per frame
 	void Update () 
 	{
-		if (!isFinished) {
+        if (playerReference) {
+
+		    if (!isFinished && playerReference.IsActive && playerReference.IsAlive) {
 			
-			if (initialTime > 0) {
+			    if (initialTime > 0) {
 					
-				initialTime = initialTime - Time.deltaTime;
+				    initialTime = initialTime - Time.deltaTime;
 
-		        coinAmount = LPGameInstance.LevelCoinAmount;
-		        continueAmount = LPGameInstance.ContinueAmount;
+		            coinAmount = LPGameInstance.LevelCoinAmount;
+		            continueAmount = LPGameInstance.ContinueAmount;
 
-				UpdateHUDText();
+				    UpdateHUDText();
 
-			} else {
+			    } else {
 
-				isFinished = true;
+				    isFinished = true;
 
-				initialTime = 0;
-				UpdateHUDText();
+				    initialTime = 0;
+				    UpdateHUDText();
 
-				if (playerReference)
-					playerReference.Hit();
-			}
-		}
+				    if (playerReference)
+					    playerReference.Hit();
+			    }
+            }
+        }
     }
 
     void UpdateHUDText()
