@@ -182,7 +182,7 @@ public class LPPlayableCharacter : LPBaseCharacter
 		} else if (finishPose) {
 
 			transform.position = Mathf.Lerp(transform.position, endZonePosition, 0.5f);
-			animator.speed = Mathf.Lerp(animator.speed, 3.0f);
+			animator.speed = Mathf.Lerp(animator.speed, 3.0f, 0.5f);
 		}
     }
 
