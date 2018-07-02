@@ -91,7 +91,7 @@ public class LPPlayableCharacter : LPBaseCharacter
 
 	void Update() 
 	{
-		if (IsActive) {
+		if (IsActive && !LPGameInstance.IsPaused) {
 			
 	        base.Update();
 

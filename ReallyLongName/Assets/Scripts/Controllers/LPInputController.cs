@@ -17,7 +17,7 @@ public class LPInputController : MonoBehaviour
 
 	void Update ()
 	{
-		if (player.IsActive) {
+		if (player.IsActive && !LPGameInstance.IsPaused) {
 
 			Vector2 directionalInput = new Vector2 (Input.GetAxisRaw ("Horizontal"), Input.GetAxisRaw ("Vertical"));
 

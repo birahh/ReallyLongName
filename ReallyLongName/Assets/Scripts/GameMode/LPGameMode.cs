@@ -16,6 +16,11 @@ public class LPGameMode : MonoBehaviour
 
 	public bool WillChangeSoundtrack = false;
 
+    public GameObject PauseScreen;
+
+    private float initialVolumeSoundtrack;
+    private float initialVolumeSoundEffects;
+
     void Start ()
     {
 		if (LPGameInstance.GameModeInstance == null) {
@@ -31,7 +36,7 @@ public class LPGameMode : MonoBehaviour
             TurnMusicOn();
         else
             TurnMusicOff();
-
+        
         if (LPGameInstance.GameModeInstance == this) {		
 			LPPlayableCharacter.OnCharacterDie += PlayerDiedWithDelay;
 			LPPlayableCharacter.OnCharacterFinishLevel += LoadNextLevelWithDelay;
@@ -44,7 +49,10 @@ public class LPGameMode : MonoBehaviour
 			LPGameInstance.GameScenes = GameScenes;
 			LPGameInstance.GameOverScene = GameOverScene;
 			LPGameInstance.FinalScene = FinalScene;
-		} 
+
+            initialVolumeSoundtrack = SoundtrackAudioSource.volume;
+            initialVolumeSoundEffects = SoundEffectsAudioSource.volume;
+        } 
 
 		if (LPGameInstance.CurrentLevel == -3)
 			SoundtrackAudioSource.loop = false;
@@ -52,6 +60,26 @@ public class LPGameMode : MonoBehaviour
 	
 	void Update()
     {
+        if (Input.GetKeyDown(KeyCode.Escape)) {
+            TogglePause();
+        }
+
+        if (LPGameInstance.IsPaused) {
+            SoundtrackAudioSource.volume = initialVolumeSoundtrack * 0.3f;
+            SoundEffectsAudioSource.volume = initialVolumeSoundEffects * 0.3f;
+        } else {
+            SoundtrackAudioSource.volume = initialVolumeSoundtrack;
+            SoundEffectsAudioSource.volume = initialVolumeSoundEffects;
+        }
+    }
+
+    public void TogglePause()
+    {
+        if (LPGameInstance.IsPaused) {
+            PauseScreen.SetActive(LPGameInstance.IsPaused = false);
+        } else {
+            PauseScreen.SetActive(LPGameInstance.IsPaused = true);
+        }
     }
 
     #region Menu Methods
@@ -83,6 +111,11 @@ public class LPGameMode : MonoBehaviour
     {
         Application.Quit();
     }
+
+    public void MainMenu()
+    {
+        LPGameInstance.LoadMenuScene();
+    }
     #endregion
 
     public void PlayerDiedWithDelay()
@@ -112,11 +145,6 @@ public class LPGameMode : MonoBehaviour
         LPBaseCollectable.OnCollectedCoin -= LPGameInstance.AddCoin;
         LPBaseCharacter.OnCharacterDie -= LPGameInstance.RemoveContinue;
     }
-
-	public void MainMenu()
-	{
-		LPGameInstance.LoadMenuScene();
-	}
 
 	void OnDestroy()
 	{

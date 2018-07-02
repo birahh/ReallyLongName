@@ -70,7 +70,7 @@ public class LPBaseEnemy : LPBaseObject
 
 	public void Update ()
 	{
-		if (shouldPlay) {
+		if (shouldPlay && !LPGameInstance.IsPaused) {
             
             if (cycleIteration < cycleLimit) {
 

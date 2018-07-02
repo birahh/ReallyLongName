@@ -110,7 +110,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
   reverbZoneMixCustomCurve:
     serializedVersion: 2
     m_Curve:
@@ -191,7 +191,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
   reverbZoneMixCustomCurve:
     serializedVersion: 2
     m_Curve:
@@ -226,3 +226,5 @@ MonoBehaviour:
   - Level4
   SoundtrackAudioSource: {fileID: 82974957022731758}
   SoundEffectsAudioSource: {fileID: 82587150262649172}
+  WillChangeSoundtrack: 0
+  PauseScreen: {fileID: 0}

@@ -26,6 +26,8 @@ public static class LPGameInstance
     public static bool IsMusicOn = true;
     public static bool IsEffectsOn = true;
 
+    public static bool IsPaused = false;
+
     #region Game Mode
     public static void SetGameModeInstance (LPGameMode newInstance)
 	{
@@ -90,7 +92,9 @@ public static class LPGameInstance
 
 	public static void LoadTransitionScene()
 	{
-		LevelCoinAmount = 0;
+        IsPaused = false;
+
+        LevelCoinAmount = 0;
 
 		SceneObjects = new LPBaseObject[0];
 

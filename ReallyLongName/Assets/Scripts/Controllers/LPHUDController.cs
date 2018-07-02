@@ -30,7 +30,7 @@ public class LPHUDController : MonoBehaviour
 
         if (playerReference) {
 
-		    if (!isFinished && playerReference.IsActive && playerReference.IsAlive) {
+		    if (!isFinished && playerReference.IsActive && playerReference.IsAlive && !LPGameInstance.IsPaused) {
 			
 			    if (initialTime > 0) {
 					

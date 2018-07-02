@@ -50,7 +50,7 @@ public class LPBasePlatform : LPRaycastController
 
 	public void Update () 
 	{
-        if(isOn) {
+        if(isOn && !LPGameInstance.IsPaused) {
 			            
 		    UpdateRaycastOrigins ();
 
