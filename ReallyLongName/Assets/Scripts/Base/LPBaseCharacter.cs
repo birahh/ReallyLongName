@@ -16,7 +16,7 @@ public class LPBaseCharacter : LP2DController
 	public delegate void CharacterJump();
 	public static event CharacterJump OnCharacterJump;
 
-	protected bool IsActive = true;
+	public bool IsActive = true;
 	protected Vector3 endZonePosition;
 
     void Start()

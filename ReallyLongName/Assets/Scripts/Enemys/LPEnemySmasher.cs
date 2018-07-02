@@ -11,7 +11,7 @@ public class LPEnemySmasher : LPBaseEnemy
     void Start()
     {
 		base.Start();
-        base.Activate(1);
+		base.Activate(1);
 
 		LPBaseEnemy.OnEnemyHitFloor += CameraShake;
 
@@ -24,12 +24,20 @@ public class LPEnemySmasher : LPBaseEnemy
     }
 
     public void Activate(float delayTime)
-    {
+	{
+		if (animator) {
+			animator.SetBool("Felt", false);
+			animator.SetBool("WillFall", true);
+		}
         base.Activate(delayTime);
     }
 
 	void CameraShake()
 	{
+		if (animator) {
+			animator.SetBool("WillFall", false);
+			animator.SetBool("Felt", true);
+		}
 		cameraFollowReference.CameraShake = true;
 
 		Invoke("BackToNormal", 0.2f);
