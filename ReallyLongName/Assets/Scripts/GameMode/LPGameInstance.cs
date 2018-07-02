@@ -35,10 +35,22 @@ public static class LPGameInstance
 	{
 		if (ContinueAmount > 0)
 			ReloadCurrentScene();
-		else 
+		else {
 			LoadGameOverScene();
+			Reset();
+		}
 		
 		LoadTransitionScene();
+	}
+
+	void Reset()
+	{
+		TotalCoinAmount = 0;
+		LevelCoinAmount = 0;
+		ContinueAmount = 5;
+
+		CoinToContinueAmount = 350;
+		lastContinueUpdate = 1;
 	}
 
 	public static string GetSceneName(int levelId)
