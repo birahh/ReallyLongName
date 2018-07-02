@@ -20,9 +20,9 @@ public class LPCameraFollow : MonoBehaviour {
 
 	bool lookAheadStopped;
 
-	bool cameraShake = false;
+	public bool CameraShake = false;
 	Vector3 originalCameraPosition;
-	public float multiplier = 1f;
+	public float ShakeIntensity = 2f;
 
 	void Start() 
 	{
@@ -53,26 +53,29 @@ public class LPCameraFollow : MonoBehaviour {
 
 			currentLookAheadX = Mathf.SmoothDamp (currentLookAheadX, targetLookAheadX, ref smoothLookVelocityX, lookSmoothTimeX);
 
-			if (cameraShake)
-				focusPosition = new Vector2(
-					focusPosition.x+Mathf.PerlinNoise((float)Random.Range(-1*multiplier, 1*multiplier), (float)Random.Range(-1*multiplier, 1*multiplier)),
-					focusPosition.y+Mathf.PerlinNoise((float)Random.Range(-1*multiplier, 1*multiplier), (float)Random.Range(-1*multiplier, 1*multiplier)));
-			else
-				focusPosition += Vector2.right * currentLookAheadX;
-
+			focusPosition += Vector2.right * currentLookAheadX;
 			focusPosition.y = Mathf.SmoothDamp (transform.position.y, focusPosition.y, ref smoothVelocityY, verticalSmoothTime);				
-			transform.position = (Vector3)focusPosition + Vector3.forward * -6;
+
+			transform.position = (Vector3)focusPosition + Vector3.forward * -6;	
+
+			if (CameraShake) {
+				transform.position += new Vector3(
+					(float)Random.Range(-1, 1) * .25f * ShakeIntensity,
+					(float)Random.Range(-1, 1) * .15f * ShakeIntensity,
+					(float)Random.Range(-1, 1) * .05f * ShakeIntensity
+				);
+			}
+
 		}
 	}
 
 	void Update()
 	{
-
 		if (Input.GetKeyDown(KeyCode.U)) {
-			if (cameraShake)
-				cameraShake = false;
+			if (CameraShake)
+				CameraShake = false;
 			else 
-				cameraShake = true;
+				CameraShake = true;
 		}
 	}
 
