@@ -9,7 +9,6 @@ public class LPPlatformStatic : LPBasePlatform
 
     }
 
-
     void Update()
     {
 
