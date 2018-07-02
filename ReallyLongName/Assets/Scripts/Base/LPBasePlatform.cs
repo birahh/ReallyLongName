@@ -18,13 +18,14 @@ public class LPBasePlatform : LPRaycastController
 	public float easeAmount;
 	public float AnimationDelay = 0.5f;
 
-    private bool isOn = true;
-    private bool isFalling = false;
+	protected bool isOn = true;
+	protected bool isFalling = false;
     private int fromWaypointIndex;
     private float percentBetweenWaypoints;
     private float nextMoveTime;
     private float gravity;
     private Animator animator;
+	protected bool hasPlayerUp = false;
     
 	public Dictionary<Transform, LP2DController> passengerDictionary = new Dictionary<Transform, LP2DController>();
 	List<PassengerMovement> passengerMovement;
@@ -57,9 +58,9 @@ public class LPBasePlatform : LPRaycastController
 
 		    if (localWaypoints.Length > 0) {			
 
-			    CalculatePassengerMovement(velocity);
+				CalculatePassengerMovement(velocity);
 
-			    MovePassengers (true);
+				MovePassengers (true);
 			    transform.Translate (velocity);
 			    MovePassengers (false);
             }
@@ -81,8 +82,10 @@ public class LPBasePlatform : LPRaycastController
         if(this.GetType() == typeof(LPPlatformDrop))
             Invoke("Fall", LPDefinitions.PlatformFalling_TimeBeforeActivate);
 
-        if(this.GetType() == typeof(LPPlatformGlitch))
+		if(this.GetType() == typeof(LPPlatformGlitch)) {
             Invoke("Glitch", LPDefinitions.PlatformGlitch_TimeBeforeActivate);
+			hasPlayerUp = true;
+		}
     }
     #endregion
 
@@ -127,22 +130,23 @@ public class LPBasePlatform : LPRaycastController
 
     #region Glitch Mechanic
     public void Glitch()
-    {
+	{
         TurnOff();
-
-        SetGlitchOn();
+		SetGlitchOn();
 
         Invoke("SetGlitchOff", LPDefinitions.PlatformGlitch_TimeToReset);
     }
 
     public void SetGlitchOn()
-    {
+	{
         gameObject.GetComponent<BoxCollider2D>().enabled = false;
         gameObject.GetComponent<MeshRenderer>().enabled = false;
     }
 
     public void SetGlitchOff()
-    {
+	{
+		TurnOn();
+		hasPlayerUp = false;
         gameObject.GetComponent<BoxCollider2D>().enabled = true;
         gameObject.GetComponent<MeshRenderer>().enabled = true;
     }
@@ -195,7 +199,7 @@ public class LPBasePlatform : LPRaycastController
 
     #region PassengerMovement
     void MovePassengers(bool beforeMovePlatform) 
-	{
+	{		
 		foreach (PassengerMovement passenger in passengerMovement) {
 			if (!passengerDictionary.ContainsKey(passenger.transform)) {
 				passengerDictionary.Add(passenger.transform,passenger.transform.GetComponent<LP2DController>());
