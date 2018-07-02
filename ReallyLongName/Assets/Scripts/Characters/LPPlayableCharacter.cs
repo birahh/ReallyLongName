@@ -342,11 +342,8 @@ public class LPPlayableCharacter : LPBaseCharacter
         foreach (Collider2D coll in colliders) {
             coll.enabled = false;
         }
-
-        print("Before");
-
+                
 		if (IsAlive) {
-            print("ONCE");
             base.TurnOffCollisions();
 
 			velocity = Vector3.zero;

@@ -43,7 +43,7 @@ public static class LPGameInstance
 		LoadTransitionScene();
 	}
 
-	void Reset()
+    static void Reset()
 	{
 		TotalCoinAmount = 0;
 		LevelCoinAmount = 0;
