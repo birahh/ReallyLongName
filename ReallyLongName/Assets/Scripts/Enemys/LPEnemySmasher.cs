@@ -29,6 +29,10 @@ public class LPEnemySmasher : LPBaseEnemy
 			animator.SetBool("Felt", false);
 			animator.SetBool("WillFall", true);
 		}
+
+		if (Trail)
+			Trail.GetComponent<Renderer>().enabled = true;
+
         base.Activate(delayTime);
     }
 
@@ -38,6 +42,7 @@ public class LPEnemySmasher : LPBaseEnemy
 			animator.SetBool("WillFall", false);
 			animator.SetBool("Felt", true);
 		}
+
 		cameraFollowReference.CameraShake = true;
 
 		Invoke("BackToNormal", 0.2f);
@@ -45,6 +50,9 @@ public class LPEnemySmasher : LPBaseEnemy
 
 	void BackToNormal()
 	{
+		if (Trail)
+			Trail.GetComponent<Renderer>().enabled = false;
+		
 		cameraFollowReference.CameraShake = false;	
 	}
 
