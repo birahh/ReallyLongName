@@ -24,8 +24,11 @@ public class LPGameMode : MonoBehaviour
 
 		if (LPGameInstance.GameModeInstance == this) {		
 			LPPlayableCharacter.OnCharacterDie += PlayerDiedWithDelay;
-			LPPlayableCharacter.OnCharacterFinishLevel += LoadNextLevelWithDelay;	
-			LPGameInstance.TransitionScene = TransitionScene;
+			LPPlayableCharacter.OnCharacterFinishLevel += LoadNextLevelWithDelay;
+            LPBaseCollectable.OnCollectedSpecial += LPGameInstance.AddContinue;
+            LPBaseCollectable.OnCollectedCoin += LPGameInstance.AddCoin;
+            LPBaseCharacter.OnCharacterDie += LPGameInstance.RemoveContinue;
+            LPGameInstance.TransitionScene = TransitionScene;
 			LPGameInstance.MenuScene = MenuScene;
 			LPGameInstance.GameScenes = GameScenes;
 			LPGameInstance.GameOverScene = GameOverScene;
@@ -59,8 +62,11 @@ public class LPGameMode : MonoBehaviour
 	void RemoveDelegates()
 	{
 		LPPlayableCharacter.OnCharacterDie -= PlayerDiedWithDelay;
-		LPPlayableCharacter.OnCharacterFinishLevel -= LoadNextLevelWithDelay;	
-	}
+		LPPlayableCharacter.OnCharacterFinishLevel -= LoadNextLevelWithDelay;
+        LPBaseCollectable.OnCollectedSpecial -= LPGameInstance.AddContinue;
+        LPBaseCollectable.OnCollectedCoin -= LPGameInstance.AddCoin;
+        LPBaseCharacter.OnCharacterDie -= LPGameInstance.RemoveContinue;
+    }
 
 	void OnDestroy()
 	{
