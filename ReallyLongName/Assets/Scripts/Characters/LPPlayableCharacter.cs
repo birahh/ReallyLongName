@@ -180,8 +180,12 @@ public class LPPlayableCharacter : LPBaseCharacter
 	        // print(IsWalking+", "+IsJumping+", "+wallSliding);
 	        #endregion
 		} else if (finishPose) {
+			
+			float newX = Mathf.Lerp(transform.position.x, endZonePosition.x, 0.5f);
+			float newY = Mathf.Lerp(transform.position.y, endZonePosition.y, 0.5f);
+			float newZ = Mathf.Lerp(transform.position.z, endZonePosition.z, 0.5f);
 
-			transform.position = Mathf.Lerp(transform.position, endZonePosition, 0.5f);
+			transform.position = new Vector3(newX, newY, newZ);
 			animator.speed = Mathf.Lerp(animator.speed, 3.0f, 0.5f);
 		}
     }
