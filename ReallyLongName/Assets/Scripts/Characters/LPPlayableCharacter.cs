@@ -338,10 +338,11 @@ public class LPPlayableCharacter : LPBaseCharacter
 
     public void PlayerDied()
     {
-		if (IsAlive) {
-			base.TurnOffCollisions();
+        GetComponent<BoxCollider2D>().enabled = false;
+        if (IsAlive) {
+			TurnOffCollisions();
 
-			velocity = Vector3.zero;
+            velocity = Vector3.zero;
 			IsAlive = false;
 			IsActive = false;
 
