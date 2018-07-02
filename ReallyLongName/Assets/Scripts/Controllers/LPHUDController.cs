@@ -21,10 +21,6 @@ public class LPHUDController : MonoBehaviour
 	// Use this for initialization
 	void Start () 
 	{
-        LPBaseCollectable.OnCollectedSpecial += LPGameInstance.AddContinue;
-        LPBaseCollectable.OnCollectedCoin += LPGameInstance.AddCoin;
-        LPBaseCharacter.OnCharacterDie += LPGameInstance.RemoveContinue;
-
         continueAmount = LPGameInstance.ContinueAmount;
 
 		playerReference = GameObject.FindObjectOfType<LPPlayableCharacter>();
