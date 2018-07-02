@@ -149,12 +149,12 @@ TextureImporter:
       name: VioletSpriteSheet_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 3000
+        x: 5
+        y: 3025
         width: 1500
         height: 1500
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -163,12 +163,12 @@ TextureImporter:
       name: VioletSpriteSheet_1
       rect:
         serializedVersion: 2
-        x: 1500
-        y: 3000
+        x: 1510
+        y: 3025
         width: 1500
         height: 1500
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -177,12 +177,12 @@ TextureImporter:
       name: VioletSpriteSheet_2
       rect:
         serializedVersion: 2
-        x: 3000
-        y: 3000
+        x: 3015
+        y: 3025
         width: 1500
         height: 1500
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -191,12 +191,12 @@ TextureImporter:
       name: VioletSpriteSheet_3
       rect:
         serializedVersion: 2
-        x: 4500
-        y: 3000
+        x: 4520
+        y: 3025
         width: 1500
         height: 1500
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -205,12 +205,12 @@ TextureImporter:
       name: VioletSpriteSheet_4
       rect:
         serializedVersion: 2
-        x: 6000
-        y: 3000
+        x: 6025
+        y: 3025
         width: 1500
         height: 1500
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -219,12 +219,12 @@ TextureImporter:
       name: VioletSpriteSheet_5
       rect:
         serializedVersion: 2
-        x: 7500
-        y: 3000
+        x: 7530
+        y: 3025
         width: 1500
         height: 1500
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -233,12 +233,12 @@ TextureImporter:
       name: VioletSpriteSheet_6
       rect:
         serializedVersion: 2
-        x: 9000
-        y: 3000
+        x: 9035
+        y: 3025
         width: 1500
         height: 1500
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -247,12 +247,12 @@ TextureImporter:
       name: VioletSpriteSheet_7
       rect:
         serializedVersion: 2
-        x: 10500
-        y: 3000
+        x: 10540
+        y: 3025
         width: 1500
         height: 1500
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -261,12 +261,12 @@ TextureImporter:
       name: VioletSpriteSheet_8
       rect:
         serializedVersion: 2
-        x: 12000
-        y: 3000
+        x: 12045
+        y: 3025
         width: 1500
         height: 1500
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -275,12 +275,12 @@ TextureImporter:
       name: VioletSpriteSheet_9
       rect:
         serializedVersion: 2
-        x: 0
-        y: 1500
+        x: 5
+        y: 1520
         width: 1500
         height: 1500
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -289,12 +289,12 @@ TextureImporter:
       name: VioletSpriteSheet_10
       rect:
         serializedVersion: 2
-        x: 1500
-        y: 1500
+        x: 1510
+        y: 1520
         width: 1500
         height: 1500
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -303,12 +303,12 @@ TextureImporter:
       name: VioletSpriteSheet_11
       rect:
         serializedVersion: 2
-        x: 3000
-        y: 1500
+        x: 3015
+        y: 1520
         width: 1500
         height: 1500
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -317,12 +317,12 @@ TextureImporter:
       name: VioletSpriteSheet_12
       rect:
         serializedVersion: 2
-        x: 4500
-        y: 1500
+        x: 4520
+        y: 1520
         width: 1500
         height: 1500
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -331,12 +331,12 @@ TextureImporter:
       name: VioletSpriteSheet_13
       rect:
         serializedVersion: 2
-        x: 6000
-        y: 1500
+        x: 6025
+        y: 1520
         width: 1500
         height: 1500
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -345,12 +345,12 @@ TextureImporter:
       name: VioletSpriteSheet_14
       rect:
         serializedVersion: 2
-        x: 7500
-        y: 1500
+        x: 7530
+        y: 1520
         width: 1500
         height: 1500
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -359,12 +359,12 @@ TextureImporter:
       name: VioletSpriteSheet_15
       rect:
         serializedVersion: 2
-        x: 9000
-        y: 1500
+        x: 9035
+        y: 1520
         width: 1500
         height: 1500
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -373,12 +373,12 @@ TextureImporter:
       name: VioletSpriteSheet_16
       rect:
         serializedVersion: 2
-        x: 10500
-        y: 1500
+        x: 10540
+        y: 1520
         width: 1500
         height: 1500
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -387,12 +387,12 @@ TextureImporter:
       name: VioletSpriteSheet_17
       rect:
         serializedVersion: 2
-        x: 12000
-        y: 1500
+        x: 12045
+        y: 1520
         width: 1500
         height: 1500
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -401,12 +401,12 @@ TextureImporter:
       name: VioletSpriteSheet_18
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
+        x: 5
+        y: 15
         width: 1500
         height: 1500
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -415,12 +415,12 @@ TextureImporter:
       name: VioletSpriteSheet_19
       rect:
         serializedVersion: 2
-        x: 1500
-        y: 0
+        x: 1510
+        y: 15
         width: 1500
         height: 1500
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -429,12 +429,12 @@ TextureImporter:
       name: VioletSpriteSheet_20
       rect:
         serializedVersion: 2
-        x: 3000
-        y: 0
+        x: 3015
+        y: 15
         width: 1500
         height: 1500
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -443,12 +443,12 @@ TextureImporter:
       name: VioletSpriteSheet_21
       rect:
         serializedVersion: 2
-        x: 4500
-        y: 0
+        x: 4520
+        y: 15
         width: 1500
         height: 1500
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -457,12 +457,12 @@ TextureImporter:
       name: VioletSpriteSheet_22
       rect:
         serializedVersion: 2
-        x: 6000
-        y: 0
+        x: 6025
+        y: 15
         width: 1500
         height: 1500
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -471,12 +471,12 @@ TextureImporter:
       name: VioletSpriteSheet_23
       rect:
         serializedVersion: 2
-        x: 9000
-        y: 0
+        x: 10540
+        y: 15
         width: 1500
         height: 1500
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -485,26 +485,12 @@ TextureImporter:
       name: VioletSpriteSheet_24
       rect:
         serializedVersion: 2
-        x: 10500
-        y: 0
+        x: 12045
+        y: 15
         width: 1500
         height: 1500
       alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: VioletSpriteSheet_25
-      rect:
-        serializedVersion: 2
-        x: 12000
-        y: 0
-        width: 1500
-        height: 1500
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
