@@ -181,12 +181,17 @@ public class LPPlayableCharacter : LPBaseCharacter
 	        #endregion
 		} else if (finishPose) {
 			
-			float newX = Mathf.Lerp(transform.position.x, endZonePosition.x, 0.5f);
-			float newY = Mathf.Lerp(transform.position.y, endZonePosition.y, 0.5f);
-			float newZ = Mathf.Lerp(transform.position.z, endZonePosition.z, 0.5f);
+			float newX = Mathf.Lerp(transform.position.x, endZonePosition.x, 0.1f);
+			float newY = Mathf.Lerp(transform.position.y, endZonePosition.y, 0.1f);
+			float newZ = Mathf.Lerp(transform.position.z, endZonePosition.z, 0.1f);
 
 			transform.position = new Vector3(newX, newY, newZ);
-			animator.speed = Mathf.Lerp(animator.speed, 3.0f, 0.5f);
+			animator.speed = Mathf.Lerp(animator.speed, 3.0f, 0.8f);
+
+			float newYa = Mathf.Lerp(transform.localScale.y, 0, 0.05f);
+
+			transform.localScale = new Vector3(newYa, newYa, newYa);
+
 		}
     }
 
